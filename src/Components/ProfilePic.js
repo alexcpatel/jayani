@@ -1,81 +1,76 @@
-import React, { Component } from 'react'
-import Anime from "react-anime"
-import imgPath from "./Images/profilepic.jpg"
-import './ProfilePic.css'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { TransitionGroup, Transition } from 'react-transition-group';
+import anime from 'animejs';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-class ProfilePicElement extends Component {
-  constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
-    this.generateAnimation = this.generateAnimation.bind(this)
-  }
+import imgPath from './Images/profilepic.jpg'
+import './ProfilePic.css';
 
-  handleClick = () => {
-    this.props.onClick();
-  }
+const duration = 500
 
-  generateAnimation() {
-    console.log(this.props.profilePicAnimationStatus);
-    const dir = this.props.profilePicAnimationStatus
-    const next = dir === 'normal' ? 'in' : (dir === 'reverse' ? 'out' : null)
-    if (dir === 'normal' || dir === 'reverse') {
-      return (
-        <Anime
-          key="UNIQUEID100299"
-          easing="easeOutElastic"
-          loop={false}
-          duration={1000}
-          direction={dir}
-          complete={anim => {this.props.updateProfilePicAnimationStatus(next)}}
-          delay={(el, index) => index * 240}
-          scale={2}>
-          <img className="profile-pic" src={imgPath} alt="Profile Pic" />
-        </Anime>)
-    } else return <img className="profile-pic" src={imgPath} alt="Profile Pic" />
-  }
-
-  render() {
-    return (
-      <div onClick={this.handleClick}>
-        {this.generateAnimation()}
-      </div>
-    )
-  }
-}
-
-class ProfilePic extends Component {
+class ProfilePicElement extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      profilePicAnimationStatus: 'out'
-    };
-    this.handleProfilePicClick = this.handleProfilePicClick.bind(this)
-    this.updateProfilePicAnimationStatus = this.updateProfilePicAnimationStatus.bind(this)
+    this.picRef = React.createRef()
   }
 
-  updateProfilePicAnimationStatus(animationStatus) {
-    this.setState({ animationStatus: animationStatus });
-  }
-
-  handleProfilePicClick() {
-    if (this.state.profilePicAnimationStatus === 'out') {
-      this.setState({ profilePicAnimationStatus: 'normal' })
-    } else if (this.state.profilePicAnimationStatus === 'in') {
-      this.setState({ profilePicAnimationStatus: 'reverse' })
+  componentDidUpdate() {
+    const status = this.props.status
+    if (status === 'entering') {
+      this.animeRef = anime({
+        targets: this.picRef.current,
+        scale: 2,
+        duration: duration
+      });
+    } else if (status === 'exiting') {
+      this.animeRef = anime({
+        targets: this.picRef.current,
+        scale: 1,
+        duration: duration
+      });
     }
   }
 
   render() {
     return (
       <div>
-        <ProfilePicElement
-          onClick={this.handleProfilePicClick}
-          profilePicAnimationStatus={this.state.profilePicAnimationStatus}
-          updateProfilePicAnimationStatus={this.updateProfilePicAnimationStatus}
-        />
+        <img src={imgPath} className="profile-pic" ref={this.picRef} alt="Profile Pic" />
+        <div ref={this.plugRef}>
+          <a className="icon-outer"><FontAwesomeIcon icon={['fab', 'facebook-square']} /></a>
+        </div>
       </div>
     );
   }
 }
 
-export default ProfilePic;
+class ProfilePic extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { show: false }
+    this.handleToggle = this.handleToggle.bind(this)
+  }
+
+  handleToggle() {
+    this.setState(({ show }) => ({
+      show: !show
+    }))
+  }
+
+  render() {
+    const { show } = this.state
+    return (
+      <div>
+        <div onClick={this.handleToggle}>
+          <Transition in={show} timeout={duration}>
+            {status => (
+              <ProfilePicElement status={status} />
+            )}
+          </Transition>
+        </div>
+      </div>
+    )
+  }
+}
+
+export default ProfilePic
