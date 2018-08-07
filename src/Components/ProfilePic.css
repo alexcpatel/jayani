@@ -1,0 +1,13 @@
+.profile-pic {
+  height: 80px;
+  width: 80px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-80%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  cursor: pointer;
+  border-radius: 50%;
+}

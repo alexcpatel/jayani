@@ -21,7 +21,8 @@ class Title extends Component {
     const next = dir === 'normal' ? 'in' : (dir === 'reverse' ? 'out' : null)
     if (dir === 'normal' || dir === 'reverse') {
       return (<Anime
-        easing="easeInOutSine"
+        key={this.props.id}
+        easing="easeOutQuad"
         duration={1500}
         loop={false}
         delay={(el, index) => index * 200}
