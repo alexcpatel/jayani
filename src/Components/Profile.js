@@ -1,15 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { TransitionGroup, Transition } from 'react-transition-group';
-import anime from 'animejs';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { TransitionGroup, Transition } from 'react-transition-group'
+import anime from 'animejs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import imgPath from './Images/profilepic.jpg'
-import './ProfilePic.css';
+import './Profile.css'
 
 // PROFILE PIC ELEMENT //
 
-class ProfilePicElement extends React.Component {
+class ProfilePic extends React.Component {
   constructor(props) {
     super(props);
     this.picRef = React.createRef()
@@ -20,15 +20,21 @@ class ProfilePicElement extends React.Component {
 
     if (status === 'entering') {
       this.animeRef = anime({
+        easing: 'easeInOutQuart',
+        loop: false,
         targets: this.picRef.current,
         scale: 1.5,
-        duration: 500
+        duration: 500,
+        complete: this.props.registerCompletedAnimation
       });
     } else if (status === 'exiting') {
       this.animeRef = anime({
+        easing: 'easeInOutQuart',
+        loop: false,
         targets: this.picRef.current,
         scale: 1,
-        duration: 500
+        duration: 500,
+        complete: this.props.registerCompletedAnimation
       });
     }
   }
@@ -91,7 +97,9 @@ const links = [
   'soundcloud'
 ]
 
-class LinksElement extends React.Component {
+// END PARAMETERS //
+
+class Links extends React.Component {
   constructor(props) {
     super(props);
 
@@ -122,6 +130,8 @@ class LinksElement extends React.Component {
       for (let i = 0; i < links.length; i++) {
         const link = links[i]
         this[`${link}AnimeRef`] = anime({
+          easing: 'easeInOutQuart',
+          loop: false,
           targets: this[`${link}Ref`].current,
           translateX: translateX[link],
           translateY: translateY[link],
@@ -129,13 +139,15 @@ class LinksElement extends React.Component {
           scale: 1.2,
           opacity: 1,
           duration: 500,
-          complete: () => {if (i === links.length-1) this.props.registerCompletedAnimation()}
+          complete: () => {if (i === links.length-1) this.props.registerCompletedAnimation}
         });
       }
     } else if (status === 'exiting') {
       for (let i = 0; i < links.length; i++) {
         const link = links[i]
         this[`${link}AnimeRef`] = anime({
+          easing: 'easeInOutQuart',
+          loop: false,
           targets: this[`${link}Ref`].current,
           translateX: 0,
           translateY: 0,
@@ -143,7 +155,7 @@ class LinksElement extends React.Component {
           scale: 1,
           opacity: 0,
           duration: 500,
-          complete: () => {if (i === links.length-1) this.props.registerCompletedAnimation()}
+          complete: () => {if (i === links.length-1) this.props.registerCompletedAnimation}
         });
       }
     }
@@ -158,27 +170,84 @@ class LinksElement extends React.Component {
   }
 }
 
-class ProfilePic extends React.Component {
+class Music extends React.Component {
+  constructor(props) {
+    super(props);
+    this.ref = React.createRef()
+    this.componentDidUpdate = this.componentDidUpdate.bind(this)
+  }
+
+  componentDidUpdate() {
+    const status = this.props.status
+
+    if (status === 'entering') {
+      for (let i = 0; i < links.length; i++) {
+        const link = links[i]
+        this.animeRef = anime({
+          easing: 'easeInOutQuart',
+          loop: false,
+          targets: this.ref.current,
+          translateX: 500,
+          delay: 300,
+          scale: 2,
+          opacity: 1,
+          duration: 700,
+          complete: this.props.registerCompletedAnimation
+        });
+      }
+    } else if (status === 'exiting') {
+      for (let i = 0; i < links.length; i++) {
+        const link = links[i]
+        this.animeRef = anime({
+          easing: 'easeInOutQuart',
+          loop: false,
+          targets: this.ref.current,
+          translateX: 0,
+          delay: 300,
+          scale: 1,
+          opacity: 0,
+          duration: 700,
+          complete: this.props.registerCompletedAnimation
+        });
+      }
+    }
+  }
+
+  render() {
+    return (
+      <div className="music" ref={this.ref} />
+    );
+  }
+}
+
+class Profile extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { show: false, inAnimation: false }
+    this.state = { show: 0, inAnimation: false, goingForward: true }
 
     this.handleToggle = this.handleToggle.bind(this)
     this.registerCompletedAnimation = this.registerCompletedAnimation.bind(this)
   }
 
   handleToggle() {
+    console.log(this.state)
     if (!this.state.inAnimation) {
-      this.setState(({ show }) => ({
-        show: !show, inAnimation: true
+      this.setState(prevState => ({
+        show: prevState.goingForward ? prevState.show+1 : prevState.show-1,
+        inAnimation: true
       }))
     }
   }
 
   registerCompletedAnimation() {
-    console.log(this.state.inAnimation)
-    if (this.state.inAnimation) {
-      this.setState({ inAnimation: false })
+    console.log(this.state)
+    if (this.state.inAnimation && (this.state.show === 4 || this.state.show === 0)) {
+      this.setState({ inAnimation: false, goingForward: this.state.show === 0 })
+    } else {
+      this.setState(prevState => ({
+        show: prevState.goingForward ? prevState.show+1 : prevState.show-1,
+        inAnimation: true
+      }))
     }
   }
 
@@ -186,14 +255,19 @@ class ProfilePic extends React.Component {
     const { show } = this.state
     return (
       <div>
-        <Transition in={show} timeout={700}>
+        <Transition in={show > 0} timeout={2000}>
           {status => (
-            <ProfilePicElement status={status} handleToggle={this.handleToggle} registerCompletedAnimation={this.registerCompletedAnimation} />
+            <ProfilePic status={status} handleToggle={this.handleToggle} registerCompletedAnimation={this.registerCompletedAnimation} />
           )}
         </Transition>
-        <Transition in={show} timeout={700}>
+        <Transition in={show > 1} timeout={2000}>
           {status => (
-            <LinksElement status={status} registerCompletedAnimation={this.registerCompletedAnimation} />
+            <Links status={status} registerCompletedAnimation={this.registerCompletedAnimation} />
+          )}
+        </Transition>
+        <Transition in={show > 2} timeout={2000}>
+          {status => (
+            <Music status={status} registerCompletedAnimation={this.registerCompletedAnimation} />
           )}
         </Transition>
       </div>
@@ -201,4 +275,4 @@ class ProfilePic extends React.Component {
   }
 }
 
-export default ProfilePic
+export default Profile

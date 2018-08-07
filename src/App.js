@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ProfilePic from './Components/ProfilePic'
+import Profile from './Components/Profile'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <ProfilePic />
+        <Profile />
       </div>
     );
   }

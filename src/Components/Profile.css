@@ -35,3 +35,17 @@ a:hover
      text-decoration:none; 
      cursor:pointer;  
 }
+
+.music {
+    position: absolute;
+    background-color: pink;
+    top: 500px;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    margin-top: -50px;
+    margin-left: -50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: -2;
+}
