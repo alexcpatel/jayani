@@ -1,0 +1,29 @@
+.st1 {
+    fill: none;
+    stroke: white;
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+}
+
+.title {
+    position: relative;
+	justify-content: center;
+	align-items: center;
+}
+
+.title-inner {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    margin-left: -240px;
+    margin-top: -400px;
+    z-index: 0;
+}
+
+.title svg {
+    width: 400px;
+    height: auto;
+}

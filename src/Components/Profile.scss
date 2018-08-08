@@ -1,55 +1,64 @@
 .profile {
-	display: flex;
-	flex-direction: column;
+	position: relative;
 	justify-content: center;
-	align-items: center;
+    align-items: center;
+    scale: 0.7;
 }
 
 .profile-pic {
+    box-shadow: 0px 0px 0px 3px white;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
     width: 120px;
     height: 120px;
-    margin-top: -60px;
     margin-left: -60px;
+    margin-top: -60px;
     border-radius: 50%;
     cursor: pointer;
     z-index: 1;
 }
 
-.icon-outer {
+.link {
     position: absolute;
-    top: 500px;
-    left: 50%;
-    width: 30px;
-    height: 30px;
-    margin-top: -15px;
-    margin-left: -15px;
-    border-radius: 50%;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 20px;
+    height: 20px;
+    margin-left: -10px;
+    margin-top: -10px;
     cursor: pointer;
-    z-index: -1;
+    z-index: 0;
 }
 
 a {
-    color: #0060B6;
+    color: white;
     text-decoration: none;
 }
 
 a:hover 
 {
      color:#00A0C6; 
-     text-decoration:none; 
-     cursor:pointer;  
+     text-decoration: none; 
+     cursor: pointer;  
 }
 
 .music {
     position: absolute;
     background-color: pink;
-    top: 500px;
-    left: 50%;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
     width: 100px;
     height: 100px;
     margin-top: -50px;
     margin-left: -50px;
     border-radius: 50%;
     cursor: pointer;
-    z-index: -2;
+    z-index: 0;
 }

@@ -1,8 +1,8 @@
 .site-container {
-	height: 100vh;
-	width: 100%;
     color: white;
-    position: fixed;
+	position: fixed;
+	width: 50%vw;
+	height: auto;
 	top: 0;
 	left: 0;
 	bottom: 0;
@@ -11,7 +11,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	z-index: 0;
+	z-index: -100;
 	overflow: hidden;
 	background: linear-gradient(to bottom right, #f12711,#f5af19);
 }
