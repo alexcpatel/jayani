@@ -1,7 +1,11 @@
+.profile {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
 .profile-pic {
-    position: absolute;
-    top: 500px;
-    left: 50%;
     width: 120px;
     height: 120px;
     margin-top: -60px;
