@@ -22,10 +22,10 @@ class Title extends React.Component {
   animateElements = () => {
     anime({
       targets: this.titleRef.current.querySelectorAll(".st1"),
-      easing: "easeOutQuad",
-      duration: 1500,
+      easing: "easeOutQuart",
+      duration: 9000,
       loop: false,
-      delay: (el, index) => index * 200,
+      delay: (el, index) => index * 300,
       strokeDashoffset: (el) => {
         var pathLength = 0;
         if (el.getTotalLength) {

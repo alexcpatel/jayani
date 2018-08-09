@@ -1,3 +1,6 @@
+$primary-color: white;
+$secondary-color: #00A0C6;
+
 .profile {
 	position: relative;
 	justify-content: center;
@@ -6,7 +9,7 @@
 }
 
 .profile-pic {
-    box-shadow: 0px 0px 0px 3px white;
+    box-shadow: 0px 0px 0px 0px $primary-color;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -19,6 +22,10 @@
     border-radius: 50%;
     cursor: pointer;
     z-index: 1;
+}
+
+.profile-pic:hover {
+    box-shadow: 0px 0px 0px 3px $primary-color;
 }
 
 .link {
@@ -36,29 +43,37 @@
 }
 
 a {
-    color: white;
+    color: $primary-color;
     text-decoration: none;
 }
 
 a:hover 
 {
-     color:#00A0C6; 
+     color: $secondary-color; 
      text-decoration: none; 
      cursor: pointer;  
 }
 
-.music {
+.chakra {
     position: absolute;
-    background-color: pink;
     top: 0px;
     left: 0px;
     bottom: 0px;
     right: 0px;
-    width: 100px;
-    height: 100px;
-    margin-top: -50px;
-    margin-left: -50px;
-    border-radius: 50%;
-    cursor: pointer;
     z-index: 0;
+}
+
+.chakra svg {
+    width: 200px;
+    height: auto;
+    margin-left: -101px;
+    margin-top: -101px;
+}
+
+.chakra-path {
+    fill: none;
+    stroke: $primary-color;
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
 }
