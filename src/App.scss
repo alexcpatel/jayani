@@ -11,7 +11,12 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	z-index: -100;
 	overflow: hidden;
 	background: linear-gradient(to bottom right, #f12711,#f5af19);
+}
+
+.contact {
+	position: relative;
+	justify-content: center;
+    align-items: center;
 }

@@ -23,9 +23,9 @@ class Title extends React.Component {
     anime({
       targets: this.titleRef.current.querySelectorAll(".st1"),
       easing: "easeOutQuart",
-      duration: 9000,
+      duration: 10000,
       loop: false,
-      delay: (el, index) => index * 300,
+      delay: (el, index) => index * 400,
       strokeDashoffset: (el) => {
         var pathLength = 0;
         if (el.getTotalLength) {

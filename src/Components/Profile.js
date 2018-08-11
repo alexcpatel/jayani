@@ -1,11 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { TransitionGroup, Transition } from 'react-transition-group'
+import { Transition } from 'react-transition-group'
 import anime from 'animejs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import imgPath from './Images/profilepic.jpg'
+import Music from './Music'
+
 import './Profile.scss'
+
+import { hyperlinks } from './Data/Data'
+import profilePicImgPath from './Images/ProfilePic.jpg'
+import musicButtonImgPath from './Images/MusicButton.svg'
+import bioButtonImgPath from './Images/BioButton.svg'
+import eventsButtonImgPath from './Images/EventsButton.svg'
 
 const links = [
   'facebook',
@@ -15,15 +22,6 @@ const links = [
   'youtube',
   'soundcloud'
 ]
-
-const hyperlinks = {
-  facebook: 'https://www.facebook.com/maxpatelmusic/',
-  twitter: 'https://twitter.com/MaxPatel_Music',
-  instagram: 'https://www.instagram.com/maxpatelmusic/',
-  spotify: 'https://open.spotify.com/artist/3HcJd4UuaOq2pVginUi5MY',
-  youtube: 'https://www.youtube.com/channel/UCPtjLE0quEXBH3GH7Kk9m_g',
-  soundcloud: 'https://soundcloud.com/maximilian-patel'
-}
 
 const translateX = {
   facebook: -120,
@@ -55,13 +53,18 @@ const delays = {
 class Profile extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { animate: false }
+    this.state = {
+      animate: false,
+      animateMusic: false,
+      animateBio: false,
+      animateEvents: false
+    }
 
     //SETUP REFS
     this.profilePicRef = React.createRef()
 
     this.chakraContainerRef = React.createRef()
-    this.chakraOuterRef = React.createContext()
+    this.chakraOuterRef = React.createRef()
     this.chakraRef = React.createRef()
 
     this.facebookRef = React.createRef()
@@ -71,17 +74,50 @@ class Profile extends React.Component {
     this.youtubeRef = React.createRef()
     this.soundcloudRef = React.createRef()
 
-    this.musicRef = React.createRef()
+    this.musicOuterRef = React.createRef()
+    this.musicInnerRef = React.createRef()
+    this.bioOuterRef = React.createRef()
+    this.bioInnerRef = React.createRef()
+    this.eventsOuterRef = React.createRef()
+    this.eventsInnerRef = React.createRef()
 
     //BIND THIS
     this.setOrReset = this.setOrReset.bind(this)
+    this.setOrResetMusic = this.setOrResetMusic.bind(this)
+    this.setOrResetBio = this.setOrResetBio.bind(this)
+    this.setOrResetEvents = this.setOrResetEvents.bind(this)
+
     this.animateElements = this.animateElements.bind(this)
+
+    this.onHover = this.onHover.bind(this)
   }
 
   setOrReset() {
-    this.setState({
-      animate: !this.state.animate
-    });
+    this.setState(prevState => ({
+      animate: !prevState.animate,
+      animateMusic: false,
+      animateBio: false,
+      animateEvents: false
+    }));
+    this.props.setAnimate(this.state.animate)
+  }
+
+  setOrResetMusic() {
+    this.setState(prevState => ({
+      animateMusic: !prevState.animateMusic
+    }));
+  }
+
+  setOrResetBio() {
+    this.setState(prevState => ({
+      animateBio: !prevState.animateBio
+    }));
+  }
+
+  setOrResetEvents() {
+    this.setState(prevState => ({
+      animateEvents: !prevState.animateEvents
+    }));
   }
 
   generateLinkElement = (link) =>
@@ -138,6 +174,10 @@ class Profile extends React.Component {
     anime.remove(this.youtubeRef.current)
     anime.remove(this.soundcloudRef.current)
 
+    anime.remove(this.musicOuterRef.current)
+    anime.remove(this.bioOuterRef.current)
+    anime.remove(this.eventsOuterRef.current)
+
     // PIC ANIMATIONS
     anime({
       targets: this.profilePicRef.current,
@@ -156,7 +196,7 @@ class Profile extends React.Component {
         easing: 'easeInOutSine',
         loop: true,
         scale: [1, 1.1],
-        opacity: [1,1],
+        opacity: [1, 1],
         direction: 'alternate',
         duration: 1000
       })
@@ -165,7 +205,7 @@ class Profile extends React.Component {
         easing: 'linear',
         loop: true,
         rotate: 360,
-        duration: 9000
+        duration: 7000
       })
       this.animateSvg({
         animate: true,
@@ -203,7 +243,51 @@ class Profile extends React.Component {
     }
 
     // MUSIC ANIMATIONS
+    anime({
+      targets: this.musicOuterRef.current,
+      easing: 'easeInOutQuart',
+      loop: false,
+      translateX: animate ? -120 : 0,
+      translateY: animate ? 150 : 0,
+      rotate: animate ? -720 : 0,
+      scale: animate ? 1 : 0.5,
+      duration: 1000
+    })
 
+    // BIO ANIMATIONS
+    anime({
+      targets: this.bioOuterRef.current,
+      easing: 'easeInOutQuart',
+      loop: false,
+      translateY: animate ? 180 : 0,
+      scale: animate ? 1 : 0.5,
+      duration: 1000
+    })
+
+    // EVENTS ANIMATIONS
+    anime({
+      targets: this.eventsOuterRef.current,
+      easing: 'easeInOutQuart',
+      loop: false,
+      translateX: animate ? 120 : 0,
+      translateY: animate ? 150 : 0,
+      rotate: animate ? 720 : 0,
+      scale: animate ? 1 : 0.5,
+      duration: 1000
+    })
+  }
+
+  onHover(ref, enter) {
+    if (this.state.animate) {
+      anime.remove(ref)
+      anime({
+        targets: ref,
+        easing: 'easeInOutQuart',
+        loop: false,
+        scale: enter ? 1.3 : 1,
+        duration: 300
+      })
+    }
   }
 
   componentDidMount() {
@@ -212,17 +296,25 @@ class Profile extends React.Component {
   }
 
   render() {
-    const { animate } = this.state
+    const { animate, animateMusic } = this.state
     return (
       <div className="profile">
         <Transition
           in={animate}
-          duration={2000}
-          timeout={2000}
+          duration={1200}
+          timeout={1200}
           onEnter={() => { this.animateElements(animate) }}
           onExit={() => { this.animateElements(animate) }}>
           <div>
-            <img className="profile-pic" ref={this.profilePicRef} src={imgPath} alt="Profile Pic" onClick={this.setOrReset} />
+            <div ref={this.musicOuterRef} onClick={this.setOrResetMusic}>
+              <img ref={this.musicInnerRef} className="music-pic" src={musicButtonImgPath} alt="Music Button" onMouseEnter={() => { this.onHover(this.musicInnerRef.current, true) }} onMouseLeave={() => { this.onHover(this.musicInnerRef.current, false) }} />
+            </div>
+            <div ref={this.bioOuterRef} onClick={this.setOrResetBio}>
+              <img ref={this.bioInnerRef} className="bio-pic" src={bioButtonImgPath} alt="Bio Button" onMouseEnter={() => { this.onHover(this.bioInnerRef.current, true) }} onMouseLeave={() => { this.onHover(this.bioInnerRef.current, false) }} />
+            </div>
+            <div ref={this.eventsOuterRef} onClick={this.setOrResetEvents}>
+              <img ref={this.eventsInnerRef} className="events-pic" src={eventsButtonImgPath} alt="Events Button" onMouseEnter={() => { this.onHover(this.eventsInnerRef.current, true) }} onMouseLeave={() => { this.onHover(this.eventsInnerRef.current, false) }} />
+            </div>
             <div ref={this.chakraContainerRef}>
               <div ref={this.chakraOuterRef} className="chakra">
                 <svg ref={this.chakraRef} version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="29 57 120 120">
@@ -262,9 +354,11 @@ class Profile extends React.Component {
               </div>
             </div>
             {links.map(link => this.generateLinkElement(link))}
+            <img className="profile-pic" ref={this.profilePicRef} src={profilePicImgPath} alt="Profile Pic" onClick={this.setOrReset} />
+            <Music animate={animateMusic} setOrReset={this.setOrResetMusic} />
           </div>
         </Transition>
-      </div >
+      </div>
     )
   }
 }

@@ -1,0 +1,64 @@
+$primary-color: white;
+$secondary-color: #00A0C6;
+$contact-background-color: lightgray;
+
+.envelope {
+    box-shadow: 0px 0px 0px 0px $primary-color;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: 300px;
+    cursor: pointer;
+}
+
+.contact-submit {
+    box-shadow: 0px 0px 0px 0px $primary-color;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 300px;
+    height: 60px;
+    margin-left: -90px;
+    margin-top: 300px;
+    cursor: pointer;
+}
+
+#envelope-icon {
+    color: black
+}
+
+.contact-info {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 380px;
+    height: 205px;
+    margin-left: -200px;
+    margin-top: 250px;
+    background-color: $contact-background-color;
+    border-radius: 10px;
+}
+
+.contact-info-text {
+    font-family: 'Roboto';
+    color: black;
+    text-align: center;
+}
+
+.contact-info-footer {
+    margin-top: 80px;
+}
+
+.contact-info-footer em {
+    color: red;
+    opacity: 1;
+}

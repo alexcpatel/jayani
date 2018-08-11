@@ -5,7 +5,6 @@ $secondary-color: #00A0C6;
 	position: relative;
 	justify-content: center;
     align-items: center;
-    scale: 0.7;
 }
 
 .profile-pic {
@@ -21,7 +20,6 @@ $secondary-color: #00A0C6;
     margin-top: -60px;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 1;
 }
 
 .profile-pic:hover {
@@ -39,7 +37,6 @@ $secondary-color: #00A0C6;
     margin-left: -10px;
     margin-top: -10px;
     cursor: pointer;
-    z-index: 0;
 }
 
 a {
@@ -60,7 +57,6 @@ a:hover
     left: 0px;
     bottom: 0px;
     right: 0px;
-    z-index: 0;
 }
 
 .chakra svg {
@@ -76,4 +72,46 @@ a:hover
     stroke-width: 1;
     stroke-linecap: round;
     stroke-miterlimit: 10;
+}
+
+.music-pic {
+    box-shadow: 0px 0px 0px 0px $primary-color;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    cursor: pointer;
+}
+
+.bio-pic {
+    box-shadow: 0px 0px 0px 0px $primary-color;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    cursor: pointer;
+}
+
+.events-pic {
+    box-shadow: 0px 0px 0px 0px $primary-color;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    cursor: pointer;
 }

@@ -1,0 +1,24 @@
+$primary-color: white;
+$music-color: linear-gradient(to top right, #12721b,#5faad8);
+
+canvas {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    cursor: pointer; 
+  }
+
+.music-circle {
+    position: absolute;
+    background: $music-color;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: calc(140vw + 140vh);
+    height: calc(140vw + 140vh);
+    margin-left: calc(-70vw - 70vh - 120px);
+    margin-top: calc(-70vw - 70vh + 150px);
+    border-radius: 50%;
+    cursor: pointer;
+}
