@@ -1,6 +1,43 @@
 $primary-color: white;
 $secondary-color: #00A0C6;
 
+$facebook-color: #3B5998;
+$twitter-color: #00aced;
+$instagram-color: #e1306c;
+$spotify-color: #1db954;
+$youtube-color: #ff0000;
+$soundcloud-color: #ff8800;
+
+a {
+    color: $primary-color;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.facebook:hover {
+    color: $facebook-color;
+}
+
+.twitter:hover {
+    color: $twitter-color;
+}
+
+.instagram:hover {
+    color: $instagram-color;
+}
+
+.spotify:hover {
+    color: $spotify-color;
+}
+
+.youtube:hover {
+    color: $youtube-color;
+}
+
+.soundcloud:hover {
+    color: $soundcloud-color;
+}
+
 .profile {
 	position: relative;
 	justify-content: center;
@@ -39,18 +76,6 @@ $secondary-color: #00A0C6;
     cursor: pointer;
 }
 
-a {
-    color: $primary-color;
-    text-decoration: none;
-}
-
-a:hover 
-{
-     color: $secondary-color; 
-     text-decoration: none; 
-     cursor: pointer;  
-}
-
 .chakra {
     position: absolute;
     top: 0px;
@@ -75,7 +100,6 @@ a:hover
 }
 
 .music-pic {
-    box-shadow: 0px 0px 0px 0px $primary-color;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -89,7 +113,6 @@ a:hover
 }
 
 .bio-pic {
-    box-shadow: 0px 0px 0px 0px $primary-color;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -103,7 +126,32 @@ a:hover
 }
 
 .events-pic {
-    box-shadow: 0px 0px 0px 0px $primary-color;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    cursor: pointer;
+}
+
+.videos-pic {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    cursor: pointer;
+}
+
+.merch-pic {
     position: absolute;
     top: 0px;
     left: 0px;

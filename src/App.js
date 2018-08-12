@@ -19,12 +19,14 @@ class App extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { animate: true }
+    this.state = { site: false, animate: true }
 
     this.contactNewsRef = React.createRef();
+    this.siteRef = React.createRef();
 
     this.setAnimate = this.setAnimate.bind(this)
     this.animateElements = this.animateElements.bind(this)
+    this.openSite = this.openSite.bind(this)
   }
 
   setAnimate(animate) {
@@ -38,36 +40,57 @@ class App extends Component {
       targets: this.contactNewsRef.current,
       easing: 'easeInOutQuart',
       loop: false,
-      translateY: animate ? [250, 0] : [0, 250],
-      opacity: animate ? [0, 1] : [1, 0],
+      translateY: animate ? 0 : 250,
+      opacity: animate ? 1 : 0,
       delay: 0,
+      duration: 1000
+    })
+  }
+
+  openSite() {
+    anime({
+      targets: this.siteRef.current,
+      easing: 'easeInOutQuart',
+      loop: false,
+      opacity: [0, 1],
+      delay: 1000,
       duration: 1000
     })
   }
 
   componentDidMount() {
     this.animateElements(this.state.animate)
+    this.setState({ site: true })
   }
 
   render() {
-    const { animate } = this.state
+    const { site, animate } = this.state
     return (
       <div className="site-container">
         <Title />
-        <Profile setAnimate={this.setAnimate} />
         <Transition
-          in={animate}
+          in={site}
           mountOnEnter
           unmountOnExit
-          duration={1000}
-          timeout={1000}
-          onEnter={() => { this.animateElements(animate) }}
-          onExit={() => { this.animateElements(animate) }}>
-          <div className="contact-news">
-            <div ref={this.contactNewsRef}>
-              <News />
-              <Contact />
-            </div>
+          duration={2000}
+          timeout={2000}
+          onEnter={() => { this.openSite() }}
+          onExit={() => { this.openSite() }}>
+          <div ref={this.siteRef} className="site-elements">
+            <Profile setAnimate={this.setAnimate} />
+            <Transition
+              in={animate}
+              duration={1000}
+              timeout={1000}
+              onEnter={() => { this.animateElements(animate) }}
+              onExit={() => { this.animateElements(animate) }}>
+              <div className="contact-news">
+                <div ref={this.contactNewsRef}>
+                  <Contact />
+                  <News />
+                </div>
+              </div>
+            </Transition>
           </div>
         </Transition>
       </div>

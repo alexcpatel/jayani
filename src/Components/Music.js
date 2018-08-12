@@ -9,15 +9,15 @@ class Music extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { animate: false }
-
     this.musicCircleRef = React.createRef()
+    this.musicRef = React.createRef()
 
     this.animateElements = this.animateElements.bind(this)
   }
 
   animateElements(animate) {
     anime.remove(this.musicCircleRef.current)
+    anime.remove(this.musicRef.current)
 
     // GROWING CIRCLE ANIMATION
     anime({
@@ -25,7 +25,17 @@ class Music extends React.Component {
       easing: 'easeInOutQuart',
       loop: false,
       scale: animate ? [0, 1] : [1, 0],
-      delay: 0,
+      delay: animate ? 0 : 300,
+      duration: 1000
+    })
+
+    // ENTER MUSIC CONTAINER ANIMATION
+    anime({
+      targets: this.musicRef.current,
+      easing: 'easeInOutQuart',
+      loop: false,
+      translateY: animate ? ['-100vh', '0vh'] : ['0vh', '-100vh'],
+      delay: animate ? 300 : 0,
       duration: 1000
     })
   }
@@ -41,8 +51,10 @@ class Music extends React.Component {
         timeout={2000}
         onEnter={() => { this.animateElements(animate) }}
         onExit={() => { this.animateElements(animate) }}>
-        <div ref={this.musicCircleRef} className="music-circle" onClick={setOrReset}>
-        
+        <div>
+          <div ref={this.musicCircleRef} className="music-circle" onClick={setOrReset} />
+          <div ref={this.musicRef} className="music-container">
+          </div>
         </div>
       </Transition>
     )
