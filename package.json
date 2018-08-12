@@ -43,6 +43,7 @@
     "react-dev-utils": "^5.0.1",
     "react-dom": "^16.4.2",
     "react-material-ui-form-validator": "^2.0.1",
+    "react-pdf": "^3.0.5",
     "react-transition-group": "^2.4.0",
     "resolve": "1.6.0",
     "style-loader": "0.19.0",

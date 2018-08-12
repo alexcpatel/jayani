@@ -9,6 +9,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import Profile from './Components/Profile'
 import Title from './Components/Title'
 import Contact from './Components/Contact'
+import News from './Components/News'
 
 import './App.scss'
 
@@ -28,7 +29,6 @@ class App extends Component {
 
   setAnimate(animate) {
     this.setState({ animate });
-    console.log(this.state.animate)
   }
 
   animateElements(animate) {
@@ -63,8 +63,9 @@ class App extends Component {
           timeout={1000}
           onEnter={() => { this.animateElements(animate) }}
           onExit={() => { this.animateElements(animate) }}>
-          <div className="contact">
+          <div className="contact-news">
             <div ref={this.contactNewsRef}>
+              <News />
               <Contact />
             </div>
           </div>

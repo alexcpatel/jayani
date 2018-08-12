@@ -3,7 +3,6 @@ $secondary-color: #00A0C6;
 $contact-background-color: lightgray;
 
 .envelope {
-    box-shadow: 0px 0px 0px 0px $primary-color;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -12,12 +11,11 @@ $contact-background-color: lightgray;
     width: 60px;
     height: 60px;
     margin-left: -30px;
-    margin-top: 300px;
+    margin-top: 280px;
     cursor: pointer;
 }
 
 .contact-submit {
-    box-shadow: 0px 0px 0px 0px $primary-color;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -25,13 +23,13 @@ $contact-background-color: lightgray;
     right: 0px;
     width: 300px;
     height: 60px;
-    margin-left: -90px;
-    margin-top: 300px;
+    margin-left: -100px;
+    margin-top: 280px;
     cursor: pointer;
 }
 
 #envelope-icon {
-    color: black
+    color: white;
 }
 
 .contact-info {
@@ -40,17 +38,16 @@ $contact-background-color: lightgray;
     left: 0px;
     bottom: 0px;
     right: 0px;
-    width: 380px;
+    width: 410px;
     height: 205px;
-    margin-left: -200px;
-    margin-top: 250px;
-    background-color: $contact-background-color;
+    margin-left: -205px;
+    margin-top: 230px;
     border-radius: 10px;
 }
 
 .contact-info-text {
     font-family: 'Roboto';
-    color: black;
+    color: white;
     text-align: center;
 }
 
@@ -59,6 +56,5 @@ $contact-background-color: lightgray;
 }
 
 .contact-info-footer em {
-    color: red;
-    opacity: 1;
+    font-weight: bold;
 }

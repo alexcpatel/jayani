@@ -15,8 +15,32 @@
 	background: linear-gradient(to bottom right, #f12711,#f5af19);
 }
 
-.contact {
+@media only screen and (min-height: 600px) and (max-height: 800px) {
+	body {
+		zoom: 80%;
+	}
+}
+
+@media only screen and (min-height: 400px) and (max-height: 600px) {
+	body {
+		zoom: 60%;
+	}
+}
+
+@media only screen and (min-height: 200px) and (max-height: 400px) {
+	body {
+		zoom: 40%;
+	}
+}
+
+@media only screen and (max-height: 200px) {
+	body {
+		zoom: 20%;
+	}
+}
+
+.contact-news {
 	position: relative;
 	justify-content: center;
-    align-items: center;
+	align-items: center;
 }
