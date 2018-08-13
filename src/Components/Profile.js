@@ -142,7 +142,7 @@ class Profile extends React.Component {
 
   generateLinkElement = (link) =>
     <div className="link" ref={this[`${link}Ref`]} key={link}>
-      <a href={hyperlinks[link]} className={link}>
+      <a href={hyperlinks[link]} className={link} target="_blank">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
           <FontAwesomeIcon icon={['fab', link]} />
         </svg>

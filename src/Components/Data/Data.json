@@ -8,5 +8,16 @@
     "soundcloud": "https://soundcloud.com/maximilian-patel"
   },
   "jayaniEmail": "jayanitunes@gmail.com",
-  "merchHyperlink": "https://google.com"
+  "merchHyperlink": "https://google.com",
+  "progressionsLinks": {
+    "spotify": "https://open.spotify.com/album/7wgqIStm5JdekbVrRAiJLG?si=6pP3y82dSxikuHNT-jdqXw",
+    "soundcloud": "https://soundcloud.com/maximilian-patel/sets/progressions-ep",
+    "apple": "https://itunes.apple.com/us/album/progressions-ep/1311200831",
+    "tidal": "https://tidal.com/album/81121467",
+    "amazon": "http://a.co/83opEWU",
+    "google": "https://play.google.com/store/music/album/Max_Patel_Progressions?id=Bqfachws5alrah5mnlsyzxrywfm&hl=en",
+    "deezer": "https://www.deezer.com/album/51492902?utm_source=deezer&utm_content=album-51492902&utm_term=2199278564_1534121446&utm_medium=web"
+  },
+  "progressionsSpotify": "spotify:album:7wgqIStm5JdekbVrRAiJLG",
+  "solipsismSpotify": "spotify:album:4yFI00Or7s33LWrlMV5JCp"
 }

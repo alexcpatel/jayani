@@ -2,8 +2,48 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Transition } from 'react-transition-group'
 import anime from 'animejs'
+import Button from '@material-ui/core/Button'
+import UpIcon from '@material-ui/icons/KeyboardArrowUp'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import SpotifyPlayer from 'react-spotify-player';
 
 import './Music.scss'
+
+import { progressionsLinks, progressionsSpotify, solipsismSpotify } from './Data/Data'
+import tidalImgPath from './Images/Tidal.png'
+import deezerImgPath from './Images/Deezer.png'
+
+const links = [
+  "spotify",
+  "soundcloud",
+  "apple",
+  "tidal",
+  "amazon",
+  "google",
+  "deezer"
+]
+
+const progressionsLinksElement = links.map(link =>
+  <a href={progressionsLinks[link]} target="_blank">
+    {link === 'tidal' ? <img className="progressions-link-image" src={tidalImgPath} alt="Tidal" /> : (link === 'deezer' ? <img className="progressions-link-image" src={deezerImgPath} alt="Tidal" /> :
+      <svg className="progressions-link-image" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+        <FontAwesomeIcon icon={['fab', link]} />
+      </svg>)}
+  </a>
+)
+
+const spotify = {
+  sizeProgressions: {
+    width: '100%',
+    height: 250
+  },
+  sizeSolipsism: {
+    width: '100%',
+    height: 80
+  },
+  view: 'list',
+  theme: 'black'
+}
 
 class Music extends React.Component {
   constructor(props) {
@@ -52,8 +92,31 @@ class Music extends React.Component {
         onEnter={() => { this.animateElements(animate) }}
         onExit={() => { this.animateElements(animate) }}>
         <div>
-          <div ref={this.musicCircleRef} className="music-circle" onClick={setOrReset} />
+          <div ref={this.musicCircleRef} className="music-circle" />
           <div ref={this.musicRef} className="music-container">
+            <Button variant="fab" color="primary" aria-label="Add" onClick={() => { if (animate) setOrReset() }}>
+              <UpIcon />
+            </Button>
+            <h1>MUSIC</h1>
+            <h4>jayani tunes coming soon</h4>
+            <h2>Old Music</h2>
+            <div className="progressions-link-container">
+              {progressionsLinksElement}
+            </div>
+            <h3>Progressions</h3>
+            <SpotifyPlayer
+              uri={progressionsSpotify}
+              size={spotify.sizeProgressions}
+              view={spotify.view}
+              theme={spotify.theme}
+            />
+            <h3>Solipsism</h3>
+            <SpotifyPlayer
+              uri={solipsismSpotify}
+              size={spotify.sizeSolipsism}
+              view={spotify.view}
+              theme={spotify.theme}
+            />
           </div>
         </div>
       </Transition>

@@ -1,12 +1,11 @@
 $primary-color: white;
-$music-color: linear-gradient(to top right, #12721b,#5faad8);
-
+$music-color: linear-gradient(to top right, #12721b, #5faad8);
 canvas {
     display: block;
     width: 100vw;
     height: 100vh;
-    cursor: pointer; 
-  }
+    cursor: pointer;
+}
 
 .music-circle {
     position: absolute;
@@ -20,7 +19,6 @@ canvas {
     margin-left: calc(-70vw - 70vh - 120px);
     margin-top: calc(-70vw - 70vh + 150px);
     border-radius: 50%;
-    cursor: pointer;
 }
 
 .music-container {
@@ -29,8 +27,33 @@ canvas {
     left: 0px;
     bottom: 0px;
     right: 0px;
-    width: 100vw;
-    height: 100vh;
-    margin-left: -50vw;
-    margin-top: -50vh;
+    padding: 20px 0px 20px 0px;
+    position: absolute;
+    width: 500px;
+    margin-left: -250px;
+    margin-top: -400px;
+    text-align: center;
+}
+
+.progressions-link-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.progressions-link-image {
+    height: 40px;
+    width: auto;
+    filter: brightness(0) invert(1);
+}
+
+.progressions-link-container a{
+    color: $primary-color;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.progressions-link-container a:hover{
+    filter: drop-shadow(2px 2px 4px blue);
 }
