@@ -1,5 +1,5 @@
 $primary-color: white;
-$music-color: linear-gradient(to top right, #12721b, #5faad8);
+$music-color: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
 canvas {
     display: block;
     width: 100vw;
@@ -7,9 +7,23 @@ canvas {
     cursor: pointer;
 }
 
+@keyframes MusicGradient {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
 .music-circle {
     position: absolute;
     background: $music-color;
+    background-size: 400% 400%;
+    animation: MusicGradient 15s ease infinite;
     top: 0px;
     left: 0px;
     bottom: 0px;
@@ -23,16 +37,16 @@ canvas {
 
 .music-container {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: -50vh;
+    left: -50vw;
     bottom: 0px;
     right: 0px;
-    padding: 20px 0px 20px 0px;
     position: absolute;
-    width: 500px;
-    margin-left: -250px;
-    margin-top: -400px;
+    width: 100vw;
+    height: 100vh;
     text-align: center;
+    overflow: auto;
+    opacity: 0.9;
 }
 
 .progressions-link-container {
@@ -43,17 +57,61 @@ canvas {
 }
 
 .progressions-link-image {
-    height: 40px;
+    height: 30px;
     width: auto;
-    filter: brightness(0) invert(1);
+    filter: brightness(0) invert(0.5);
 }
 
-.progressions-link-container a{
-    color: $primary-color;
+.progressions-link-container a {
+    color: gray;
     text-decoration: none;
     cursor: pointer;
+    transition: all .2s ease-in-out;
 }
 
-.progressions-link-container a:hover{
-    filter: drop-shadow(2px 2px 4px blue);
+.progressions-link-container a:hover {
+    transform: scale(1.2);
+}
+
+.solipsism-link-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.solipsism-link-image {
+    height: 30px;
+    width: auto;
+    filter: brightness(0) invert(0.5);
+}
+
+.solipsism-link-container a {
+    color: gray;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.solipsism-link-container a:hover {
+    transform: scale(1.2);
+}
+
+.music-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.music-footer-link {
+    height: 30px;
+    width: auto;
+}
+
+.music-footer-link svg {
+    height: 30px;
+    width: auto;
 }

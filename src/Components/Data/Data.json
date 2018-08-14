@@ -18,6 +18,15 @@
     "google": "https://play.google.com/store/music/album/Max_Patel_Progressions?id=Bqfachws5alrah5mnlsyzxrywfm&hl=en",
     "deezer": "https://www.deezer.com/album/51492902?utm_source=deezer&utm_content=album-51492902&utm_term=2199278564_1534121446&utm_medium=web"
   },
-  "progressionsSpotify": "spotify:album:7wgqIStm5JdekbVrRAiJLG",
-  "solipsismSpotify": "spotify:album:4yFI00Or7s33LWrlMV5JCp"
+  "progressionsSpotify": "https://open.spotify.com/embed/album/7wgqIStm5JdekbVrRAiJLG",
+  "solipsismLinks": {
+    "spotify": "https://open.spotify.com/album/4yFI00Or7s33LWrlMV5JCp?si=1Ys1OGTBRwi-Olj4QPzBXQ",
+    "soundcloud": "https://soundcloud.com/maximilian-patel/solopsism",
+    "apple": "https://itunes.apple.com/us/album/solipsism/1272991234?i=1272991238",
+    "tidal": "https://tidal.com/album/77575584",
+    "amazon": "http://a.co/fOrBzJ2",
+    "google": "https://play.google.com/store/music/album/Max_Patel_Solipsism?id=Bproqzzzt4myq4iz2a3npfnykaq&hl=en",
+    "deezer": "https://www.deezer.com/album/46547262?utm_source=deezer&utm_content=album-46547262&utm_term=2199278564_1534122453&utm_medium=web"
+  },
+  "solipsismSpotify": "https://open.spotify.com/embed/album/4yFI00Or7s33LWrlMV5JCp"
 }

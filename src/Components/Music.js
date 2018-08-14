@@ -5,13 +5,16 @@ import anime from 'animejs'
 import Button from '@material-ui/core/Button'
 import UpIcon from '@material-ui/icons/KeyboardArrowUp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import SpotifyPlayer from 'react-spotify-player';
+import { Grid, Row, Col, Panel, PageHeader } from 'react-bootstrap'
+import Iframe from 'react-iframe'
 
 import './Music.scss'
 
-import { progressionsLinks, progressionsSpotify, solipsismSpotify } from './Data/Data'
+import { hyperlinks, progressionsLinks, progressionsSpotify, solipsismLinks, solipsismSpotify } from './Data/Data'
 import tidalImgPath from './Images/Tidal.png'
 import deezerImgPath from './Images/Deezer.png'
+import progressionsImgPath from './Images/Music/Progressions.jpg'
+import solipsismImgPath from './Images/Music/Solipsism.jpg'
 
 const links = [
   "spotify",
@@ -23,6 +26,25 @@ const links = [
   "deezer"
 ]
 
+const footerLinks = [
+  'facebook',
+  'twitter',
+  'instagram',
+  'spotify',
+  'youtube',
+  'soundcloud'
+]
+
+const musicFooterLinks = footerLinks.map(link =>
+  <div className="music-footer-link">
+    <a href={hyperlinks[link]} className={link} target="_blank">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+        <FontAwesomeIcon icon={['fab', link]} />
+      </svg>
+    </a>
+  </div>
+)
+
 const progressionsLinksElement = links.map(link =>
   <a href={progressionsLinks[link]} target="_blank">
     {link === 'tidal' ? <img className="progressions-link-image" src={tidalImgPath} alt="Tidal" /> : (link === 'deezer' ? <img className="progressions-link-image" src={deezerImgPath} alt="Tidal" /> :
@@ -32,18 +54,14 @@ const progressionsLinksElement = links.map(link =>
   </a>
 )
 
-const spotify = {
-  sizeProgressions: {
-    width: '100%',
-    height: 250
-  },
-  sizeSolipsism: {
-    width: '100%',
-    height: 80
-  },
-  view: 'list',
-  theme: 'black'
-}
+const solipsismLinksElement = links.map(link =>
+  <a href={solipsismLinks[link]} target="_blank">
+    {link === 'tidal' ? <img className="solipsism-link-image" src={tidalImgPath} alt="Tidal" /> : (link === 'deezer' ? <img className="solipsism-link-image" src={deezerImgPath} alt="Tidal" /> :
+      <svg className="solipsism-link-image" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+        <FontAwesomeIcon icon={['fab', link]} />
+      </svg>)}
+  </a>
+)
 
 class Music extends React.Component {
   constructor(props) {
@@ -51,6 +69,7 @@ class Music extends React.Component {
 
     this.musicCircleRef = React.createRef()
     this.musicRef = React.createRef()
+    this.musicInnerRef = React.createRef()
 
     this.animateElements = this.animateElements.bind(this)
   }
@@ -58,6 +77,7 @@ class Music extends React.Component {
   animateElements(animate) {
     anime.remove(this.musicCircleRef.current)
     anime.remove(this.musicRef.current)
+    anime.remove(this.musicInnerRef.current)
 
     // GROWING CIRCLE ANIMATION
     anime({
@@ -65,8 +85,8 @@ class Music extends React.Component {
       easing: 'easeInOutQuart',
       loop: false,
       scale: animate ? [0, 1] : [1, 0],
-      delay: animate ? 0 : 300,
-      duration: 1000
+      delay: animate ? 0 : 500,
+      duration: 700
     })
 
     // ENTER MUSIC CONTAINER ANIMATION
@@ -75,9 +95,22 @@ class Music extends React.Component {
       easing: 'easeInOutQuart',
       loop: false,
       translateY: animate ? ['-100vh', '0vh'] : ['0vh', '-100vh'],
-      delay: animate ? 300 : 0,
-      duration: 1000
+      opacity: animate ? [0,1] : [1,0],
+      delay: animate ? 400 : 100,
+      duration: 500
+
     })
+
+    // GROW MUSIC CONTAINER ANIMATION
+    anime({
+      targets: this.musicInnerRef.current,
+      easing: 'easeInOutQuart',
+      loop: false,
+      scaleX: animate ? [0, 1] : [1, 0],
+      delay: animate ? 500 : 0,
+      duration: 500
+    })
+
   }
 
   render() {
@@ -94,29 +127,64 @@ class Music extends React.Component {
         <div>
           <div ref={this.musicCircleRef} className="music-circle" />
           <div ref={this.musicRef} className="music-container">
-            <Button variant="fab" color="primary" aria-label="Add" onClick={() => { if (animate) setOrReset() }}>
-              <UpIcon />
-            </Button>
-            <h1>MUSIC</h1>
-            <h4>jayani tunes coming soon</h4>
-            <h2>Old Music</h2>
-            <div className="progressions-link-container">
-              {progressionsLinksElement}
+            <div ref={this.musicInnerRef}>
+              <Grid>
+                <Row>
+                  <Col xs={12} md={12} lg={12}>
+                    <PageHeader>
+                      <Row>
+                        <Col xs={3} md={2} lg={1}>
+                          <Button variant="fab" color="primary" aria-label="Add" onClick={() => { if (animate) setOrReset() }}>
+                            <UpIcon />
+                          </Button>
+                        </Col>
+                        <Col xs={6} md={8} lg={10}>MUSIC</Col>
+                        <Col xs={3} md={2} lg={1}></Col>
+                      </Row>
+                    </PageHeader>
+                    <Panel>
+                      <Panel.Heading>Jayani Tunes</Panel.Heading>
+                      <Panel.Body>Coming Soon!</Panel.Body>
+                    </Panel>
+                    <Panel>
+                      <Panel.Heading><Panel.Title><p style={{ fontSize: '1.5em' }}>Progressions</p></Panel.Title></Panel.Heading>
+                      <Panel.Body>
+                        <Row>
+                          <Col xs={12} md={6} lg={4}>
+                            <img src={progressionsImgPath} alt="Progressions" style={{ width: '100%', height: 'auto' }} />
+                            <div className="progressions-link-container">
+                              {progressionsLinksElement}
+                            </div>
+                          </Col>
+                          <Col xs={12} md={6} lg={8}>
+                            <Iframe url={progressionsSpotify} allow="encrypted-media" position='relative' width="100%" height="250px" frameborder="0" allowtransparency="true" allow="encrypted-media"></Iframe>
+                          </Col>
+                        </Row>
+                      </Panel.Body>
+                    </Panel>
+                    <Panel>
+                      <Panel.Heading><Panel.Title><p style={{ fontSize: '1.5em' }}>Solipsism</p></Panel.Title></Panel.Heading>
+                      <Panel.Body>
+                        <Row>
+                          <Col xs={12} md={6} lg={4}>
+                            <img src={solipsismImgPath} alt="Solipsism" style={{ width: '100%', height: 'auto' }} />
+                            <div className="solipsism-link-container">
+                              {solipsismLinksElement}
+                            </div>
+                          </Col>
+                          <Col xs={12} md={6} lg={8}>
+                            <Iframe url={solipsismSpotify} position='relative' width="100%" height="100px" frameborder="0" allowtransparency="true" allow="encrypted-media" />
+                          </Col>
+                        </Row>
+                      </Panel.Body>
+                    </Panel>
+                    <div className="music-footer">
+                      {musicFooterLinks}
+                    </div>
+                  </Col>
+                </Row>
+              </Grid>
             </div>
-            <h3>Progressions</h3>
-            <SpotifyPlayer
-              uri={progressionsSpotify}
-              size={spotify.sizeProgressions}
-              view={spotify.view}
-              theme={spotify.theme}
-            />
-            <h3>Solipsism</h3>
-            <SpotifyPlayer
-              uri={solipsismSpotify}
-              size={spotify.sizeSolipsism}
-              view={spotify.view}
-              theme={spotify.theme}
-            />
           </div>
         </div>
       </Transition>
