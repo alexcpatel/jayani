@@ -1,13 +1,11 @@
 $primary-color: white;
 $secondary-color: #00A0C6;
-
 $facebook-color: #3B5998;
 $twitter-color: #00aced;
 $instagram-color: #e1306c;
 $spotify-color: #1db954;
 $youtube-color: #ff0000;
 $soundcloud-color: #ff8800;
-
 a {
     color: $primary-color;
     text-decoration: none;
@@ -39,8 +37,8 @@ a {
 }
 
 .profile {
-	position: relative;
-	justify-content: center;
+    position: relative;
+    justify-content: center;
     align-items: center;
 }
 

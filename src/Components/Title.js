@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { Transition } from 'react-transition-group'
 import anime from 'animejs'
 

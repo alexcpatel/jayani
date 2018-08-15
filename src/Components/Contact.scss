@@ -15,19 +15,6 @@ $contact-background-color: lightgray;
     cursor: pointer;
 }
 
-.contact-submit {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    bottom: 0px;
-    right: 0px;
-    width: 300px;
-    height: 60px;
-    margin-left: -100px;
-    margin-top: 280px;
-    cursor: pointer;
-}
-
 #envelope-icon {
     color: white;
 }
@@ -43,18 +30,9 @@ $contact-background-color: lightgray;
     margin-left: -205px;
     margin-top: 230px;
     border-radius: 10px;
-}
-
-.contact-info-text {
-    font-family: 'Roboto';
-    color: white;
     text-align: center;
 }
 
-.contact-info-footer {
-    margin-top: 80px;
-}
-
-.contact-info-footer em {
+.contact-info em {
     font-weight: bold;
 }

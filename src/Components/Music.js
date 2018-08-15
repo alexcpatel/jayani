@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { Transition } from 'react-transition-group'
 import anime from 'animejs'
 import Button from '@material-ui/core/Button'
@@ -36,7 +35,7 @@ const footerLinks = [
 ]
 
 const musicFooterLinks = footerLinks.map(link =>
-  <div className="music-footer-link">
+  <div className="music-footer-link" key={link}>
     <a href={hyperlinks[link]} className={link} target="_blank">
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
         <FontAwesomeIcon icon={['fab', link]} />
@@ -46,7 +45,7 @@ const musicFooterLinks = footerLinks.map(link =>
 )
 
 const progressionsLinksElement = links.map(link =>
-  <a href={progressionsLinks[link]} target="_blank">
+  <a href={progressionsLinks[link]} target="_blank" key={link}>
     {link === 'tidal' ? <img className="progressions-link-image" src={tidalImgPath} alt="Tidal" /> : (link === 'deezer' ? <img className="progressions-link-image" src={deezerImgPath} alt="Tidal" /> :
       <svg className="progressions-link-image" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
         <FontAwesomeIcon icon={['fab', link]} />
@@ -55,7 +54,7 @@ const progressionsLinksElement = links.map(link =>
 )
 
 const solipsismLinksElement = links.map(link =>
-  <a href={solipsismLinks[link]} target="_blank">
+  <a href={solipsismLinks[link]} target="_blank" key={link}>
     {link === 'tidal' ? <img className="solipsism-link-image" src={tidalImgPath} alt="Tidal" /> : (link === 'deezer' ? <img className="solipsism-link-image" src={deezerImgPath} alt="Tidal" /> :
       <svg className="solipsism-link-image" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
         <FontAwesomeIcon icon={['fab', link]} />
@@ -85,8 +84,8 @@ class Music extends React.Component {
       easing: 'easeInOutQuart',
       loop: false,
       scale: animate ? [0, 1] : [1, 0],
-      delay: animate ? 0 : 500,
-      duration: 700
+      delay: animate ? 0 : 200,
+      duration: 1000
     })
 
     // ENTER MUSIC CONTAINER ANIMATION
@@ -96,7 +95,7 @@ class Music extends React.Component {
       loop: false,
       translateY: animate ? ['-100vh', '0vh'] : ['0vh', '-100vh'],
       opacity: animate ? [0,1] : [1,0],
-      delay: animate ? 400 : 100,
+      delay: animate ? 400 : 200,
       duration: 500
 
     })
@@ -107,7 +106,7 @@ class Music extends React.Component {
       easing: 'easeInOutQuart',
       loop: false,
       scaleX: animate ? [0, 1] : [1, 0],
-      delay: animate ? 500 : 0,
+      delay: animate ? 600 : 0,
       duration: 500
     })
 
@@ -157,7 +156,7 @@ class Music extends React.Component {
                             </div>
                           </Col>
                           <Col xs={12} md={6} lg={8}>
-                            <Iframe url={progressionsSpotify} allow="encrypted-media" position='relative' width="100%" height="250px" frameborder="0" allowtransparency="true" allow="encrypted-media"></Iframe>
+                            <Iframe url={progressionsSpotify} position='relative' width="100%" height="250px" frameborder="0" allowtransparency="true" allow="encrypted-media"></Iframe>
                           </Col>
                         </Row>
                       </Panel.Body>

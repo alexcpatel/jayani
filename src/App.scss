@@ -1,3 +1,19 @@
+.hover-scale {
+    transition: all .2s ease-in-out;
+}
+
+.hover-scale:hover {
+    transform: scale(1.2);
+}
+
+.hover-scale-light {
+    transition: all .2s ease-in-out;
+}
+
+.hover-scale-light:hover {
+    transform: scale(1.1);
+}
+
 .site-container {
     color: white;
 	position: fixed;
@@ -48,4 +64,8 @@
 	position: relative;
 	justify-content: center;
 	align-items: center;
+}
+
+.contact-news-container {
+	opacity: 0;
 }

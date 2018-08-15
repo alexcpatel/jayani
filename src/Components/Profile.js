@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { Transition } from 'react-transition-group'
 import anime from 'animejs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -77,16 +76,11 @@ class Profile extends React.Component {
     this.youtubeRef = React.createRef()
     this.soundcloudRef = React.createRef()
 
-    this.musicOuterRef = React.createRef()
-    this.musicInnerRef = React.createRef()
-    this.bioOuterRef = React.createRef()
-    this.bioInnerRef = React.createRef()
-    this.eventsOuterRef = React.createRef()
-    this.eventsInnerRef = React.createRef()
-    this.videosOuterRef = React.createRef()
-    this.videosInnerRef = React.createRef()
-    this.merchOuterRef = React.createRef()
-    this.merchInnerRef = React.createRef()
+    this.musicRef = React.createRef()
+    this.bioRef = React.createRef()
+    this.eventsRef = React.createRef()
+    this.videosRef = React.createRef()
+    this.merchRef = React.createRef()
 
     //BIND THIS
     this.setOrReset = this.setOrReset.bind(this)
@@ -96,8 +90,6 @@ class Profile extends React.Component {
     this.setOrResetVideos = this.setOrResetVideos.bind(this)
 
     this.animateElements = this.animateElements.bind(this)
-
-    this.onHover = this.onHover.bind(this)
   }
 
   setOrReset() {
@@ -131,12 +123,6 @@ class Profile extends React.Component {
   setOrResetVideos() {
     this.setState(prevState => ({
       animateVideos: !prevState.animateVideos
-    }));
-  }
-
-  setOrResetMerch() {
-    this.setState(prevState => ({
-      animateMerch: !prevState.animateMerch
     }));
   }
 
@@ -194,11 +180,11 @@ class Profile extends React.Component {
     anime.remove(this.youtubeRef.current)
     anime.remove(this.soundcloudRef.current)
 
-    anime.remove(this.musicOuterRef.current)
-    anime.remove(this.bioOuterRef.current)
-    anime.remove(this.eventsOuterRef.current)
-    anime.remove(this.videosOuterRef.current)
-    anime.remove(this.merchOuterRef.current)
+    anime.remove(this.musicRef.current)
+    anime.remove(this.bioRef.current)
+    anime.remove(this.eventsRef.current)
+    anime.remove(this.videosRef.current)
+    anime.remove(this.merchRef.current)
 
     // PIC ANIMATIONS
     anime({
@@ -266,7 +252,7 @@ class Profile extends React.Component {
 
     // MUSIC ANIMATIONS
     anime({
-      targets: this.musicOuterRef.current,
+      targets: this.musicRef.current,
       easing: 'easeInOutQuart',
       loop: false,
       translateX: animate ? -120 : 0,
@@ -278,7 +264,7 @@ class Profile extends React.Component {
 
     // BIO ANIMATIONS
     anime({
-      targets: this.bioOuterRef.current,
+      targets: this.bioRef.current,
       easing: 'easeInOutQuart',
       loop: false,
       translateY: animate ? 180 : 0,
@@ -288,7 +274,7 @@ class Profile extends React.Component {
 
     // EVENTS ANIMATIONS
     anime({
-      targets: this.eventsOuterRef.current,
+      targets: this.eventsRef.current,
       easing: 'easeInOutQuart',
       loop: false,
       translateX: animate ? 120 : 0,
@@ -300,7 +286,7 @@ class Profile extends React.Component {
 
     // VIDEOS ANIMATIONS
     anime({
-      targets: this.videosOuterRef.current,
+      targets: this.videosRef.current,
       easing: 'easeInOutQuart',
       loop: false,
       translateX: animate ? -90 : 0,
@@ -312,7 +298,7 @@ class Profile extends React.Component {
 
     // MERCH ANIMATIONS
     anime({
-      targets: this.merchOuterRef.current,
+      targets: this.merchRef.current,
       easing: 'easeInOutQuart',
       loop: false,
       translateX: animate ? 90 : 0,
@@ -321,19 +307,6 @@ class Profile extends React.Component {
       scale: animate ? 1 : 0.5,
       duration: 1000
     })
-  }
-
-  onHover(ref, enter) {
-    if (this.state.animate) {
-      anime.remove(ref)
-      anime({
-        targets: ref,
-        easing: 'easeInOutQuart',
-        loop: false,
-        scale: enter ? 1.3 : 1,
-        duration: 300
-      })
-    }
   }
 
   componentDidMount() {
@@ -352,21 +325,13 @@ class Profile extends React.Component {
           onEnter={() => { this.animateElements(animate) }}
           onExit={() => { this.animateElements(animate) }}>
           <div>
-            <div ref={this.musicOuterRef} onClick={this.setOrResetMusic}>
-              <img ref={this.musicInnerRef} className="music-pic" src={musicButtonImgPath} alt="Music Button" onMouseEnter={() => { this.onHover(this.musicInnerRef.current, true) }} onMouseLeave={() => { this.onHover(this.musicInnerRef.current, false) }} />
-            </div>
-            <div ref={this.bioOuterRef} onClick={this.setOrResetBio}>
-              <img ref={this.bioInnerRef} className="bio-pic" src={bioButtonImgPath} alt="Bio Button" onMouseEnter={() => { this.onHover(this.bioInnerRef.current, true) }} onMouseLeave={() => { this.onHover(this.bioInnerRef.current, false) }} />
-            </div>
-            <div ref={this.eventsOuterRef} onClick={this.setOrResetEvents}>
-              <img ref={this.eventsInnerRef} className="events-pic" src={eventsButtonImgPath} alt="Events Button" onMouseEnter={() => { this.onHover(this.eventsInnerRef.current, true) }} onMouseLeave={() => { this.onHover(this.eventsInnerRef.current, false) }} />
-            </div>
-            <div ref={this.videosOuterRef} onClick={this.setOrResetVideos}>
-              <img ref={this.videosInnerRef} className="videos-pic" src={videosButtonImgPath} alt="Events Button" onMouseEnter={() => { this.onHover(this.videosInnerRef.current, true) }} onMouseLeave={() => { this.onHover(this.videosInnerRef.current, false) }} />
-            </div>
-            <div ref={this.merchOuterRef}>
+            <div ref={this.musicRef} onClick={this.setOrResetMusic}><img className="music-pic hover-scale" src={musicButtonImgPath} alt="Music Button" /></div>
+            <div ref={this.bioRef} onClick={this.setOrResetBio}><img className="bio-pic hover-scale" src={bioButtonImgPath} alt="Bio Button" /></div>
+            <div ref={this.eventsRef} onClick={this.setOrResetEvents}><img className="events-pic hover-scale" src={eventsButtonImgPath} alt="Events Button" /></div>
+            <div ref={this.videosRef} onClick={this.setOrResetVideos}><img className="videos-pic hover-scale" src={videosButtonImgPath} alt="Videos Button" /></div>
+            <div ref={this.merchRef} onClick={this.setOrResetMerch}>
               <a href={merchHyperlink} target="_blank">
-                <img ref={this.merchInnerRef} className="merch-pic" src={merchButtonImgPath} alt="Events Button" onMouseEnter={() => { this.onHover(this.merchInnerRef.current, true) }} onMouseLeave={() => { this.onHover(this.merchInnerRef.current, false) }} />
+                <img className="merch-pic hover-scale" src={merchButtonImgPath} alt="Merch Button" />
               </a>
             </div>
             <div ref={this.chakraContainerRef}>
