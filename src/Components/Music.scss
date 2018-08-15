@@ -52,11 +52,11 @@ $music-color: linear-gradient(-45deg, #56ffc3, #5692ff, #56ffc3, #5692ff);
 .progressions-link-image {
     height: 30px;
     width: auto;
-    filter: brightness(0) invert(0.5);
+    filter: brightness(0) invert(0.7);
 }
 
 .progressions-link-container a {
-    color: gray;
+    color: white;
     text-decoration: none;
     cursor: pointer;
     transition: all .2s ease-in-out;
@@ -76,11 +76,11 @@ $music-color: linear-gradient(-45deg, #56ffc3, #5692ff, #56ffc3, #5692ff);
 .solipsism-link-image {
     height: 30px;
     width: auto;
-    filter: brightness(0) invert(0.5);
+    filter: brightness(0) invert(0.7);
 }
 
 .solipsism-link-container a {
-    color: gray;
+    color: white;
     text-decoration: none;
     cursor: pointer;
     transition: all .2s ease-in-out;
