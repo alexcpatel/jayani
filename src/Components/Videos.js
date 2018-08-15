@@ -4,11 +4,12 @@ import anime from 'animejs'
 import Button from '@material-ui/core/Button'
 import UpIcon from '@material-ui/icons/KeyboardArrowUp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Grid, Row, Col, Panel, PageHeader } from 'react-bootstrap'
+import { Grid, Row, Col, Carousel, PageHeader, ResponsiveEmbed } from 'react-bootstrap'
+import Iframe from 'react-iframe'
 
 import './Videos.scss'
 
-import { hyperlinks } from './Data/Data'
+import { hyperlinks, youtubeLinks } from './Data/Data'
 
 const footerLinks = [
   'facebook',
@@ -27,6 +28,14 @@ const videosFooterLinks = footerLinks.map(link =>
       </svg>
     </a>
   </div>
+)
+
+const youtubeVideos = youtubeLinks.map(link =>
+  <Carousel.Item animateOut={true} animtateIn={true} key={link}>
+    <ResponsiveEmbed a16by9>
+      <Iframe url={link} allow="encrypted-media" />
+    </ResponsiveEmbed>
+  </Carousel.Item>
 )
 
 class Videos extends React.Component {
@@ -61,7 +70,7 @@ class Videos extends React.Component {
       easing: 'easeInOutQuart',
       loop: false,
       translateY: animate ? ['-100vh', '0vh'] : ['0vh', '-100vh'],
-      opacity: animate ? [0,1] : [1,0],
+      opacity: animate ? [0, 1] : [1, 0],
       delay: animate ? 400 : 200,
       duration: 500
 
@@ -104,14 +113,13 @@ class Videos extends React.Component {
                             <UpIcon />
                           </Button>
                         </Col>
-                        <Col xs={6} md={8} lg={10}>BIO</Col>
+                        <Col xs={6} md={8} lg={10}>VIDEOS</Col>
                         <Col xs={3} md={2} lg={1}></Col>
                       </Row>
                     </PageHeader>
-                    <Panel>
-                      <Panel.Heading>Jayani Tunes</Panel.Heading>
-                      <Panel.Body>Coming Soon!</Panel.Body>
-                    </Panel>
+                    <Carousel interval={null} indicators={false}>
+                      {youtubeVideos}
+                    </Carousel>
                     <div className="videos-footer">
                       {videosFooterLinks}
                     </div>

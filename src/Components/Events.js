@@ -104,12 +104,12 @@ class Events extends React.Component {
                             <UpIcon />
                           </Button>
                         </Col>
-                        <Col xs={6} md={8} lg={10}>BIO</Col>
+                        <Col xs={6} md={8} lg={10}>EVENTS</Col>
                         <Col xs={3} md={2} lg={1}></Col>
                       </Row>
                     </PageHeader>
                     <Panel>
-                      <Panel.Heading>Jayani Tunes</Panel.Heading>
+                      <Panel.Heading>Upcoming Events</Panel.Heading>
                       <Panel.Body>Coming Soon!</Panel.Body>
                     </Panel>
                     <div className="events-footer">

@@ -60,3 +60,19 @@ $bio-color: linear-gradient(-45deg, #9956ff, #ed56ff, #9956ff, #ed56ff);
     height: 30px;
     width: auto;
 }
+
+.blurb {
+    height: 100%;
+    font-size: calc(0.45vw + 0.15vh + 15px);
+    text-align: left;
+    display: table-cell;
+    vertical-align: middle
+}
+
+.bio-text {
+    height: 100%;
+    font-size: calc(0.45vw + 0.15vh + 15px);
+    text-align: left;
+    display: table-cell;
+    vertical-align: middle
+}

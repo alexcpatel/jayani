@@ -156,7 +156,7 @@ class Music extends React.Component {
                             </div>
                           </Col>
                           <Col xs={12} md={6} lg={8}>
-                            <Iframe url={progressionsSpotify} position='relative' width="100%" height="250px" frameborder="0" allowtransparency="true" allow="encrypted-media"></Iframe>
+                            <Iframe url={progressionsSpotify} position='relative' width="100%" height="250px" frameborder="0" allowtransparency="true" allow="encrypted-media" />
                           </Col>
                         </Row>
                       </Panel.Body>

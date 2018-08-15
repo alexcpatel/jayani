@@ -4,11 +4,13 @@ import anime from 'animejs'
 import Button from '@material-ui/core/Button'
 import UpIcon from '@material-ui/icons/KeyboardArrowUp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Grid, Row, Col, Panel, PageHeader } from 'react-bootstrap'
+import { Grid, Row, Col, PageHeader, Image } from 'react-bootstrap'
 
 import './Bio.scss'
 
-import { hyperlinks } from './Data/Data'
+import { hyperlinks, bioBlurb, bioBlurbEnding, bioFullText } from './Data/Data'
+import bioBlurbImgPath from './Images/ProfilePic.jpg'
+import bioImgPath from './Images/BioPic.jpg'
 
 const footerLinks = [
   'facebook',
@@ -28,6 +30,8 @@ const bioFooterLinks = footerLinks.map(link =>
     </a>
   </div>
 )
+
+const bioTextElement = bioFullText.map(snippet => <p>{snippet}</p>)
 
 class Bio extends React.Component {
   constructor(props) {
@@ -61,7 +65,7 @@ class Bio extends React.Component {
       easing: 'easeInOutQuart',
       loop: false,
       translateY: animate ? ['-100vh', '0vh'] : ['0vh', '-100vh'],
-      opacity: animate ? [0,1] : [1,0],
+      opacity: animate ? [0, 1] : [1, 0],
       delay: animate ? 400 : 200,
       duration: 500
 
@@ -108,10 +112,27 @@ class Bio extends React.Component {
                         <Col xs={3} md={2} lg={1}></Col>
                       </Row>
                     </PageHeader>
-                    <Panel>
-                      <Panel.Heading>Jayani Tunes</Panel.Heading>
-                      <Panel.Body>Coming Soon!</Panel.Body>
-                    </Panel>
+                    <Row>
+                      <Col xs={12} md={6} lg={4}>
+                        <Image src={bioBlurbImgPath} responsive circle />
+                      </Col>
+                      <Col xs={12} md={6} lg={8}>
+                        <div className="blurb">
+                          <p>{bioBlurb}</p>
+                          <p>{bioBlurbEnding}</p>
+                        </div>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col xs={12} md={6} lg={8}>
+                        <div className="bio-text">
+                          {bioTextElement}
+                        </div>
+                      </Col>
+                      <Col xs={12} md={6} lg={4}>
+                        <Image src={bioImgPath} responsive />
+                      </Col>
+                    </Row>
                     <div className="bio-footer">
                       {bioFooterLinks}
                     </div>
@@ -121,7 +142,7 @@ class Bio extends React.Component {
             </div>
           </div>
         </div>
-      </Transition>
+      </Transition >
     )
   }
 }

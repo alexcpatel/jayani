@@ -1,5 +1,5 @@
 $primary-color: white;
-$videos-color: linear-gradient(-45deg, gray, #5692ff, gray, #5692ff);
+$videos-color: linear-gradient(-45deg, #ff5692, #5692ff, #ff5692, #5692ff);
 @keyframes VideosGradient {
     0% {
         background-position: 0% 50%
