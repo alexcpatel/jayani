@@ -1,0 +1,62 @@
+$primary-color: white;
+$videos-color: linear-gradient(-45deg, gray, #5692ff, gray, #5692ff);
+@keyframes VideosGradient {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+.videos-circle {
+    position: absolute;
+    background: $videos-color;
+    background-size: 400% 400%;
+    animation: VideosGradient 15s ease infinite;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: calc(140vw + 140vh);
+    height: calc(140vw + 140vh);
+    margin-left: calc(-70vw - 70vh - 90px);
+    margin-top: calc(-70vw - 70vh + 270px);
+    border-radius: 50%;
+}
+
+.videos-container {
+    position: absolute;
+    top: -50vh;
+    left: -50vw;
+    bottom: 0px;
+    right: 0px;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    overflow: auto;
+    opacity: 0.9;
+}
+
+.videos-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.videos-footer-link {
+    height: 30px;
+    width: auto;
+}
+
+.videos-footer-link svg {
+    height: 30px;
+    width: auto;
+}

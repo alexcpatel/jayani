@@ -1,12 +1,5 @@
 $primary-color: white;
-$music-color: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
-canvas {
-    display: block;
-    width: 100vw;
-    height: 100vh;
-    cursor: pointer;
-}
-
+$music-color: linear-gradient(-45deg, #56ffc3, #5692ff, #56ffc3, #5692ff);
 @keyframes MusicGradient {
     0% {
         background-position: 0% 50%

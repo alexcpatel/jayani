@@ -4,6 +4,9 @@ import anime from 'animejs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Music from './Music'
+import Bio from './Bio'
+import Videos from './Videos'
+import Events from './Events'
 
 import './Profile.scss'
 
@@ -315,7 +318,7 @@ class Profile extends React.Component {
   }
 
   render() {
-    const { animate, animateMusic } = this.state
+    const { animate, animateMusic, animateBio, animateVideos, animateEvents } = this.state
     return (
       <div className="profile">
         <Transition
@@ -375,6 +378,9 @@ class Profile extends React.Component {
             {links.map(link => this.generateLinkElement(link))}
             <img className="profile-pic" ref={this.profilePicRef} src={profilePicImgPath} alt="Profile Pic" onClick={this.setOrReset} />
             <Music animate={animateMusic} setOrReset={this.setOrResetMusic} />
+            <Bio animate={animateBio} setOrReset={this.setOrResetBio} />
+            <Videos animate={animateVideos} setOrReset={this.setOrResetVideos} />
+            <Events animate={animateEvents} setOrReset={this.setOrResetEvents} />
           </div>
         </Transition>
       </div>
