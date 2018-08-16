@@ -4,7 +4,7 @@ import anime from 'animejs'
 import Button from '@material-ui/core/Button'
 import UpIcon from '@material-ui/icons/KeyboardArrowUp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Grid, Row, Col, Panel, PanelGroup, PageHeader, Modal, Button as ModalButton } from 'react-bootstrap'
+import { Grid, Row, Col, Panel, PanelGroup, PageHeader, Modal, Button as ModalButton, ListGroup, ListGroupItem, Glyphicon } from 'react-bootstrap'
 import { DateTime } from 'luxon'
 import timezoner from 'timezoner'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
@@ -76,37 +76,39 @@ const generateUpcomingEventElements = events => events.map((event, i) => {
       <Panel.Heading>
         <Panel.Title>
           <Row className="row-eq-height">
-            <Col xs={3} md={2} lg={2}>
+            <Col xs={2} md={1} lg={1}>
               <img src={`${process.env.PUBLIC_URL}/data${event.icon}`} alt={event.name} style={{ width: '100%', height: 'auto' }} />
             </Col>
-            <Col className="upcoming-events-text" sm={3} md={2} lg={2}>{event.name}</Col>
-            <Col className="upcoming-events-text" sm={3} md={2} lg={2}>{event.address}</Col>
-            <Col className="upcoming-events-text" sm={3} md={6} lg={6}>
-              <p>
-                {event.time[0].toLocaleString(DateTime.DATE_HUGE)},{' '}
-                {event.time[0].toLocaleString(DateTime.TIME_SIMPLE)}
-                <br /> to <br />
-                {event.time[1].toLocaleString(DateTime.DATE_HUGE)},{' '}
-                {event.time[1].toLocaleString(DateTime.TIME_SIMPLE)} {' '}
-                {event.time[1].offsetNameShort}
-              </p>
-            </Col>
+            <Col className="upcoming-events-text" sm={4} md={5} lg={5}>{event.name}</Col>
+            <Col className="upcoming-events-text" sm={3} md={3} lg={3}>{event.address}</Col>
+            <Col className="upcoming-events-text" sm={3} md={3} lg={3}>{event.time[0].toLocaleString(DateTime.DATE_FULL)}</Col>
           </Row>
         </Panel.Title>
       </Panel.Heading>
       <Panel.Body>
+        <ListGroup className="upcoming-events-fields">
+          <ListGroupItem bsStyle="danger"><Glyphicon glyph="map-marker" />{' '} {event.address}</ListGroupItem>
+          <ListGroupItem bsStyle="success"><Glyphicon glyph="calendar" />
+            {event.time[0].toLocaleString(DateTime.DATE_SHORT) === event.time[1].toLocaleString(DateTime.DATE_SHORT) ?
+              ` ${event.time[0].toLocaleString(DateTime.DATE_HUGE)}` :
+              ` ${event.time[0].toLocaleString(DateTime.DATE_HUGE)} - ${event.time[1].toLocaleString(DateTime.DATE_HUGE)}`}
+          </ListGroupItem>
+          <ListGroupItem bsStyle="warning"><Glyphicon glyph="time" />{` ${event.time[0].toLocaleString(DateTime.TIME_SIMPLE)} - ${event.time[1].toLocaleString(DateTime.TIME_SIMPLE)} ${event.time[1].offsetNameShort}`}</ListGroupItem>
+        </ListGroup>
         <Row className="row-eq-height">
-          <Col xs={6} md={4} lg={3}>
+          <Col sm={6} md={4} lg={3}>
             <img src={`${process.env.PUBLIC_URL}/data${event.image}`} alt={event.name} style={{ width: '100%', height: 'auto' }} />
           </Col>
-          <Col className="upcoming-events-description" xs={6} md={8} lg={3}>
+          <Col className="upcoming-events-description" sm={6} md={8} lg={9}>
             {event.description}
           </Col>
-          <Col xs={12} md={12} lg={6}>
+        </Row>
+        <Row>
+          <Col xs={12} md={12} lg={12}>
             <MapComponent
-              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAg1Gbx26rI7zXOGcvEXbg0w2Yg8_eyf1g&v=3.exp&libraries=geometry,drawing,places"
+              googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
               loadingElement={<div style={{ height: "100%" }} />}
-              containerElement={<div style={{ height: "100%" }} />}
+              containerElement={<div style={{ height: "250px" }} />}
               mapElement={<div style={{ height: "100%" }} />} />
           </Col>
         </Row>

@@ -112,15 +112,15 @@ $events-color: linear-gradient(-45deg, #ff6f56, #ffc356, #ff6f56, #ffc356);
     align-items: center;
 }
 
-.upcoming-events-time {
+.upcoming-events-fields {
     font-size: calc(0.6vw + 0.15vh + 9px);
-    display: flex;
-    align-items: center;
+    align-items: left;
+    text-align: left;
 }
 
 .upcoming-events-description {
     text-align: left;
-    font-size: calc(0.6vw + 0.15vh + 9px);
+    font-size: calc(0.3vw + 0.15vh + 13px);
 }
 
 .row-eq-height {

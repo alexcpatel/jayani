@@ -195,6 +195,18 @@
         40.7128,
         -74.0060
       ]
+    },
+    {
+      "name": "Monetize Paradise",
+      "address": "New Paltz, NY, USA",
+      "date": ["2018-12-29T14:52:35","2018-12-29T18:46:27"],
+      "description": "Performed a piece written with sister Cassia \"Monetize Paradise\" to support Climate Change awareness and the protesters marching in NY to make a difference.",
+      "icon": "/events/icons/eco.jpg",
+      "image": "/events/images/eco.png",
+      "coordinates": [
+        40.7128,
+        -74.0060
+      ]
     }
   ]
 }

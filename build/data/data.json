@@ -1,0 +1,212 @@
+{
+  "config": {
+    "links": {
+      "facebook": "https://www.facebook.com/maxpatelmusic/",
+      "twitter": "https://twitter.com/MaxPatel_Music",
+      "instagram": "https://www.instagram.com/maxpatelmusic/",
+      "spotify": "https://open.spotify.com/artist/3HcJd4UuaOq2pVginUi5MY",
+      "youtube": "https://www.youtube.com/channel/UCPtjLE0quEXBH3GH7Kk9m_g",
+      "soundcloud": "https://soundcloud.com/maximilian-patel"
+    },
+    "email": "jayanitunes@gmail.com",
+    "merch": "https://amazon.com"
+  },
+  "profile": {
+    "profileImage": "/profile/profile.jpg",
+    "musicButtonImage": "/profile/music-button.svg",
+    "bioButtonImage": "/profile/bio-button.svg",
+    "eventsButtonImage": "/profile/events-button.svg",
+    "videosButtonImage": "/profile/videos-button.svg",
+    "merchButtonImage": "/profile/merch-button.svg"
+  },
+  "news": {
+    "button": "/news/news-button.png",
+    "pdf": "/news/news.pdf"
+  },
+  "contact": {
+    "title": "Don't miss a beat!",
+    "text": [
+      "Join my mailing list to stay updated ~",
+      "Feel free to contact me via my socials",
+      "For business inquiries: jayanitunes@gmail.com"
+    ]
+  },
+  "music": [
+    {
+      "name": "Progressions",
+      "links": {
+        "spotify": "https://open.spotify.com/album/7wgqIStm5JdekbVrRAiJLG?si=6pP3y82dSxikuHNT-jdqXw",
+        "soundcloud": "https://soundcloud.com/maximilian-patel/sets/progressions-ep",
+        "apple": "https://itunes.apple.com/us/album/progressions-ep/1311200831",
+        "tidal": "https://tidal.com/album/81121467",
+        "amazon": "http://a.co/83opEWU",
+        "google": "https://play.google.com/store/music/album/Max_Patel_Progressions?id=Bqfachws5alrah5mnlsyzxrywfm&hl=en",
+        "deezer": "https://www.deezer.com/album/51492902?utm_source=deezer&utm_content=album-51492902&utm_term=2199278564_1534121446&utm_medium=web"
+      },
+      "spotify": "https://open.spotify.com/embed/album/7wgqIStm5JdekbVrRAiJLG",
+      "image": "/music/progressions.jpg"
+    },
+    {
+      "name": "Solipsism",
+      "links": {
+        "spotify": "https://open.spotify.com/album/4yFI00Or7s33LWrlMV5JCp?si=1Ys1OGTBRwi-Olj4QPzBXQ",
+        "soundcloud": "https://soundcloud.com/maximilian-patel/solopsism",
+        "apple": "https://itunes.apple.com/us/album/solipsism/1272991234?i=1272991238",
+        "tidal": "https://tidal.com/album/77575584",
+        "amazon": "http://a.co/fOrBzJ2",
+        "google": "https://play.google.com/store/music/album/Max_Patel_Solipsism?id=Bproqzzzt4myq4iz2a3npfnykaq&hl=en",
+        "deezer": "https://www.deezer.com/album/46547262?utm_source=deezer&utm_content=album-46547262&utm_term=2199278564_1534122453&utm_medium=web"
+      },
+      "spotify": "https://open.spotify.com/embed/album/4yFI00Or7s33LWrlMV5JCp",
+      "image": "/music/solipsism.jpg"
+    }
+  ],
+  "bio": {
+    "blurb": {
+      "text": "Jayani is singer-songwriter Max Patel, whose independent pop music fuses sensory acoustic songwriting with new-wave simplistic production. Jayani’s sound reflects his mission of connecting people with authentic emotion. While he has set his intention, Max continues to shape his voice and adjust as he grows closer to his ideals, meets new experiences, and writes more music.",
+      "footer": "Imagery and metaphor work together to formulate a tangible lyric meant for the listener to experience through Max’s soft and soulful pop vocal. Blissful and memorable melody lives in a snug harmonic context creating organized scenes upon the constantly changing landscape of the heart.",
+      "image": "/bio/blurb.jpg"
+    },
+    "main": {
+      "text": [
+        "Max Patel is a positive and passionate 18-yr old senior at Choate Rosemary Hall. With an ever present smile in his eyes and joke on his lips, he embraces challenge with joy as he hits the books, the soccer field and the studio. Between his commitments as a fulltime student, he writes music and creates opportunities to perform on campus and at nearby venues.",
+        "Max was born and raised in Hong Kong, but is ethnically half-Indian and half-American, which is what drew him back to the US for high school. Transitioning across the planet was made more difficult by the loss of a dear friend. In this defining moment, music became a primary outlet through which to understand and communicate his own honest thoughts and feelings. Sharing his encapsulated emotion with the community, he saw how he was able to tap into and convey the heart of his experience in a way that helped others come to terms with their own.",
+        "Within the next year, Max released his first single “Solipsism” (August 18, 2017) and EP “Progressions” (November 18, 2017) on major music platforms. Jayani, as his next chapter, is the refocusing of Max’s vision ~ to appreciate life as it is, and to experience authentic emotions by coming to terms with and understanding our honest truths."
+      ],
+      "image": "/bio/bio.jpg"
+    }
+  },
+  "videos": {
+    "links": [
+      "https://www.youtube.com/embed/1qhIxvTni7k",
+      "https://www.youtube.com/embed/EgFsqb2U70U",
+      "https://www.youtube.com/embed/dn6mf8IHKPA",
+      "https://www.youtube.com/embed/ZUYJjWn262k",
+      "https://www.youtube.com/embed/xOIrXofrqwY",
+      "https://www.youtube.com/embed/K3m1KQl-bRA",
+      "https://www.youtube.com/embed/UlkMI64QGrk"
+    ]
+  },
+  "events": [
+    {
+      "name": "White Silo Farm & Winery",
+      "address": "Sherman, CT, USA",
+      "date": ["2017-04-18T00:00:00","2017-04-18T00:00:00"],
+      "description": "Performed at the beautiful White Silo Farm & Winery Sherman Connecticut on my birthday, then got called back to perform again the very next day. Great spot!",
+      "icon": "/events/icons/silo.jpg",
+      "image": "/events/images/silo.png",
+      "coordinates": [
+        40.7128,
+        -74.0060
+      ]
+    },
+    {
+      "name": "The Inspired Word",
+      "address": "New York City, CT, USA",
+      "date": ["2017-04-22T00:00:00","2017-04-22T00:00:00"],
+      "description": "Performed in Mike Geffners \"The Inspired Word\" at the Parkside Lounge. Tried a few new songs on a new, attentive audience.",
+      "icon": "/events/icons/parkside.jpg",
+      "image": "/events/images/parkside.png",
+      "coordinates": [
+        40.7128,
+        -74.0060
+      ]
+    },
+    {
+      "name": "Opening for Andy Suzuki & The Method",
+      "address": "Wallingford, CT, USA",
+      "date": ["2017-04-21T00:00:00","2017-04-21T00:00:00"],
+      "description": "Played the first performace of the newly established St. John's Hall, opening for Andy Suzuki & The Method.",
+      "icon": "/events/icons/method.jpg",
+      "image": "/events/images/method.jpg",
+      "coordinates": [
+        40.7128,
+        -74.0060
+      ]
+    },
+    {
+      "name": "The Wanch",
+      "address": "Hong Kong",
+      "date": ["2017-03-06T00:00:00","2017-03-06T00:00:00"],
+      "description": "Performed five originals and a few covers at The Wanch in Hong Kong with a good friend.",
+      "icon": "/events/icons/wanch.jpg",
+      "image": "/events/images/wanch.jpg",
+      "coordinates": [
+        22.3964,
+        114.1095
+      ]
+    },
+    {
+      "name": "Peel Fresco",
+      "address": "Hong Kong",
+      "date": ["2017-03-07T00:00:00","2017-03-07T00:00:00"],
+      "description": "Performed 6 original songs for friends new and old on the legendary Peel Fresco stage in HK.",
+      "icon": "/events/icons/peel.png",
+      "image": "/events/images/peel.jpg",
+      "coordinates": [
+        22.3964,
+        114.1095
+      ]
+    },
+    {
+      "name": "Fringe Unhinged",
+      "address": "Wallingford, CT, USA",
+      "date": ["2017-02-09T00:00:00","2017-02-09T00:00:00"],
+      "description": "Played an original song in an underground auditorium. Also featured in a short film as the accompaniment to the credits.",
+      "icon": "/events/icons/fringe.jpg",
+      "image": "/events/images/fringe.jpg",
+      "coordinates": [
+        40.7128,
+        -74.0060
+      ]
+    },
+    {
+      "name": "The Coalition",
+      "address": "Wallingford, CT, USA",
+      "date": ["2017-02-01T00:00:00","2017-02-01T00:00:00"],
+      "description": "Performed three originals songs and a few covers to support 'The Coalition' - dedicated to educating and supporting the local youth and families affected by substance abuse.",
+      "icon": "/events/icons/coalition.jpg",
+      "image": "/events/images/coalition.png",
+      "coordinates": [
+        40.7128,
+        -74.0060
+      ]
+    },
+    {
+      "name": "Monetize Paradise",
+      "address": "New Paltz, NY, USA",
+      "date": ["2017-04-29T00:00:00","2017-04-29T00:00:00"],
+      "description": "Performed a piece written with sister Cassia \"Monetize Paradise\" to support Climate Change awareness and the protesters marching in NY to make a difference.",
+      "icon": "/events/icons/eco.jpg",
+      "image": "/events/images/eco.png",
+      "coordinates": [
+        40.7128,
+        -74.0060
+      ]
+    },
+    {
+      "name": "Monetize Paradise",
+      "address": "New Paltz, NY, USA",
+      "date": ["2018-12-29T14:52:35","2019-01-03T18:46:27"],
+      "description": "Performed a piece written with sister Cassia \"Monetize Paradise\" to support Climate Change awareness and the protesters marching in NY to make a difference.",
+      "icon": "/events/icons/eco.jpg",
+      "image": "/events/images/eco.png",
+      "coordinates": [
+        40.7128,
+        -74.0060
+      ]
+    },
+    {
+      "name": "Monetize Paradise",
+      "address": "New Paltz, NY, USA",
+      "date": ["2018-12-29T14:52:35","2018-12-29T18:46:27"],
+      "description": "Performed a piece written with sister Cassia \"Monetize Paradise\" to support Climate Change awareness and the protesters marching in NY to make a difference.",
+      "icon": "/events/icons/eco.jpg",
+      "image": "/events/images/eco.png",
+      "coordinates": [
+        40.7128,
+        -74.0060
+      ]
+    }
+  ]
+}
