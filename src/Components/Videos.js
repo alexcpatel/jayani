@@ -7,9 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Grid, Row, Col, Carousel, PageHeader, ResponsiveEmbed } from 'react-bootstrap'
 import Iframe from 'react-iframe'
 
-import './Videos.scss'
-
-import { hyperlinks, youtubeLinks } from './Data/Data'
+import './Styles/Videos.scss'
 
 const footerLinks = [
   'facebook',
@@ -20,9 +18,9 @@ const footerLinks = [
   'soundcloud'
 ]
 
-const videosFooterLinks = footerLinks.map(link =>
+const videosFooterElements = videosFooterLinks => footerLinks.map(link =>
   <div className="videos-footer-link" key={link}>
-    <a href={hyperlinks[link]} className={link} target="_blank">
+    <a href={videosFooterLinks[link]} className={link} target="_blank">
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
         <FontAwesomeIcon icon={['fab', link]} />
       </svg>
@@ -30,8 +28,8 @@ const videosFooterLinks = footerLinks.map(link =>
   </div>
 )
 
-const youtubeVideos = youtubeLinks.map(link =>
-  <Carousel.Item animateOut={true} animtateIn={true} key={link}>
+const youtubeVideos = videosLinks => videosLinks.map(link =>
+  <Carousel.Item key={link}>
     <ResponsiveEmbed a16by9>
       <Iframe url={link} allow="encrypted-media" />
     </ResponsiveEmbed>
@@ -45,6 +43,9 @@ class Videos extends React.Component {
     this.videosCircleRef = React.createRef()
     this.videosRef = React.createRef()
     this.videosInnerRef = React.createRef()
+
+    this.footer = videosFooterElements(props.data.config.links)
+    this.youtube = youtubeVideos(props.data.videos.links)
 
     this.animateElements = this.animateElements.bind(this)
   }
@@ -118,10 +119,10 @@ class Videos extends React.Component {
                       </Row>
                     </PageHeader>
                     <Carousel interval={null} indicators={false}>
-                      {youtubeVideos}
+                      {this.youtube}
                     </Carousel>
                     <div className="videos-footer">
-                      {videosFooterLinks}
+                      {this.footer}
                     </div>
                   </Col>
                 </Row>

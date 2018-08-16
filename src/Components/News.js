@@ -3,9 +3,7 @@ import { Transition } from 'react-transition-group'
 import anime from 'animejs'
 import { Document, Page } from 'react-pdf';
 
-import './News.scss'
-import newsButtonImgPath from './Images/NewsButton.png'
-import newsPdf from './Data/News.pdf'
+import './Styles/News.scss'
 
 class News extends React.Component {
   constructor(props) {
@@ -74,7 +72,7 @@ class News extends React.Component {
           timeout={2000}
           onEnter={this.animateNewsButtonBorder}
           onExit={this.animateNewsButtonBorder}>
-          <div className="news-button hover-scale-light" style={{ backgroundImage: `url("${newsButtonImgPath}")` }} onClick={this.setOrReset}>
+          <div className="news-button hover-scale-light" style={{ backgroundImage: `url("${`${process.env.PUBLIC_URL}/data${this.props.data.news.button}`}")` }} onClick={this.setOrReset}>
             <svg ref={this.newsButtonBorderRef} version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="1 1 80 20">
               <path className="news-button-border-path" d="M 1.3435885,1.2557672 H 80.718584 V 19.549227" />
               <path className="news-button-border-path" d="M 80.718584,19.549227 H 1.3435885 V 1.2557672" />
@@ -92,7 +90,7 @@ class News extends React.Component {
           <div>
             <div ref={this.newsRef} className="pdf">
               <Document
-                file={newsPdf}>
+                file={`${process.env.PUBLIC_URL}/data${this.props.data.news.pdf}`}>
                 <Page pageNumber={1} />
               </Document>
             </div>

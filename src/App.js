@@ -3,6 +3,7 @@ import anime from 'animejs'
 import { Transition } from 'react-transition-group'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
+import $ from 'jquery'
 
 import Profile from './Components/Profile'
 import Title from './Components/Title'
@@ -17,7 +18,7 @@ class App extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { site: false, animate: false }
+    this.state = { data: null, animate: false }
 
     this.contactNewsRef = React.createRef();
     this.siteRef = React.createRef();
@@ -25,6 +26,22 @@ class App extends Component {
     this.setAnimate = this.setAnimate.bind(this)
     this.animateElements = this.animateElements.bind(this)
     this.openSite = this.openSite.bind(this)
+    this.getData = this.getData.bind(this)
+  }
+
+  getData() {
+    $.ajax({
+      url: `${process.env.PUBLIC_URL}/data/data.json`,
+      dataType: 'json',
+      cache: false,
+      success: (data) => {
+        this.setState({ data });
+      },
+      error: (xhr, status, err) => {
+        console.log(err);
+        alert(err);
+      }
+    });
   }
 
   setAnimate(animate) {
@@ -59,23 +76,23 @@ class App extends Component {
 
   componentDidMount() {
     this.animateElements(this.state.animate)
-    this.setState({ site: true })
+    this.getData()
   }
 
   render() {
-    const { site, animate } = this.state
+    const { data, animate } = this.state
     return (
       <div className="site-container">
         <Title />
         <Transition
-          in={site}
+          in={data !== null}
           mountOnEnter
           unmountOnExit
           duration={2000}
           timeout={2000}
           onEnter={() => { this.openSite() }}>
           <div ref={this.siteRef} className="site-elements">
-            <Profile setAnimate={this.setAnimate} />
+            <Profile data={data} setAnimate={this.setAnimate} />
             <Transition
               in={animate}
               duration={1000}
@@ -84,8 +101,8 @@ class App extends Component {
               onExit={() => { this.animateElements(animate) }}>
               <div className="contact-news">
                 <div className="contact-news-container" ref={this.contactNewsRef}>
-                  <Contact />
-                  <News />
+                  <Contact data={data} />
+                  <News data={data} />
                 </div>
               </div>
             </Transition>

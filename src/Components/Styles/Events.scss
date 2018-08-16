@@ -1,0 +1,141 @@
+$primary-color: white;
+$events-color: linear-gradient(-45deg, #ff6f56, #ffc356, #ff6f56, #ffc356);
+@keyframes EventsGradient {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@media only screen and (min-height: 600px) and (max-height: 800px) {
+    .events-container {
+        zoom: 125%;
+    }
+}
+
+@media only screen and (min-height: 400px) and (max-height: 600px) {
+    .events-container {
+        zoom: 167%;
+    }
+}
+
+@media only screen and (min-height: 200px) and (max-height: 400px) {
+    .events-container {
+        zoom: 250%;
+    }
+}
+
+@media only screen and (max-height: 200px) {
+    .events-container {
+        zoom: 500%;
+    }
+}
+
+.events-circle {
+    position: absolute;
+    background: $events-color;
+    background-size: 400% 400%;
+    animation: EventsGradient 15s ease infinite;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: calc(140vw + 140vh);
+    height: calc(140vw + 140vh);
+    margin-left: calc(-70vw - 70vh + 120px);
+    margin-top: calc(-70vw - 70vh + 150px);
+    border-radius: 50%;
+}
+
+.events-container {
+    position: absolute;
+    top: -50vh;
+    left: -50vw;
+    bottom: 0px;
+    right: 0px;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    overflow: auto;
+    opacity: 0.9;
+}
+
+.events-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.events-footer-link {
+    height: 30px;
+    width: auto;
+}
+
+.events-footer-link svg {
+    height: 30px;
+    width: auto;
+}
+
+.past-events-modal {
+    width: 80%;
+}
+
+.past-events {
+    font-family: 'Roboto';
+}
+
+.past-events-text {
+    font-size: calc(0.6vw + 0.15vh + 9px);
+    display: flex;
+    align-items: center;
+}
+
+.past-events-description {
+    text-align: left;
+    font-size: calc(0.6vw + 0.15vh + 9px);
+    display: flex;
+    align-items: center;
+}
+
+.upcoming-events-text {
+    font-size: calc(0.6vw + 0.15vh + 9px);
+    display: flex;
+    align-items: center;
+}
+
+.upcoming-events-time {
+    font-size: calc(0.6vw + 0.15vh + 9px);
+    display: flex;
+    align-items: center;
+}
+
+.upcoming-events-description {
+    text-align: left;
+    font-size: calc(0.6vw + 0.15vh + 9px);
+}
+
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.eq-spacing-container {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+}
+
+.eq-spacing {
+    flex: 1;
+}

@@ -12,6 +12,30 @@ $videos-color: linear-gradient(-45deg, #ff5692, #5692ff, #ff5692, #5692ff);
     }
 }
 
+@media only screen and (min-height: 600px) and (max-height: 800px) {
+    .videos-container {
+        zoom: 125%;
+    }
+}
+
+@media only screen and (min-height: 400px) and (max-height: 600px) {
+    .videos-container {
+        zoom: 167%;
+    }
+}
+
+@media only screen and (min-height: 200px) and (max-height: 400px) {
+    .videos-container {
+        zoom: 250%;
+    }
+}
+
+@media only screen and (max-height: 200px) {
+    .videos-container {
+        zoom: 500%;
+    }
+}
+
 .videos-circle {
     position: absolute;
     background: $videos-color;

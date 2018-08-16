@@ -7,13 +7,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Grid, Row, Col, Panel, PageHeader } from 'react-bootstrap'
 import Iframe from 'react-iframe'
 
-import './Music.scss'
+import './Styles/Music.scss'
 
-import { hyperlinks, progressionsLinks, progressionsSpotify, solipsismLinks, solipsismSpotify } from './Data/Data'
 import tidalImgPath from './Images/Tidal.png'
 import deezerImgPath from './Images/Deezer.png'
-import progressionsImgPath from './Images/Music/Progressions.jpg'
-import solipsismImgPath from './Images/Music/Solipsism.jpg'
 
 const links = [
   "spotify",
@@ -34,9 +31,9 @@ const footerLinks = [
   'soundcloud'
 ]
 
-const musicFooterLinks = footerLinks.map(link =>
+const musicFooterElements = musicFooterLinks => footerLinks.map(link =>
   <div className="music-footer-link" key={link}>
-    <a href={hyperlinks[link]} className={link} target="_blank">
+    <a href={musicFooterLinks[link]} className={link} target="_blank">
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
         <FontAwesomeIcon icon={['fab', link]} />
       </svg>
@@ -44,22 +41,32 @@ const musicFooterLinks = footerLinks.map(link =>
   </div>
 )
 
-const progressionsLinksElement = links.map(link =>
-  <a href={progressionsLinks[link]} target="_blank" key={link}>
-    {link === 'tidal' ? <img className="progressions-link-image" src={tidalImgPath} alt="Tidal" /> : (link === 'deezer' ? <img className="progressions-link-image" src={deezerImgPath} alt="Tidal" /> :
-      <svg className="progressions-link-image" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+const linkElements = musicLinks => links.map(link =>
+  <a href={musicLinks[link]} target="_blank" key={link}>
+    {link === 'tidal' ? <img className="music-link-image" src={tidalImgPath} alt="Tidal" /> : (link === 'deezer' ? <img className="music-link-image" src={deezerImgPath} alt="Tidal" /> :
+      <svg className="music-link-image" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
         <FontAwesomeIcon icon={['fab', link]} />
       </svg>)}
   </a>
 )
 
-const solipsismLinksElement = links.map(link =>
-  <a href={solipsismLinks[link]} target="_blank" key={link}>
-    {link === 'tidal' ? <img className="solipsism-link-image" src={tidalImgPath} alt="Tidal" /> : (link === 'deezer' ? <img className="solipsism-link-image" src={deezerImgPath} alt="Tidal" /> :
-      <svg className="solipsism-link-image" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-        <FontAwesomeIcon icon={['fab', link]} />
-      </svg>)}
-  </a>
+const musicElements = musicList => musicList.map(music =>
+  <Panel key={music.name}>
+    <Panel.Heading><Panel.Title><p style={{ fontSize: '1.5em' }}>{music.name}</p></Panel.Title></Panel.Heading>
+    <Panel.Body>
+      <Row>
+        <Col xs={12} md={4} lg={4}>
+          <img src={`${process.env.PUBLIC_URL}/data${music.image}`} alt={music.name} style={{ width: '100%', height: 'auto' }} />
+          <div className="music-link-container">
+            {linkElements(music.links)}
+          </div>
+        </Col>
+        <Col xs={12} md={8} lg={8}>
+          <Iframe url={music.spotify} position='relative' width="100%" height="400px" frameborder="0" allowtransparency="true" allow="encrypted-media" />
+        </Col>
+      </Row>
+    </Panel.Body>
+  </Panel >
 )
 
 class Music extends React.Component {
@@ -69,6 +76,9 @@ class Music extends React.Component {
     this.musicCircleRef = React.createRef()
     this.musicRef = React.createRef()
     this.musicInnerRef = React.createRef()
+
+    this.music = musicElements(props.data.music)
+    this.footer = musicFooterElements(props.data.config.links)
 
     this.animateElements = this.animateElements.bind(this)
   }
@@ -94,7 +104,7 @@ class Music extends React.Component {
       easing: 'easeInOutQuart',
       loop: false,
       translateY: animate ? ['-100vh', '0vh'] : ['0vh', '-100vh'],
-      opacity: animate ? [0,1] : [1,0],
+      opacity: animate ? [0, 1] : [1, 0],
       delay: animate ? 400 : 200,
       duration: 500
 
@@ -145,40 +155,9 @@ class Music extends React.Component {
                       <Panel.Heading>Jayani Tunes</Panel.Heading>
                       <Panel.Body>Coming Soon!</Panel.Body>
                     </Panel>
-                    <Panel>
-                      <Panel.Heading><Panel.Title><p style={{ fontSize: '1.5em' }}>Progressions</p></Panel.Title></Panel.Heading>
-                      <Panel.Body>
-                        <Row>
-                          <Col xs={12} md={6} lg={4}>
-                            <img src={progressionsImgPath} alt="Progressions" style={{ width: '100%', height: 'auto' }} />
-                            <div className="progressions-link-container">
-                              {progressionsLinksElement}
-                            </div>
-                          </Col>
-                          <Col xs={12} md={6} lg={8}>
-                            <Iframe url={progressionsSpotify} position='relative' width="100%" height="250px" frameborder="0" allowtransparency="true" allow="encrypted-media" />
-                          </Col>
-                        </Row>
-                      </Panel.Body>
-                    </Panel>
-                    <Panel>
-                      <Panel.Heading><Panel.Title><p style={{ fontSize: '1.5em' }}>Solipsism</p></Panel.Title></Panel.Heading>
-                      <Panel.Body>
-                        <Row>
-                          <Col xs={12} md={6} lg={4}>
-                            <img src={solipsismImgPath} alt="Solipsism" style={{ width: '100%', height: 'auto' }} />
-                            <div className="solipsism-link-container">
-                              {solipsismLinksElement}
-                            </div>
-                          </Col>
-                          <Col xs={12} md={6} lg={8}>
-                            <Iframe url={solipsismSpotify} position='relative' width="100%" height="100px" frameborder="0" allowtransparency="true" allow="encrypted-media" />
-                          </Col>
-                        </Row>
-                      </Panel.Body>
-                    </Panel>
+                    {this.music}
                     <div className="music-footer">
-                      {musicFooterLinks}
+                      {this.footer}
                     </div>
                   </Col>
                 </Row>

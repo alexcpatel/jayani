@@ -6,11 +6,7 @@ import UpIcon from '@material-ui/icons/KeyboardArrowUp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Grid, Row, Col, PageHeader, Image } from 'react-bootstrap'
 
-import './Bio.scss'
-
-import { hyperlinks, bioBlurb, bioBlurbEnding, bioFullText } from './Data/Data'
-import bioBlurbImgPath from './Images/ProfilePic.jpg'
-import bioImgPath from './Images/BioPic.jpg'
+import './Styles/Bio.scss'
 
 const footerLinks = [
   'facebook',
@@ -21,9 +17,9 @@ const footerLinks = [
   'soundcloud'
 ]
 
-const bioFooterLinks = footerLinks.map(link =>
+const bioFooterElements = bioFooterLinks => footerLinks.map(link =>
   <div className="bio-footer-link" key={link}>
-    <a href={hyperlinks[link]} className={link} target="_blank">
+    <a href={bioFooterLinks[link]} className={link} target="_blank">
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
         <FontAwesomeIcon icon={['fab', link]} />
       </svg>
@@ -31,7 +27,7 @@ const bioFooterLinks = footerLinks.map(link =>
   </div>
 )
 
-const bioTextElement = bioFullText.map(snippet => <p>{snippet}</p>)
+const bioTextElement = bioFullText => bioFullText.map((snippet,i) => <p key={i}>{snippet}</p>)
 
 class Bio extends React.Component {
   constructor(props) {
@@ -40,6 +36,9 @@ class Bio extends React.Component {
     this.bioCircleRef = React.createRef()
     this.bioRef = React.createRef()
     this.bioInnerRef = React.createRef()
+
+    this.footer = bioFooterElements(props.data.config.links)
+    this.bioText = bioTextElement(props.data.bio.main.text)
 
     this.animateElements = this.animateElements.bind(this)
   }
@@ -84,7 +83,7 @@ class Bio extends React.Component {
   }
 
   render() {
-    const { animate, setOrReset } = this.props
+    const { data, animate, setOrReset } = this.props
     return (
       <Transition
         in={animate}
@@ -114,27 +113,27 @@ class Bio extends React.Component {
                     </PageHeader>
                     <Row>
                       <Col xs={12} md={6} lg={4}>
-                        <Image src={bioBlurbImgPath} responsive circle />
+                        <Image src={`${process.env.PUBLIC_URL}/data${data.bio.blurb.image}`} responsive circle />
                       </Col>
                       <Col xs={12} md={6} lg={8}>
                         <div className="blurb">
-                          <p>{bioBlurb}</p>
-                          <p>{bioBlurbEnding}</p>
+                          <p>{data.bio.blurb.text}</p>
+                          <p>{data.bio.blurb.footer}</p>
                         </div>
                       </Col>
                     </Row>
                     <Row>
                       <Col xs={12} md={6} lg={8}>
                         <div className="bio-text">
-                          {bioTextElement}
+                          {this.bioText}
                         </div>
                       </Col>
                       <Col xs={12} md={6} lg={4}>
-                        <Image src={bioImgPath} responsive />
+                        <Image src={`${process.env.PUBLIC_URL}/data${data.bio.main.image}`} responsive />
                       </Col>
                     </Row>
                     <div className="bio-footer">
-                      {bioFooterLinks}
+                      {this.footer}
                     </div>
                   </Col>
                 </Row>

@@ -8,15 +8,7 @@ import Bio from './Bio'
 import Videos from './Videos'
 import Events from './Events'
 
-import './Profile.scss'
-
-import { hyperlinks, merchHyperlink } from './Data/Data'
-import profilePicImgPath from './Images/ProfilePic.jpg'
-import musicButtonImgPath from './Images/MusicButton.svg'
-import bioButtonImgPath from './Images/BioButton.svg'
-import eventsButtonImgPath from './Images/EventsButton.svg'
-import videosButtonImgPath from './Images/VideosButton.svg'
-import merchButtonImgPath from './Images/MerchButton.svg'
+import './Styles/Profile.scss'
 
 const links = [
   'facebook',
@@ -91,6 +83,7 @@ class Profile extends React.Component {
     this.setOrResetBio = this.setOrResetBio.bind(this)
     this.setOrResetEvents = this.setOrResetEvents.bind(this)
     this.setOrResetVideos = this.setOrResetVideos.bind(this)
+    this.generateLinkElement = this.generateLinkElement.bind(this)
 
     this.animateElements = this.animateElements.bind(this)
   }
@@ -131,7 +124,7 @@ class Profile extends React.Component {
 
   generateLinkElement = (link) =>
     <div className="link" ref={this[`${link}Ref`]} key={link}>
-      <a href={hyperlinks[link]} className={link} target="_blank">
+      <a href={this.props.data.config.links[link]} className={link} target="_blank">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
           <FontAwesomeIcon icon={['fab', link]} />
         </svg>
@@ -319,6 +312,7 @@ class Profile extends React.Component {
 
   render() {
     const { animate, animateMusic, animateBio, animateVideos, animateEvents } = this.state
+    const { data } = this.props
     return (
       <div className="profile">
         <Transition
@@ -328,13 +322,13 @@ class Profile extends React.Component {
           onEnter={() => { this.animateElements(animate) }}
           onExit={() => { this.animateElements(animate) }}>
           <div>
-            <div ref={this.musicRef} onClick={this.setOrResetMusic}><img className="music-pic hover-scale" src={musicButtonImgPath} alt="Music Button" /></div>
-            <div ref={this.bioRef} onClick={this.setOrResetBio}><img className="bio-pic hover-scale" src={bioButtonImgPath} alt="Bio Button" /></div>
-            <div ref={this.eventsRef} onClick={this.setOrResetEvents}><img className="events-pic hover-scale" src={eventsButtonImgPath} alt="Events Button" /></div>
-            <div ref={this.videosRef} onClick={this.setOrResetVideos}><img className="videos-pic hover-scale" src={videosButtonImgPath} alt="Videos Button" /></div>
+            <div ref={this.musicRef} onClick={this.setOrResetMusic}><img className="music-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.musicButtonImage}`} alt="Music Button" /></div>
+            <div ref={this.bioRef} onClick={this.setOrResetBio}><img className="bio-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.bioButtonImage}`} alt="Bio Button" /></div>
+            <div ref={this.eventsRef} onClick={this.setOrResetEvents}><img className="events-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.eventsButtonImage}`} alt="Events Button" /></div>
+            <div ref={this.videosRef} onClick={this.setOrResetVideos}><img className="videos-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.videosButtonImage}`} alt="Videos Button" /></div>
             <div ref={this.merchRef} onClick={this.setOrResetMerch}>
-              <a href={merchHyperlink} target="_blank">
-                <img className="merch-pic hover-scale" src={merchButtonImgPath} alt="Merch Button" />
+              <a href={data.config.merch} target="_blank">
+                <img className="merch-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.merchButtonImage}`} alt="Merch Button" />
               </a>
             </div>
             <div ref={this.chakraContainerRef}>
@@ -376,11 +370,11 @@ class Profile extends React.Component {
               </div>
             </div>
             {links.map(link => this.generateLinkElement(link))}
-            <img className="profile-pic" ref={this.profilePicRef} src={profilePicImgPath} alt="Profile Pic" onClick={this.setOrReset} />
-            <Music animate={animateMusic} setOrReset={this.setOrResetMusic} />
-            <Bio animate={animateBio} setOrReset={this.setOrResetBio} />
-            <Videos animate={animateVideos} setOrReset={this.setOrResetVideos} />
-            <Events animate={animateEvents} setOrReset={this.setOrResetEvents} />
+            <img className="profile-pic" ref={this.profilePicRef} src={`${process.env.PUBLIC_URL}/data${data.profile.profileImage}`} alt="Profile Pic" onClick={this.setOrReset} />
+            <Music data={data} animate={animateMusic} setOrReset={this.setOrResetMusic} />
+            <Bio data={data} animate={animateBio} setOrReset={this.setOrResetBio} />
+            <Videos data={this.props.data} animate={animateVideos} setOrReset={this.setOrResetVideos} />
+            <Events data={this.props.data} animate={animateEvents} setOrReset={this.setOrResetEvents} />
           </div>
         </Transition>
       </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import { Transition } from 'react-transition-group'
 import anime from 'animejs'
 
-import './Title.scss'
+import './Styles/Title.scss'
 
 class Title extends React.Component {
   constructor(props) {

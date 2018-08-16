@@ -6,9 +6,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { Row, Col, Button, Form, FormGroup, FormControl, Glyphicon } from 'react-bootstrap'
 import EmailValidator from 'email-validator'
 
-import './Contact.scss'
-
-import { jayaniEmail } from './Data/Data'
+import './Styles/Contact.scss'
 
 class Contact extends React.Component {
   constructor(props) {
@@ -100,7 +98,7 @@ class Contact extends React.Component {
                 </Col>
               </Row>
             </Form>
-            <p> Join my mailing list to stay updated ~ <br /> Feel free to contact me via my socials <br /> For business inquiries: <em>{jayaniEmail}</em></p>
+            <p> Join my mailing list to stay updated ~ <br /> Feel free to contact me via my socials <br /> For business inquiries: <em>jayanitunes@gmail.com</em></p>
           </div>
         </Transition>
         <div className="envelope" ref={this.envelopeRef} onClick={this.setOrReset}>

@@ -12,6 +12,30 @@ $bio-color: linear-gradient(-45deg, #9956ff, #ed56ff, #9956ff, #ed56ff);
     }
 }
 
+@media only screen and (min-height: 600px) and (max-height: 800px) {
+    .bio-container {
+        zoom: 125%;
+    }
+}
+
+@media only screen and (min-height: 400px) and (max-height: 600px) {
+    .bio-container {
+        zoom: 167%;
+    }
+}
+
+@media only screen and (min-height: 200px) and (max-height: 400px) {
+    .bio-container {
+        zoom: 250%;
+    }
+}
+
+@media only screen and (max-height: 200px) {
+    .bio-container {
+        zoom: 500%;
+    }
+}
+
 .bio-circle {
     position: absolute;
     background: $bio-color;
