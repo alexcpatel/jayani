@@ -7,9 +7,9 @@ const request = require('request');
 const dotenv = require("dotenv");
 
 const listId = '01d4e26bc1';
-const env = dotenv.config({ path: '../.env' });
+const env = dotenv.config({ path: path.join(__dirname, '../.env') });
 console.log(env)
-const { MAIL_CHIMP_API_KEY } = dotenv.config({ path: '../.env' });
+const { MAIL_CHIMP_API_KEY } = dotenv.config({ path: path.join(__dirname, '../.env') });
 
 http.createServer((req, res) => {
   res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
