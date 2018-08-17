@@ -1,0 +1,227 @@
+[33mcommit 2bd306430a2b770bb049dee2bc70051722d58342[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Fri Aug 17 07:01:09 2018 -0400
+
+    mail subscribe attempt 1
+
+[33mcommit f5ec5e2a05f21d749188e37974324cde578f86dc[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Fri Aug 17 06:46:10 2018 -0400
+
+    mail subscribe attempt 1
+
+[33mcommit f58b160caddaca871fa767eb9bc62d0f7868d091[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Fri Aug 17 03:04:22 2018 -0400
+
+    updated styles, added colors to pages, and added lines to homepage
+
+[33mcommit 0bc118d938955254ad26376b55846e298f3a7efe[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Thu Aug 16 20:39:09 2018 -0400
+
+    redirect to https
+
+[33mcommit 5339732d9a4eafd862335139837728ca09b1d9d4[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Thu Aug 16 20:36:01 2018 -0400
+
+    redirect to https
+
+[33mcommit eb60efd444c95b9f1c8c08f5a668c902447a49c3[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Thu Aug 16 20:30:39 2018 -0400
+
+    redirect to https
+
+[33mcommit 7a03187abe29587ceac64b05c430ebd663d14462[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Thu Aug 16 20:29:50 2018 -0400
+
+    redirect to https
+
+[33mcommit d57266e1557296df96bc496d5bae64192df83214[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Thu Aug 16 20:27:48 2018 -0400
+
+    redirect to https
+
+[33mcommit 848e9a60c6da212d5b4602a45cf30ef5b2868462[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Thu Aug 16 20:20:35 2018 -0400
+
+    http round 2
+
+[33mcommit 1e0f94554d6f72711a78bdceff5e33de7144db35[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Thu Aug 16 20:09:18 2018 -0400
+
+    https
+
+[33mcommit 29d0f1214acaf579681b0bc3a694d8de1cf8f4d0[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Thu Aug 16 19:34:07 2018 -0400
+
+    added dcv
+
+[33mcommit d4e9e9d569025186405f0022701f230a0ff0d216[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Thu Aug 16 19:20:06 2018 -0400
+
+    added ssl
+
+[33mcommit d206858296c2c5b8d061de1c2bb0e3dc097ad097[m
+Author: root <acpatel@andrew.cmu.edu>
+Date:   Thu Aug 16 23:18:28 2018 +0000
+
+    registering for certificate
+
+[33mcommit 11955da172dfba97fd1ccfbacc21f88728779d1c[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Thu Aug 16 18:51:00 2018 -0400
+
+    added ssl
+
+[33mcommit f8d7edfc248b77d1b861a8b734e9e03fcf78539d[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Thu Aug 16 17:55:18 2018 -0400
+
+    testing gitignore
+
+[33mcommit 50c58d2ca34615f1c1bf91fb8fc97ad4406ad106[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Thu Aug 16 17:53:01 2018 -0400
+
+    new api key
+
+[33mcommit 498c6f446ce5d8856083696c3cbf3985f95ec075[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Thu Aug 16 17:27:16 2018 -0400
+
+    setting up deployment
+
+[33mcommit e9265bf4ba666881d09d9dba13205b852bebd62b[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Thu Aug 16 01:38:04 2018 -0400
+
+    website restructured for public folder, and events page structure complete
+
+[33mcommit 7cae866819ad03c5a5db3c190d1c586a8eb4674a[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Wed Aug 15 14:55:53 2018 -0400
+
+    starting restructure to public directory
+
+[33mcommit cd5540bc9eafeed96ab7f91bb8d4d50c6d0ad109[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Wed Aug 15 04:36:08 2018 -0400
+
+    Adding bio, finished videos
+
+[33mcommit ae3a09e919d38adab3ea4b9f83b9961e462747ee[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Wed Aug 15 03:04:47 2018 -0400
+
+    Added all components (videos, events, bio)
+
+[33mcommit e3f03eb4001541e3ed17ffea8ff3e87fe76802a4[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Wed Aug 15 02:27:03 2018 -0400
+
+    mandala fixed
+
+[33mcommit 6a9fc066c98bca69741fa27801a5ce54f4ff5a40[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Wed Aug 15 02:14:57 2018 -0400
+
+    fixed many bugs and starting to work on fixing mandala
+
+[33mcommit 0cbface9e4e46cd9dd68d337e84435fe5dc60634[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Tue Aug 14 19:19:15 2018 -0400
+
+    music page done
+
+[33mcommit 881b734270d75f7979399a2f60caf50c5fdb5cf7[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Mon Aug 13 00:54:34 2018 -0400
+
+    music page half done, time to style
+
+[33mcommit bcc08a9d11d4987f50ec3cad816f62dacdb8a2dd[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Sun Aug 12 18:51:21 2018 -0400
+
+    adding music section now
+
+[33mcommit 747663ce16a6013bf550a043d30d4415ac16a6e7[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Sun Aug 12 01:31:17 2018 -0400
+
+    news section working and added styles
+
+[33mcommit 62448826c2044faccc451689978c0e684c6ffeb8[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Sat Aug 11 17:52:28 2018 -0400
+
+    working contact section, testing screen resolutions
+
+[33mcommit 51721eab551c353e535f7a063c8d1eb020d376cb[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Thu Aug 9 00:51:27 2018 -0400
+
+    MANDALA
+
+[33mcommit a25fc5421cff9d71727bb6185325a8001771b4c0[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Wed Aug 8 17:17:57 2018 -0400
+
+    WORKING TITLE PROFILEPIC LINKS
+
+[33mcommit b1bae76f1c9a0e2b769adbe45d594b6749c30a9c[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Wed Aug 8 13:08:39 2018 -0400
+
+    pre scss
+
+[33mcommit 918f739aa6d8a637d34390fed08302ed671c662a[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Tue Aug 7 17:37:21 2018 -0400
+
+    FUCK
+
+[33mcommit 6e493156ae4f4ce3b45f8afee380cb3d7ad82db8[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Tue Aug 7 16:31:43 2018 -0400
+
+    ProfilePic GUUUUUCH with links and animations
+
+[33mcommit d148c06cdb0711399829484853865c5a15c82817[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Tue Aug 7 11:38:31 2018 -0400
+
+    starting the pain train
+
+[33mcommit 9e58cfc732fc761b57a13ddfd0a4688a7df9f1c8[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Tue Aug 7 00:51:24 2018 -0400
+
+    terrible
+
+[33mcommit 0726f631093c443f6464d790c6a89fd667ead0f8[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Mon Aug 6 23:00:10 2018 -0400
+
+    semi-working title
+
+[33mcommit 37fb8f4a9bd9c6a2c3ebe5467637b3dca3734191[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Mon Aug 6 15:40:58 2018 -0400
+
+    update readme
+
+[33mcommit edf1098b31567a624664120361ead4cec3ec087d[m
+Author: acpatel <acpatel@andrew.cmu.edu>
+Date:   Mon Aug 6 15:40:20 2018 -0400
+
+    first commit

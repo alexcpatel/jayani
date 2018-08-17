@@ -4,6 +4,10 @@ const fs = require('fs');
 const express = require('express');
 const path = require('path');
 const request = require('request');
+const dotenv = require("dotenv");
+
+const listId = '01d4e26bc1';
+const { MAIL_CHIMP_API_KEY } = dotenv.config({ path: '../.env' });
 
 http.createServer((req, res) => {
   res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
@@ -11,19 +15,19 @@ http.createServer((req, res) => {
 }).listen(80);
 
 const options = {
-  ca: fs.readFileSync(path.join(__dirname, '/keys/jayanimusic_com.ca-bundle')),
-  key: fs.readFileSync(path.join(__dirname, '/keys/jayanimusic_com.key')),
-  cert: fs.readFileSync(path.join(__dirname, '/keys/jayanimusic_com.crt')),
+  ca: fs.readFileSync(path.join(__dirname, '../keys/jayanimusic_com.ca-bundle')),
+  key: fs.readFileSync(path.join(__dirname, '../keys/jayanimusic_com.key')),
+  cert: fs.readFileSync(path.join(__dirname, '../keys/jayanimusic_com.crt')),
   requestCert: false,
   rejectUnauthorized: false
 };
 
 const app = express();
 app.use(express.json())
-app.use(express.static(path.join(__dirname, '/build')));
+app.use(express.static(path.join(__dirname, '../build')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/build/index.html'));
+  res.sendFile(path.join(__dirname, '../build/index.html'));
 })
 
 app.post('/subscribe', (req, res) => {
@@ -33,11 +37,6 @@ app.post('/subscribe', (req, res) => {
     email_address: email,
     status: 'subscribed',
   };
-
-  const listId = '01d4e26bc1';
-  const API_KEY = process.env.REACT_APP_MAILCHIMP_API_KEY;
-
-  console.log(API_KEY)
 
   if (!email) {
     res.json({ error: 'Email is required' });
@@ -50,7 +49,7 @@ app.post('/subscribe', (req, res) => {
         uri: `https://us19.api.mailchimp.com/3.0/lists/${listId}/members/`,
         headers: {
           Accept: 'application/json',
-          Authorization: `Basic ${Buffer.from(`apikey:${API_KEY}`).toString('base64')}`,
+          Authorization: `Basic ${Buffer.from(`apikey:${MAIL_CHIMP_API_KEY}`).toString('base64')}`,
         },
         json: true,
         body: data,
@@ -66,9 +65,9 @@ app.post('/subscribe', (req, res) => {
   })
     .then(response => {
       if (response.status === 'subscribed') {
-        res.json({subscribed: 1})
+        res.json({ subscribed: 1 })
       } else {
-        res.json({error: response.detail})
+        res.json({ error: response.detail })
       }
       console.log(response);
     })

@@ -130,7 +130,7 @@ class Contact extends React.Component {
                   <OverlayTrigger ref="emailPopover" trigger={null} placement="top" overlay={
                     <Popover id="popover-positioned-top" title="Subscribing..." style={{ width: "40vw" }}>
                       <ProgressBar active now={emailNow} />
-                      {emailStatus ? (emailStatus === "success" ? <p>You are now subscribed!</p> : <p>Whoops! We got the following error: {emailStatus}</p>) : null}
+                      {emailStatus ? (emailStatus === "success" ? "You are now subscribed!" : `Whoops! We got the following error: ${emailStatus}`) : ''}
                     </Popover>}>
                     <Button type="submit">Subscribe</Button>
                   </OverlayTrigger>
