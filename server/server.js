@@ -26,7 +26,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/build/index.html'));
 })
 
-app.post(/^\/(?!subscribe).*\/specs\/.*\.js$/, (req, res) => {
+app.post('/subscribe', (req, res) => {
   const { email } = req.body;
 
   const data = {
