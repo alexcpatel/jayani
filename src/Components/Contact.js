@@ -68,6 +68,7 @@ class Contact extends React.Component {
       this.sendEmail(email)
     } else {
       this.setState({ validateStatus: "error" })
+      setTimeout(() => this.setState({ validateStatus: null }), 1500)
     }
   }
 
@@ -78,9 +79,11 @@ class Contact extends React.Component {
         this.startLoading()
         await subscribeToNewsletter({ email });
         this.setState({ loading: false, emailNow: 100, validateStatus: "success", emailStatus: "success" })
+        setTimeout(() => this.setState({ validateStatus: null }), 1500)
         setTimeout(() => { this.setState({ emailStatus: null }); this.refs.emailPopover.hide() }, 1500)
       } catch (err) {
         this.setState({ loading: false, emailNow: 0, validateStatus: "error", emailStatus: err })
+        setTimeout(() => this.setState({ validateStatus: null }), 1500)
         setTimeout(() => { this.setState({ emailStatus: null }); this.refs.emailPopover.hide() }, 1500)
       }
     })(email)
