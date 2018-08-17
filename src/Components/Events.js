@@ -236,13 +236,13 @@ class Events extends React.Component {
                   <Col sm={12} md={12} lg={12}>
                     <PageHeader>
                       <Row>
-                        <Col sm={3} md={2} lg={1}>
+                        <Col xs={3} md={2} lg={1}>
                           <Button variant="fab" color="primary" aria-label="Add" onClick={() => { if (animate) setOrReset() }}>
                             <UpIcon />
                           </Button>
                         </Col>
-                        <Col sm={6} md={8} lg={10}>EVENTS</Col>
-                        <Col sm={3} md={2} lg={1}></Col>
+                        <Col xs={6} md={8} lg={10}>EVENTS</Col>
+                        <Col xs={3} md={2} lg={1}></Col>
                       </Row>
                     </PageHeader>
                     {this.events.upcomingEvents && generateUpcomingEventElements(this.events.upcomingEvents)}

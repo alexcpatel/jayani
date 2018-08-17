@@ -327,7 +327,6 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    this.animateElements(true)
     this.animateElements(false)
   }
 
@@ -343,15 +342,6 @@ class Profile extends React.Component {
           onEnter={() => { this.animateElements(animate) }}
           onExit={() => { this.animateElements(animate) }}>
           <div>
-            <div ref={this.musicRef} onClick={() => { !animateMusic && this.setOrResetMusic() }}><img className="music-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.musicButtonImage}`} alt="Music Button" /></div>
-            <div ref={this.bioRef} onClick={() => { !animateBio && this.setOrResetBio() }}><img className="bio-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.bioButtonImage}`} alt="Bio Button" /></div>
-            <div ref={this.eventsRef} onClick={() => { !animateEvents && this.setOrResetEvents() }}><img className="events-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.eventsButtonImage}`} alt="Events Button" /></div>
-            <div ref={this.videosRef} onClick={() => { !animateVideos && this.setOrResetVideos() }}><img className="videos-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.videosButtonImage}`} alt="Videos Button" /></div>
-            <div ref={this.merchRef}>
-              <a href={data.config.merch} target="_blank">
-                <img className="merch-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.merchButtonImage}`} alt="Merch Button" />
-              </a>
-            </div>
             <div ref={this.chakraContainerRef}>
               <div ref={this.chakraOuterRef} className="chakra">
                 <svg ref={this.chakraRef} version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="29 57 120 120">
@@ -399,6 +389,15 @@ class Profile extends React.Component {
               <svg ref={this.leftLineRef} version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
                 <path className="line-path" d="M200 5 L0 5" />
               </svg>
+            </div>
+            <div ref={this.musicRef} onClick={() => { !animateMusic && this.setOrResetMusic() }}><img className="music-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.musicButtonImage}`} alt="Music Button" /></div>
+            <div ref={this.bioRef} onClick={() => { !animateBio && this.setOrResetBio() }}><img className="bio-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.bioButtonImage}`} alt="Bio Button" /></div>
+            <div ref={this.eventsRef} onClick={() => { !animateEvents && this.setOrResetEvents() }}><img className="events-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.eventsButtonImage}`} alt="Events Button" /></div>
+            <div ref={this.videosRef} onClick={() => { !animateVideos && this.setOrResetVideos() }}><img className="videos-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.videosButtonImage}`} alt="Videos Button" /></div>
+            <div ref={this.merchRef}>
+              <a href={data.config.merch} target="_blank">
+                <img className="merch-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.merchButtonImage}`} alt="Merch Button" />
+              </a>
             </div>
             {links.map(link => this.generateLinkElement(link))}
             <img className="profile-pic" ref={this.profilePicRef} src={`${process.env.PUBLIC_URL}/data${data.profile.profileImage}`} alt="Profile Pic" onClick={this.setOrReset} />

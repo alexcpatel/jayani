@@ -3,8 +3,9 @@ import { Transition } from 'react-transition-group'
 import anime from 'animejs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import { Row, Col, Button, Form, FormGroup, FormControl, Glyphicon } from 'react-bootstrap'
+import { Row, Col, Button, Form, FormGroup, FormControl, Glyphicon, OverlayTrigger, Popover, ProgressBar } from 'react-bootstrap'
 import EmailValidator from 'email-validator'
+import { subscribeToNewsletter } from './SubscribeToNewsletter'
 
 import './Styles/Contact.scss'
 
@@ -12,7 +13,7 @@ class Contact extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { animate: false, email: null, validateStatus: null }
+    this.state = { animate: false, email: null, validateStatus: null, emailNow: 0, loading: false, emailStatus: null }
 
     this.emailRef = React.createRef()
     this.envelopeRef = React.createRef()
@@ -21,6 +22,9 @@ class Contact extends React.Component {
     this.animateElements = this.animateElements.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
+    this.sendEmail = this.sendEmail.bind(this)
+    this.startLoading = this.startLoading.bind(this)
+    this.incrementLoading = this.incrementLoading.bind(this)
   }
 
   setOrReset() {
@@ -60,16 +64,45 @@ class Contact extends React.Component {
   handleUpdate(event) {
     event.preventDefault()
     const email = this.state.email
-    if (EmailValidator.validate(email)) {
-      console.log(email)
-      this.setState({ validateStatus: "success" })
+    if (EmailValidator.validate(email) && !this.state.loading) {
+      this.sendEmail(email)
     } else {
       this.setState({ validateStatus: "error" })
     }
   }
 
+  sendEmail(email) {
+    (async email => {
+      this.setState({ emailPopup: true })
+      try {
+        this.refs.emailPopover.show()
+        this.startLoading()
+        await subscribeToNewsletter({ email });
+        this.setState({ loading: false, emailNow: 100, validateStatus: "success", emailStatus: "success" })
+        setTimeout(() => { this.setState({ emailStatus: null }); this.refs.emailPopover.hide() }, 1500)
+      } catch (err) {
+        this.setState({ loading: false, emailNow: 0, validateStatus: "error", emailStatus: err })
+        setTimeout(() => { this.setState({ emailStatus: null }); this.refs.emailPopover.hide() }, 1500)
+      }
+    })(email)
+  }
+
+  startLoading() {
+    this.setState({ emailNow: 0, loading: true })
+    setTimeout(this.incrementLoading, 50)
+  }
+
+  incrementLoading() {
+    this.setState(prevState => ({
+      emailNow: prevState.emailNow + Math.floor(Math.random() * 10) + 1
+    }));
+    if (this.state.emailNow < 85 && this.state.loading) {
+      setTimeout(() => this.incrementLoading(), Math.floor(Math.random() * 100) + 10)
+    }
+  }
+
   render() {
-    const { animate, validateStatus } = this.state
+    const { animate, validateStatus, emailNow, emailStatus } = this.state
     return (
       <div>
         <Transition
@@ -94,7 +127,13 @@ class Contact extends React.Component {
                   </FormGroup>
                 </Col>
                 <Col xs={2}>
-                  <Button type="submit">Subscribe</Button>
+                  <OverlayTrigger ref="emailPopover" trigger={null} placement="top" overlay={
+                    <Popover id="popover-positioned-top" title="Subscribing..." style={{ width: "40vw" }}>
+                      <ProgressBar active now={emailNow} />
+                      {emailStatus ? (emailStatus === "success" ? <p>You are now subscribed!</p> : <p>Whoops! We got the following error: {emailStatus}</p>) : null}
+                    </Popover>}>
+                    <Button type="submit">Subscribe</Button>
+                  </OverlayTrigger>
                 </Col>
               </Row>
             </Form>
