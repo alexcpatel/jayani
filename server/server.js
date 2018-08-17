@@ -9,7 +9,6 @@ const dotenv = require("dotenv");
 const listId = '01d4e26bc1';
 const env = dotenv.config({ path: path.join(__dirname, '../.env') });
 const MAILCHIMP_API_KEY = env.parsed.MAILCHIMP_API_KEY
-console.log(MAILCHIMP_API_KEY)
 
 http.createServer((req, res) => {
   res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
@@ -71,7 +70,6 @@ app.post('/subscribe', (req, res) => {
       } else {
         res.json({ error: response.detail })
       }
-      console.log(response);
     })
     .catch(err => {
       res.json({ error: err.message || err.toString() });

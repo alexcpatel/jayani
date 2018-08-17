@@ -12,6 +12,7 @@ async function sendRequest(path, options = {}) {
     if (data.error) {
         throw new Error(data.error);
     }
+    await setTimeout(() => {;}, 1500)
     return data;
 }
 
