@@ -29,7 +29,7 @@ app.get('*', (req, res) => {
 })
 
 const server = https.createServer(options, app);
-server.listen(80);
+server.listen(443);
 server.on('listening', () => {
-  console.log('Server is listening on port: 80');
+  console.log('Server is listening on port: 443');
 });
