@@ -27,9 +27,12 @@ app.use(express.static(path.join(__dirname, '/build')));
 
 app.get('*', (req, res) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   console.log("Got Request")
 >>>>>>> 1e0f945... https
+=======
+>>>>>>> 0bc118d... redirect to https
   res.sendFile(path.join(__dirname, '/build/index.html'));
 })
 
