@@ -19,7 +19,7 @@ const options = {
 const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
 
 const app = express();
-app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
+app.use(redirectToHTTPS());
 app.use(express.static(path.join(__dirname, '/build')));
 
 app.get('*', (req, res) => {
