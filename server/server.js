@@ -8,8 +8,8 @@ const dotenv = require("dotenv");
 
 const listId = '01d4e26bc1';
 const env = dotenv.config({ path: path.join(__dirname, '../.env') });
-console.log(env)
-const { MAIL_CHIMP_API_KEY } = dotenv.config({ path: path.join(__dirname, '../.env') });
+const MAILCHIMP_API_KEY = env.parsed.MAILCHIMP_API_KEY
+console.log(MAILCHIMP_API_KEY)
 
 http.createServer((req, res) => {
   res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
@@ -51,7 +51,7 @@ app.post('/subscribe', (req, res) => {
         uri: `https://us19.api.mailchimp.com/3.0/lists/${listId}/members/`,
         headers: {
           Accept: 'application/json',
-          Authorization: `Basic ${Buffer.from(`apikey:${MAIL_CHIMP_API_KEY}`).toString('base64')}`,
+          Authorization: `Basic ${Buffer.from(`apikey:${MAILCHIMP_API_KEY}`).toString('base64')}`,
         },
         json: true,
         body: data,
