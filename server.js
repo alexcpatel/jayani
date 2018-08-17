@@ -1,7 +1,13 @@
+const http = require('http');
 const https = require('https');
 const fs = require('fs');
 const express = require('express');
 const path = require('path')
+
+http.createServer((req, res) => {
+  res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+  res.end();
+}).listen(80);
 
 const options = {
 <<<<<<< HEAD
@@ -16,10 +22,7 @@ const options = {
   rejectUnauthorized: false
 };
 
-const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
-
 const app = express();
-app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
 app.use(express.static(path.join(__dirname, '/build')));
 
 app.get('*', (req, res) => {
