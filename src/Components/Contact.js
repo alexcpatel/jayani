@@ -73,7 +73,6 @@ class Contact extends React.Component {
 
   sendEmail(email) {
     (async email => {
-      this.setState({ emailPopup: true })
       try {
         this.refs.emailPopover.show()
         this.startLoading()
@@ -102,7 +101,7 @@ class Contact extends React.Component {
   }
 
   render() {
-    const { animate, validateStatus, emailNow, emailStatus } = this.state
+    const { animate, validateStatus, emailNow, emailStatus, loading } = this.state
     return (
       <div>
         <Transition
@@ -130,7 +129,7 @@ class Contact extends React.Component {
                   <OverlayTrigger ref="emailPopover" trigger={null} placement="top" overlay={
                     <Popover id="popover-positioned-top" title="Subscribing..." style={{ width: "40vw" }}>
                       <ProgressBar active now={emailNow} />
-                      {emailStatus ? (emailStatus === "success" ? "You are now subscribed!" : `Whoops! We got the following error: ${emailStatus}`) : ''}
+                      {emailStatus ? (emailStatus === "success" && !loading ? "You are now subscribed!" : `Whoops! We got the following error: ${emailStatus}`) : ''}
                     </Popover>}>
                     <Button type="submit">Subscribe</Button>
                   </OverlayTrigger>
