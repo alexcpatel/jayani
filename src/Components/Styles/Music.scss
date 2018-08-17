@@ -75,11 +75,10 @@ $music-color: linear-gradient(-45deg, #56ffc3, #5692ff, #56ffc3, #5692ff);
 .music-link-image {
     height: 30px;
     width: auto;
-    filter: brightness(0) invert(0.7);
+    filter: brightness(0);
 }
 
 .music-link-container a {
-    color: white;
     text-decoration: none;
     cursor: pointer;
     transition: all .2s ease-in-out;
@@ -106,4 +105,47 @@ $music-color: linear-gradient(-45deg, #56ffc3, #5692ff, #56ffc3, #5692ff);
 .music-footer-link svg {
     height: 30px;
     width: auto;
+}
+
+.jayani-debut {
+    font-family: "Colonna MT";
+}
+
+.coming-soon {
+    font-family: "Roboto";
+    padding-left: 400px;
+}
+
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+    .jayani-debut-container {
+        zoom: 80%;
+    }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 600px) {
+    .jayani-debut-container {
+        zoom: 50%;
+    }
+}
+
+@media only screen and (min-width: 200px) and (max-width: 400px) {
+    .jayani-debut-container {
+        zoom: 20%;
+    }
+}
+
+@media only screen and (max-width: 200px) {
+    .jayani-debut-container {
+        zoom: 15%;
+    }
+}
+
+.music-title {
+    margin-top: 10px;
+    background: $music-color;
+    background-size: 400% 400%;
+    animation: MusicGradient 15s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
 }

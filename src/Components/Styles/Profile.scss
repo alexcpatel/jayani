@@ -97,7 +97,45 @@ a {
     stroke-miterlimit: 10;
 }
 
+.right-line {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    margin-top: 40px;
+}
+
+.right-line svg {
+    width: 200px;
+    height: 200px;
+}
+
+.left-line {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    margin-top: 40px;
+    margin-left: -200px;
+}
+
+.left-line svg {
+    width: 200px;
+    height: 200px;
+}
+
+.line-path {
+    fill: none;
+    stroke: $primary-color;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+}
+
 .music-pic {
+    filter: brightness(0) invert(1);
     position: absolute;
     top: 0px;
     left: 0px;
@@ -111,6 +149,7 @@ a {
 }
 
 .bio-pic {
+    filter: brightness(0) invert(1);
     position: absolute;
     top: 0px;
     left: 0px;
@@ -124,6 +163,7 @@ a {
 }
 
 .events-pic {
+    filter: brightness(0) invert(1);
     position: absolute;
     top: 0px;
     left: 0px;
@@ -137,6 +177,7 @@ a {
 }
 
 .videos-pic {
+    filter: brightness(0) invert(1);
     position: absolute;
     top: 0px;
     left: 0px;
@@ -150,6 +191,7 @@ a {
 }
 
 .merch-pic {
+    filter: brightness(0) invert(1);
     position: absolute;
     top: 0px;
     left: 0px;

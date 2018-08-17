@@ -85,18 +85,17 @@ $bio-color: linear-gradient(-45deg, #9956ff, #ed56ff, #9956ff, #ed56ff);
     width: auto;
 }
 
-.blurb {
+.blurb-text {
     height: 100%;
-    font-size: calc(0.45vw + 0.15vh + 15px);
-    text-align: left;
-    display: table-cell;
-    vertical-align: middle
+    color: white;
+}
+
+.blurb-footer {
+    height: 100%;
+    color: #ffc356;
 }
 
 .bio-text {
     height: 100%;
-    font-size: calc(0.45vw + 0.15vh + 15px);
     text-align: left;
-    display: table-cell;
-    vertical-align: middle
 }

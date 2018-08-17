@@ -64,6 +64,9 @@ class Profile extends React.Component {
     this.chakraOuterRef = React.createRef()
     this.chakraRef = React.createRef()
 
+    this.leftLineRef = React.createRef()
+    this.rightLineRef = React.createRef()
+
     this.facebookRef = React.createRef()
     this.twitterRef = React.createRef()
     this.instagramRef = React.createRef()
@@ -169,6 +172,9 @@ class Profile extends React.Component {
     anime.remove(this.chakraOuterRef.current)
     anime.remove(this.chakraRef.current)
 
+    anime.remove(this.leftLineRef.current)
+    anime.remove(this.rightLineRef.current)
+
     anime.remove(this.facebookRef.current)
     anime.remove(this.twitterRef.current)
     anime.remove(this.instagramRef.current)
@@ -229,6 +235,21 @@ class Profile extends React.Component {
         duration: 100
       })
     }
+
+    // LINE ANIMATIONS
+    anime({
+      targets: this.rightLineRef.current.querySelectorAll(".line-path"),
+      easing: 'easeInOutSine',
+      duration: animate ? 600 : 300,
+      strokeDashoffset: animate ? [anime.setDashoffset, 0] : [0, anime.setDashoffset]
+    })
+
+    anime({
+      targets: this.leftLineRef.current.querySelectorAll(".line-path"),
+      easing: 'easeInOutSine',
+      duration: animate ? 600 : 300,
+      strokeDashoffset: animate ? [anime.setDashoffset, 0] : [0, anime.setDashoffset]
+    })
 
     // LINKS ANIMATIONS
     for (let i = 0; i < links.length; i++) {
@@ -322,11 +343,11 @@ class Profile extends React.Component {
           onEnter={() => { this.animateElements(animate) }}
           onExit={() => { this.animateElements(animate) }}>
           <div>
-            <div ref={this.musicRef} onClick={this.setOrResetMusic}><img className="music-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.musicButtonImage}`} alt="Music Button" /></div>
-            <div ref={this.bioRef} onClick={this.setOrResetBio}><img className="bio-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.bioButtonImage}`} alt="Bio Button" /></div>
-            <div ref={this.eventsRef} onClick={this.setOrResetEvents}><img className="events-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.eventsButtonImage}`} alt="Events Button" /></div>
-            <div ref={this.videosRef} onClick={this.setOrResetVideos}><img className="videos-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.videosButtonImage}`} alt="Videos Button" /></div>
-            <div ref={this.merchRef} onClick={this.setOrResetMerch}>
+            <div ref={this.musicRef} onClick={() => { !animateMusic && this.setOrResetMusic() }}><img className="music-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.musicButtonImage}`} alt="Music Button" /></div>
+            <div ref={this.bioRef} onClick={() => { !animateBio && this.setOrResetBio() }}><img className="bio-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.bioButtonImage}`} alt="Bio Button" /></div>
+            <div ref={this.eventsRef} onClick={() => { !animateEvents && this.setOrResetEvents() }}><img className="events-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.eventsButtonImage}`} alt="Events Button" /></div>
+            <div ref={this.videosRef} onClick={() => { !animateVideos && this.setOrResetVideos() }}><img className="videos-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.videosButtonImage}`} alt="Videos Button" /></div>
+            <div ref={this.merchRef}>
               <a href={data.config.merch} target="_blank">
                 <img className="merch-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.merchButtonImage}`} alt="Merch Button" />
               </a>
@@ -368,6 +389,16 @@ class Profile extends React.Component {
                   <path className="chakra-path" d="m 96.58165,156.50955 0.04444,0.47904 c 0.06368,0.67955 -0.01154,2.3141 -0.13281,2.8799 -0.27812,1.2974 -0.80002,1.8363 -2.8737,2.9683 -0.56212,0.30686 -1.2232,0.68913 -1.4692,0.84956 -0.6436,0.41983 -1.723,1.5306 -2.0764,2.1368 -0.1581,0.27123 -0.30176,0.49379 -0.31936,0.49455 -0.01757,7.9e-4 -0.10039,-0.12072 -0.18449,-0.26976 -0.33586,-0.59508 -0.63619,-0.99768 -1.1245,-1.509 -0.61348,-0.64233 -1.1098,-1.0274 -2.5874,-2.0061 -2.3244,-1.5395 -2.7553,-2.1137 -2.9399,-3.9207 -0.0674,-0.66023 -0.02912,-2.0419 0.05788,-2.0903 0.02177,-0.0121 0.4564,0.0431 0.96583,0.12248 2.1092,0.32871 2.9205,0.38137 5.8766,0.38137 2.9445,0 3.7442,-0.0516 5.8565,-0.37672 z" />
                 </svg>
               </div>
+            </div>
+            <div className="right-line">
+              <svg ref={this.rightLineRef} version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                <path className="line-path" d="M0 5 L200 5" />
+              </svg>
+            </div>
+            <div className="left-line">
+              <svg ref={this.leftLineRef} version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                <path className="line-path" d="M200 5 L0 5" />
+              </svg>
             </div>
             {links.map(link => this.generateLinkElement(link))}
             <img className="profile-pic" ref={this.profilePicRef} src={`${process.env.PUBLIC_URL}/data${data.profile.profileImage}`} alt="Profile Pic" onClick={this.setOrReset} />

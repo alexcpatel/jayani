@@ -4,7 +4,7 @@ import anime from 'animejs'
 import Button from '@material-ui/core/Button'
 import UpIcon from '@material-ui/icons/KeyboardArrowUp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Grid, Row, Col, Panel, PageHeader } from 'react-bootstrap'
+import { Grid, Row, Col, Panel, PageHeader, Jumbotron } from 'react-bootstrap'
 import Iframe from 'react-iframe'
 
 import './Styles/Music.scss'
@@ -31,6 +31,9 @@ const footerLinks = [
   'soundcloud'
 ]
 
+const colors = ["#5e7fba", "#a85a76", "#b29560"]
+const headerColors = ["#536d9b", "#8e5268", "#937d54"]
+
 const musicFooterElements = musicFooterLinks => footerLinks.map(link =>
   <div className="music-footer-link" key={link}>
     <a href={musicFooterLinks[link]} className={link} target="_blank">
@@ -50,10 +53,10 @@ const linkElements = musicLinks => links.map(link =>
   </a>
 )
 
-const musicElements = musicList => musicList.map(music =>
+const musicElements = musicList => musicList.map((music, i) =>
   <Panel key={music.name}>
-    <Panel.Heading><Panel.Title><p style={{ fontSize: '1.5em' }}>{music.name}</p></Panel.Title></Panel.Heading>
-    <Panel.Body>
+    <Panel.Heading style={{ backgroundColor: `${headerColors[i % 3]}` }}><Panel.Title><p className="music-title" style={{ fontSize: '2em' }}>{music.name}</p></Panel.Title></Panel.Heading>
+    <Panel.Body style={{ backgroundColor: `${colors[i % 3]}` }}>
       <Row>
         <Col xs={12} md={4} lg={4}>
           <img src={`${process.env.PUBLIC_URL}/data${music.image}`} alt={music.name} style={{ width: '100%', height: 'auto' }} />
@@ -143,7 +146,7 @@ class Music extends React.Component {
                     <PageHeader>
                       <Row>
                         <Col xs={3} md={2} lg={1}>
-                          <Button variant="fab" color="primary" aria-label="Add" onClick={() => { if (animate) setOrReset() }}>
+                          <Button variant="fab" color="primary" aria-label="Add" onClick={() => { if (animate) { setOrReset() } }}>
                             <UpIcon />
                           </Button>
                         </Col>
@@ -151,10 +154,12 @@ class Music extends React.Component {
                         <Col xs={3} md={2} lg={1}></Col>
                       </Row>
                     </PageHeader>
-                    <Panel>
-                      <Panel.Heading>Jayani Tunes</Panel.Heading>
-                      <Panel.Body>Coming Soon!</Panel.Body>
-                    </Panel>
+                    <Jumbotron style={{ backgroundColor: "#b29560" }}>
+                      <div className="jayani-debut-container">
+                        <p className="jayani-debut" style={{ fontSize: "100px", marginBottom: "-35px" }}>Jayani Debut</p>
+                        <em className="coming-soon" style={{ fontSize: "30px" }}>Coming Soon</em>
+                      </div>
+                    </Jumbotron>
                     {this.music}
                     <div className="music-footer">
                       {this.footer}

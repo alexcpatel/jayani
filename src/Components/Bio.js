@@ -4,7 +4,7 @@ import anime from 'animejs'
 import Button from '@material-ui/core/Button'
 import UpIcon from '@material-ui/icons/KeyboardArrowUp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Grid, Row, Col, PageHeader, Image } from 'react-bootstrap'
+import { Grid, Row, Col, PageHeader, Image, Jumbotron } from 'react-bootstrap'
 
 import './Styles/Bio.scss'
 
@@ -27,7 +27,7 @@ const bioFooterElements = bioFooterLinks => footerLinks.map(link =>
   </div>
 )
 
-const bioTextElement = bioFullText => bioFullText.map((snippet,i) => <p key={i}>{snippet}</p>)
+const bioTextElement = bioFullText => bioFullText.map((snippet, i) => <p key={i} style={{ fontSize: "calc(0.45vw + 0.15vh + 10px)" }}>{snippet}</p>)
 
 class Bio extends React.Component {
   constructor(props) {
@@ -79,7 +79,6 @@ class Bio extends React.Component {
       delay: animate ? 600 : 0,
       duration: 500
     })
-
   }
 
   render() {
@@ -111,17 +110,21 @@ class Bio extends React.Component {
                         <Col xs={3} md={2} lg={1}></Col>
                       </Row>
                     </PageHeader>
-                    <Row>
-                      <Col xs={12} md={6} lg={4}>
-                        <Image src={`${process.env.PUBLIC_URL}/data${data.bio.blurb.image}`} responsive circle />
-                      </Col>
-                      <Col xs={12} md={6} lg={8}>
-                        <div className="blurb">
-                          <p>{data.bio.blurb.text}</p>
-                          <p>{data.bio.blurb.footer}</p>
-                        </div>
-                      </Col>
-                    </Row>
+                    <Jumbotron style={{ backgroundColor: "#5e7fba" }}>
+                      <Row>
+                        <Col xs={12} sm={4} md={3} lg={2} style={{ marginBottom: "20px" }}>
+                          <Image src={`${process.env.PUBLIC_URL}/data${data.bio.blurb.image}`} responsive circle />
+                        </Col>
+                        <Col xs={12} sm={8} md={9} lg={10}>
+                          <p className="blurb-text" style={{ fontSize: "calc(0.35vw + 0.15vh + 15px)", textAlign:"left" }}>{data.bio.blurb.text}</p>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col xs={12} md={12} lg={12}>
+                          <em className="blurb-footer" style={{ fontSize: "calc(0.35vw + 0.15vh + 15px)", textAlign:"left" }}>{data.bio.blurb.footer}</em>
+                        </Col>
+                      </Row>
+                    </Jumbotron>
                     <Row>
                       <Col xs={12} md={6} lg={8}>
                         <div className="bio-text">

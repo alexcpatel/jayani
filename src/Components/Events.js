@@ -20,6 +20,12 @@ const footerLinks = [
   'soundcloud'
 ]
 
+const colors = ["#5e7fba", "#a85a76", "#b29560"]
+const headerColors = ["#536d9b", "#8e5268", "#937d54"]
+
+const upcomingColors = ["#5982cc", "#c6557d", "#d1a659"]
+const upcomingHeaderColors = ["#5692ff", "#ff5692", "#ffc356"]
+
 const eventsFooterElements = eventsFooterLinks => footerLinks.map(link =>
   <div className="events-footer-link" key={link}>
     <a href={eventsFooterLinks[link]} className={link} target="_blank">
@@ -72,9 +78,9 @@ const generateUpcomingEventElements = events => events.map((event, i) => {
       <Marker position={{ lat: event.coordinates[0], lng: event.coordinates[1] }} />
     </GoogleMap>))
   return (
-    <Panel key={i + 1}>
-      <Panel.Heading>
-        <Panel.Title>
+    <Panel eventKey={i + 1} key={i + 1}>
+      <Panel.Heading style={{ backgroundColor: `${upcomingHeaderColors[i % 3]}` }}>
+        <Panel.Title toggle>
           <Row className="row-eq-height">
             <Col xs={2} md={1} lg={1}>
               <img src={`${process.env.PUBLIC_URL}/data${event.icon}`} alt={event.name} style={{ width: '100%', height: 'auto' }} />
@@ -85,7 +91,7 @@ const generateUpcomingEventElements = events => events.map((event, i) => {
           </Row>
         </Panel.Title>
       </Panel.Heading>
-      <Panel.Body>
+      <Panel.Body style={{ backgroundColor: `${upcomingColors[i % 3]}` }} collapsible>
         <ListGroup className="upcoming-events-fields">
           <ListGroupItem bsStyle="danger"><Glyphicon glyph="map-marker" />{' '} {event.address}</ListGroupItem>
           <ListGroupItem bsStyle="success"><Glyphicon glyph="calendar" />
@@ -93,13 +99,13 @@ const generateUpcomingEventElements = events => events.map((event, i) => {
               ` ${event.time[0].toLocaleString(DateTime.DATE_HUGE)}` :
               ` ${event.time[0].toLocaleString(DateTime.DATE_HUGE)} - ${event.time[1].toLocaleString(DateTime.DATE_HUGE)}`}
           </ListGroupItem>
-          <ListGroupItem bsStyle="warning"><Glyphicon glyph="time" />{` ${event.time[0].toLocaleString(DateTime.TIME_SIMPLE)} - ${event.time[1].toLocaleString(DateTime.TIME_SIMPLE)} ${event.time[1].offsetNameShort}`}</ListGroupItem>
+          <ListGroupItem bsStyle="info"><Glyphicon glyph="time" />{` ${event.time[0].toLocaleString(DateTime.TIME_SIMPLE)} - ${event.time[1].toLocaleString(DateTime.TIME_SIMPLE)} ${event.time[1].offsetNameShort}`}</ListGroupItem>
         </ListGroup>
-        <Row className="row-eq-height">
-          <Col sm={6} md={4} lg={3}>
+        <Row>
+          <Col xs={12} sm={6} md={4} lg={3} style={{ marginBottom: "20px" }}>
             <img src={`${process.env.PUBLIC_URL}/data${event.image}`} alt={event.name} style={{ width: '100%', height: 'auto' }} />
           </Col>
-          <Col className="upcoming-events-description" sm={6} md={8} lg={9}>
+          <Col className="upcoming-events-description" xs={12} sm={6} md={8} lg={9} style={{ marginBottom: "20px" }}>
             {event.description}
           </Col>
         </Row>
@@ -119,7 +125,7 @@ const generateUpcomingEventElements = events => events.map((event, i) => {
 
 const generatePastEventElements = events => events.map((event, i) =>
   <Panel eventKey={i + 1} key={i + 1}>
-    <Panel.Heading>
+    <Panel.Heading style={{ backgroundColor: `${headerColors[i % 3]}` }}>
       <Panel.Title toggle>
         <Row className="row-eq-height">
           <Col xs={3} md={2} lg={1}>
@@ -131,7 +137,7 @@ const generatePastEventElements = events => events.map((event, i) =>
         </Row>
       </Panel.Title>
     </Panel.Heading>
-    <Panel.Body collapsible>
+    <Panel.Body style={{ backgroundColor: `${colors[i % 3]}` }} collapsible>
       <Row className="row-eq-height">
         <Col sm={6} md={4} lg={3}>
           <img src={`${process.env.PUBLIC_URL}/data${event.image}`} alt={event.name} style={{ width: '100%', height: 'auto' }} />
@@ -240,7 +246,7 @@ class Events extends React.Component {
                       </Row>
                     </PageHeader>
                     {this.events.upcomingEvents && generateUpcomingEventElements(this.events.upcomingEvents)}
-                    <ModalButton bsSize="large" onClick={this.handleShow}>
+                    <ModalButton bsSize="large" onClick={this.handleShow} style={{ backgroundColor: `${upcomingHeaderColors[this.events.upcomingEvents ? this.events.upcomingEvents.length % 3 : 0]}` }}>
                       View Past Events
                     </ModalButton>
                     <Modal className="past-events" dialogClassName="past-events-modal" show={this.state.show} onHide={this.handleClose}>
