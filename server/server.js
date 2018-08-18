@@ -32,7 +32,7 @@ app.get('*', (req, res) => {
 })
 
 app.post('/data', (req, res) => {
-  res.sendFile(path.join(__dirname, `../public/data/data.json`));
+  res.sendFile(path.join(__dirname, `../build/data/data.json`));
 });
 
 app.post('/subscribe', (req, res) => {
