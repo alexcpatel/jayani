@@ -1,4 +1,4 @@
-const ROOT_URL = "https://jayanimusic.com";
+const ROOT_URL = process.env.PUBLIC_URL;
 
 async function sendRequest(path, options = {}) {
     const headers = {

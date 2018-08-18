@@ -31,6 +31,10 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'));
 })
 
+app.post('/data:path', (req, res) => {
+  res.sendFile(path.join(__dirname, `../public/data${path}`));
+});
+
 app.post('/subscribe', (req, res) => {
   const { email } = req.body;
 

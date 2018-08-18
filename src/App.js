@@ -28,21 +28,29 @@ class App extends Component {
     this.openSite = this.openSite.bind(this)
     this.getData = this.getData.bind(this)
   }
-
-  getData() {
-    $.ajax({
-      url: `${process.env.PUBLIC_URL}/data/data.json`,
-      dataType: 'json',
-      cache: false,
-      success: (data) => {
-        console.log(data.config.merch)
-        this.setState({ data });
-      },
-      error: (xhr, status, err) => {
-        console.log(err);
-        alert(err);
+  
+  async getData() {
+    try {
+      const headers = {
+        'Content-type': 'application/json; charset=UTF-8',
+      };
+      const response = await fetch(
+        `${process.env.PUBLIC_URL}/data`,
+        {
+          method: 'POST',
+          headers,
+          cache: false
+        }
+      );
+      const data = await response.json();
+      if (data.error) {
+        throw new Error(data.error);
       }
-    });
+      this.setState({ data });
+    } catch (err) {
+      console.log(err);
+      alert(err);
+    }
   }
 
   setAnimate(animate) {
