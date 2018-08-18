@@ -3,12 +3,13 @@ import anime from 'animejs'
 import { Transition } from 'react-transition-group'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import $ from 'jquery'
 
 import Profile from './Components/Profile'
 import Title from './Components/Title'
 import Contact from './Components/Contact'
 import News from './Components/News'
+
+import requestData from './RequestData'
 
 import './App.scss'
 
@@ -26,31 +27,6 @@ class App extends Component {
     this.setAnimate = this.setAnimate.bind(this)
     this.animateElements = this.animateElements.bind(this)
     this.openSite = this.openSite.bind(this)
-    this.getData = this.getData.bind(this)
-  }
-  
-  async getData() {
-    try {
-      const headers = {
-        'Content-type': 'application/json; charset=UTF-8',
-      };
-      const response = await fetch(
-        `${process.env.PUBLIC_URL}/data`,
-        {
-          method: 'POST',
-          headers,
-          cache: false
-        }
-      );
-      const data = await response.json();
-      if (data.error) {
-        throw new Error(data.error);
-      }
-      this.setState({ data });
-    } catch (err) {
-      console.log(err);
-      alert(err);
-    }
   }
 
   setAnimate(animate) {
@@ -84,8 +60,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.animateElements(this.state.animate)
-    this.getData()
+    this.animateElements(this.state.animate);
+    (async () => {
+      const data = await requestData()
+      this.setState({ data })
+    })()
   }
 
   render() {

@@ -390,17 +390,17 @@ class Profile extends React.Component {
                 <path className="line-path" d="M200 5 L0 5" />
               </svg>
             </div>
-            <div ref={this.musicRef} onClick={() => { !animateMusic && this.setOrResetMusic() }}><img className="music-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.musicButtonImage}`} alt="Music Button" /></div>
-            <div ref={this.bioRef} onClick={() => { !animateBio && this.setOrResetBio() }}><img className="bio-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.bioButtonImage}`} alt="Bio Button" /></div>
-            <div ref={this.eventsRef} onClick={() => { !animateEvents && this.setOrResetEvents() }}><img className="events-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.eventsButtonImage}`} alt="Events Button" /></div>
-            <div ref={this.videosRef} onClick={() => { !animateVideos && this.setOrResetVideos() }}><img className="videos-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.videosButtonImage}`} alt="Videos Button" /></div>
+            <div ref={this.musicRef} onClick={() => { !animateMusic && this.setOrResetMusic() }}><img className="music-pic hover-scale" src={`${process.env.PUBLIC_URL}/data/${data.profile.musicButtonImage}`} alt="Music Button" /></div>
+            <div ref={this.bioRef} onClick={() => { !animateBio && this.setOrResetBio() }}><img className="bio-pic hover-scale" src={`${process.env.PUBLIC_URL}/data/${data.profile.bioButtonImage}`} alt="Bio Button" /></div>
+            <div ref={this.eventsRef} onClick={() => { !animateEvents && this.setOrResetEvents() }}><img className="events-pic hover-scale" src={`${process.env.PUBLIC_URL}/data/${data.profile.eventsButtonImage}`} alt="Events Button" /></div>
+            <div ref={this.videosRef} onClick={() => { !animateVideos && this.setOrResetVideos() }}><img className="videos-pic hover-scale" src={`${process.env.PUBLIC_URL}/data/${data.profile.videosButtonImage}`} alt="Videos Button" /></div>
             <div ref={this.merchRef}>
               <a href={data.config.merch} target="_blank">
-                <img className="merch-pic hover-scale" src={`${process.env.PUBLIC_URL}/data${data.profile.merchButtonImage}`} alt="Merch Button" />
+                <img className="merch-pic hover-scale" src={`${process.env.PUBLIC_URL}/data/${data.profile.merchButtonImage}`} alt="Merch Button" />
               </a>
             </div>
             {links.map(link => this.generateLinkElement(link))}
-            <img className="profile-pic" ref={this.profilePicRef} src={`${process.env.PUBLIC_URL}/data${data.profile.profileImage}`} alt="Profile Pic" onClick={this.setOrReset} />
+            <img className="profile-pic" ref={this.profilePicRef} src={`${process.env.PUBLIC_URL}/data/${data.profile.profileImage}`} alt="Profile Pic" onClick={this.setOrReset} />
             <Music data={data} animate={animateMusic} setOrReset={this.setOrResetMusic} />
             <Bio data={data} animate={animateBio} setOrReset={this.setOrResetBio} />
             <Videos data={this.props.data} animate={animateVideos} setOrReset={this.setOrResetVideos} />

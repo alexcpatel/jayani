@@ -83,7 +83,7 @@ const generateUpcomingEventElements = events => events.map((event, i) => {
         <Panel.Title toggle>
           <Row className="row-eq-height">
             <Col xs={2} md={1} lg={1}>
-              <img src={`${process.env.PUBLIC_URL}/data${event.icon}`} alt={event.name} style={{ width: '100%', height: 'auto' }} />
+              <img src={`${process.env.PUBLIC_URL}/data/${event.icon}`} alt={event.name} style={{ width: '100%', height: 'auto' }} />
             </Col>
             <Col className="upcoming-events-text" sm={4} md={5} lg={5}>{event.name}</Col>
             <Col className="upcoming-events-text" sm={3} md={3} lg={3}>{event.address}</Col>
@@ -103,7 +103,7 @@ const generateUpcomingEventElements = events => events.map((event, i) => {
         </ListGroup>
         <Row>
           <Col xs={12} sm={6} md={4} lg={3} style={{ marginBottom: "20px" }}>
-            <img src={`${process.env.PUBLIC_URL}/data${event.image}`} alt={event.name} style={{ width: '100%', height: 'auto' }} />
+            <img src={`${process.env.PUBLIC_URL}/data/${event.image}`} alt={event.name} style={{ width: '100%', height: 'auto' }} />
           </Col>
           <Col className="upcoming-events-description" xs={12} sm={6} md={8} lg={9} style={{ marginBottom: "20px" }}>
             {event.description}
@@ -129,7 +129,7 @@ const generatePastEventElements = events => events.map((event, i) =>
       <Panel.Title toggle>
         <Row className="row-eq-height">
           <Col xs={3} md={2} lg={1}>
-            <img src={`${process.env.PUBLIC_URL}/data${event.icon}`} alt={event.name} style={{ width: '100%', height: 'auto' }} />
+            <img src={`${process.env.PUBLIC_URL}/data/${event.icon}`} alt={event.name} style={{ width: '100%', height: 'auto' }} />
           </Col>
           <Col className="past-events-text" sm={3} md={4} lg={5}>{event.name}</Col>
           <Col className="past-events-text" sm={3} md={3} lg={3}>{event.address}</Col>
@@ -140,7 +140,7 @@ const generatePastEventElements = events => events.map((event, i) =>
     <Panel.Body style={{ backgroundColor: `${colors[i % 3]}` }} collapsible>
       <Row className="row-eq-height">
         <Col sm={6} md={4} lg={3}>
-          <img src={`${process.env.PUBLIC_URL}/data${event.image}`} alt={event.name} style={{ width: '100%', height: 'auto' }} />
+          <img src={`${process.env.PUBLIC_URL}/data/${event.image}`} alt={event.name} style={{ width: '100%', height: 'auto' }} />
         </Col>
         <Col className="past-events-description" sm={6} md={8} lg={9}>
           {event.description}

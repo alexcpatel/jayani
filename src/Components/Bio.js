@@ -113,7 +113,7 @@ class Bio extends React.Component {
                     <Jumbotron style={{ backgroundColor: "#5e7fba" }}>
                       <Row>
                         <Col xs={12} sm={4} md={3} lg={2} style={{ marginBottom: "20px" }}>
-                          <Image src={`${process.env.PUBLIC_URL}/data${data.bio.blurb.image}`} responsive circle />
+                          <Image src={`${process.env.PUBLIC_URL}/data/${data.bio.blurb.image}`} responsive circle />
                         </Col>
                         <Col xs={12} sm={8} md={9} lg={10}>
                           <p className="blurb-text" style={{ fontSize: "calc(0.35vw + 0.15vh + 15px)", textAlign:"left" }}>{data.bio.blurb.text}</p>
@@ -132,7 +132,7 @@ class Bio extends React.Component {
                         </div>
                       </Col>
                       <Col xs={12} md={6} lg={4}>
-                        <Image src={`${process.env.PUBLIC_URL}/data${data.bio.main.image}`} responsive />
+                        <Image src={`${process.env.PUBLIC_URL}/data/${data.bio.main.image}`} responsive />
                       </Col>
                     </Row>
                     <div className="bio-footer">

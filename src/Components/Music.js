@@ -59,7 +59,7 @@ const musicElements = musicList => musicList.map((music, i) =>
     <Panel.Body style={{ backgroundColor: `${colors[i % 3]}` }}>
       <Row>
         <Col xs={12} md={4} lg={4}>
-          <img src={`${process.env.PUBLIC_URL}/data${music.image}`} alt={music.name} style={{ width: '100%', height: 'auto' }} />
+          <img src={`${process.env.PUBLIC_URL}/data/${music.image}`} alt={music.name} style={{ width: '100%', height: 'auto' }} />
           <div className="music-link-container">
             {linkElements(music.links)}
           </div>

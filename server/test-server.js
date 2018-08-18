@@ -1,5 +1,4 @@
 const http = require('http');
-const https = require('https');
 const fs = require('fs');
 const express = require('express');
 const path = require('path');
@@ -9,19 +8,6 @@ const dotenv = require("dotenv");
 const listId = '01d4e26bc1';
 const env = dotenv.config({ path: path.join(__dirname, '../.env') });
 const MAILCHIMP_API_KEY = env.parsed.MAILCHIMP_API_KEY
-
-http.createServer((req, res) => {
-  res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
-  res.end();
-}).listen(80);
-
-const options = {
-  ca: fs.readFileSync(path.join(__dirname, '../keys/jayanimusic_com.ca-bundle')),
-  key: fs.readFileSync(path.join(__dirname, '../keys/jayanimusic_com.key')),
-  cert: fs.readFileSync(path.join(__dirname, '../keys/jayanimusic_com.crt')),
-  requestCert: false,
-  rejectUnauthorized: false
-};
 
 const app = express();
 app.use(express.json())
@@ -80,8 +66,8 @@ app.post('/subscribe', (req, res) => {
     });
 });
 
-const server = https.createServer(options, app);
-server.listen(443);
+const server = http.createServer(app);
+server.listen(80);
 server.on('listening', () => {
-  console.log('Server is listening on port: 443');
+  console.log('Server is listening on port: 80');
 });
