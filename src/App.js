@@ -35,6 +35,7 @@ class App extends Component {
       dataType: 'json',
       cache: false,
       success: (data) => {
+        console.log(data.config.merch)
         this.setState({ data });
       },
       error: (xhr, status, err) => {
