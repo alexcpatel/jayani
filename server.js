@@ -10,14 +10,8 @@ http.createServer((req, res) => {
 }).listen(80);
 
 const options = {
-<<<<<<< HEAD
   key: fs.readFileSync(path.join(__dirname, '/jayani_com.key')),
   cert: fs.readFileSync(path.join(__dirname, '/jayani_com.csr')),
-=======
-  ca: fs.readFileSync(path.join(__dirname, '/keys/jayanimusic_com.ca-bundle')),
-  key: fs.readFileSync(path.join(__dirname, '/keys/jayanimusic_com.key')),
-  cert: fs.readFileSync(path.join(__dirname, '/keys/jayanimusic_com.crt')),
->>>>>>> 1e0f945... https
   requestCert: false,
   rejectUnauthorized: false
 };
@@ -26,13 +20,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, '/build')));
 
 app.get('*', (req, res) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
   console.log("Got Request")
->>>>>>> 1e0f945... https
-=======
->>>>>>> 0bc118d... redirect to https
   res.sendFile(path.join(__dirname, '/build/index.html'));
 })
 

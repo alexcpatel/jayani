@@ -1,5 +1,5 @@
 {
-  "proxy": "http://localhost:80/",
+  "proxy": "http://localhost:3000/",
   "name": "jayani",
   "version": "0.1.0",
   "private": true,

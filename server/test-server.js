@@ -67,7 +67,7 @@ app.post('/subscribe', (req, res) => {
 });
 
 const server = http.createServer(app);
-server.listen(80);
+server.listen(3000);
 server.on('listening', () => {
-  console.log('Server is listening on port: 80');
+  console.log('Server is listening on port: 3000');
 });
