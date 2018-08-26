@@ -18,7 +18,7 @@ app.get("*", (req, res) => {
 });
 
 app.post("/data", (req, res) => {
-  res.sendFile(path.join(__dirname, `../build/data/data.json`));
+  res.sendFile(path.join(__dirname, `../public/data.json`));
 });
 
 app.post("/subscribe", (req, res) => {
@@ -69,7 +69,7 @@ app.post("/subscribe", (req, res) => {
 });
 
 const server = http.createServer(app);
-server.listen(3000);
+server.listen(5000);
 server.on("listening", () => {
-  console.log("Server is listening on port: 3000");
+  console.log("Server is listening on port: 5000");
 });

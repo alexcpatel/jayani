@@ -69,7 +69,7 @@ const linkElements = musicLinks =>
     </a>
   ));
 
-const musicElements = musicList =>
+const musicElements = (musicList, dataPath) =>
   musicList.map((music, i) => (
     <Panel key={music.name}>
       <Panel.Heading style={{ backgroundColor: `${headerColors[i % 3]}` }}>
@@ -83,7 +83,7 @@ const musicElements = musicList =>
         <Row>
           <Col xs={12} md={4} lg={4}>
             <img
-              src={`${process.env.PUBLIC_URL}/data/${music.image}`}
+              src={`${dataPath}${music.image}`}
               alt={music.name}
               style={{ width: "100%", height: "auto" }}
             />
@@ -115,7 +115,7 @@ class Music extends React.Component {
     this.musicRef = React.createRef();
     this.musicInnerRef = React.createRef();
 
-    this.music = musicElements(props.data.music);
+    this.music = musicElements(props.data.music, props.dataPath);
     this.footer = musicFooterElements(props.data.config.links);
 
     this.animateElements = this.animateElements.bind(this);

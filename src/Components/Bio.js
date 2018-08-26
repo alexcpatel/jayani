@@ -91,7 +91,7 @@ class Bio extends React.Component {
   }
 
   render() {
-    const { data, animate, setOrReset } = this.props;
+    const { data, dataPath, animate, setOrReset } = this.props;
     return (
       <Transition
         in={animate}
@@ -143,9 +143,7 @@ class Bio extends React.Component {
                           style={{ marginBottom: "20px" }}
                         >
                           <Image
-                            src={`${process.env.PUBLIC_URL}/data/${
-                              data.bio.blurb.image
-                            }`}
+                            src={`${dataPath}${data.bio.blurb.image}`}
                             responsive
                             circle
                           />
@@ -182,9 +180,7 @@ class Bio extends React.Component {
                       </Col>
                       <Col xs={12} md={6} lg={4}>
                         <Image
-                          src={`${process.env.PUBLIC_URL}/data/${
-                            data.bio.main.image
-                          }`}
+                          src={`${dataPath}${data.bio.main.image}`}
                           responsive
                         />
                       </Col>

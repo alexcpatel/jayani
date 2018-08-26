@@ -360,7 +360,7 @@ class Profile extends React.Component {
       animateVideos,
       animateEvents
     } = this.state;
-    const { data } = this.props;
+    const { data, dataPath } = this.props;
     return (
       <div className="profile">
         <Transition
@@ -542,9 +542,7 @@ class Profile extends React.Component {
             >
               <img
                 className="music-pic hover-scale"
-                src={`${process.env.PUBLIC_URL}/data/${
-                  data.profile.musicButtonImage
-                }`}
+                src={`${dataPath}${data.profile.musicButtonImage}`}
                 alt="Music Button"
               />
             </div>
@@ -556,9 +554,7 @@ class Profile extends React.Component {
             >
               <img
                 className="bio-pic hover-scale"
-                src={`${process.env.PUBLIC_URL}/data/${
-                  data.profile.bioButtonImage
-                }`}
+                src={`${dataPath}${data.profile.bioButtonImage}`}
                 alt="Bio Button"
               />
             </div>
@@ -570,9 +566,7 @@ class Profile extends React.Component {
             >
               <img
                 className="events-pic hover-scale"
-                src={`${process.env.PUBLIC_URL}/data/${
-                  data.profile.eventsButtonImage
-                }`}
+                src={`${dataPath}${data.profile.eventsButtonImage}`}
                 alt="Events Button"
               />
             </div>
@@ -584,9 +578,7 @@ class Profile extends React.Component {
             >
               <img
                 className="videos-pic hover-scale"
-                src={`${process.env.PUBLIC_URL}/data/${
-                  data.profile.videosButtonImage
-                }`}
+                src={`${dataPath}${data.profile.videosButtonImage}`}
                 alt="Videos Button"
               />
             </div>
@@ -594,9 +586,7 @@ class Profile extends React.Component {
               <a href={data.config.merch} target="_blank">
                 <img
                   className="merch-pic hover-scale"
-                  src={`${process.env.PUBLIC_URL}/data/${
-                    data.profile.merchButtonImage
-                  }`}
+                  src={`${dataPath}${data.profile.merchButtonImage}`}
                   alt="Merch Button"
                 />
               </a>
@@ -605,19 +595,19 @@ class Profile extends React.Component {
             <img
               className="profile-pic"
               ref={this.profilePicRef}
-              src={`${process.env.PUBLIC_URL}/data/${
-                data.profile.profileImage
-              }`}
+              src={`${dataPath}${data.profile.profileImage}`}
               alt="Profile Pic"
               onClick={this.setOrReset}
             />
             <Music
               data={data}
+              dataPath={dataPath}
               animate={animateMusic}
               setOrReset={this.setOrResetMusic}
             />
             <Bio
               data={data}
+              dataPath={dataPath}
               animate={animateBio}
               setOrReset={this.setOrResetBio}
             />
@@ -628,6 +618,7 @@ class Profile extends React.Component {
             />
             <Events
               data={this.props.data}
+              dataPath={dataPath}
               animate={animateEvents}
               setOrReset={this.setOrResetEvents}
             />

@@ -66,47 +66,7 @@ const compareEventTimes = (a, b) => {
   return 0;
 };
 
-const addTimeToEvents = rawEvents => {
-  let events = {};
-  const updatedEvents = [];
-  let eventsRemaining = events.length;
-
-  const callback = event => (err, data) => {
-    const zone = err ? "America/Los_Angeles" : data.timeZoneId;
-    const timezone = err ? "Pacific Standard Time" : data.timeZoneName;
-    updatedEvents.push(
-      Object.assign(event, {
-        timezone,
-        time: [
-          DateTime.fromISO(event.date[0], { zone }),
-          DateTime.fromISO(event.date[1], { zone })
-        ]
-      })
-    );
-    eventsRemaining--;
-    if (!eventsRemaining) {
-      events.pastEvents = updatedEvents
-        .filter(event => event.time[0] < currentTime)
-        .sort(compareEventTimes);
-      events.upcomingEvents = updatedEvents
-        .filter(event => event.time[0] >= currentTime)
-        .sort(compareEventTimes);
-    }
-  };
-
-  for (let i = 0; i < rawEvents.length; i++) {
-    const event = rawEvents[i];
-    timezoner.getTimeZone(
-      event.coordinates[0],
-      event.coordinates[1],
-      callback(event)
-    );
-  }
-
-  return events;
-};
-
-const generateUpcomingEventElements = events =>
+const generateUpcomingEventElements = (events, dataPath) =>
   events.map((event, i) => {
     const MapComponent = withScriptjs(
       withGoogleMap(props => (
@@ -132,7 +92,7 @@ const generateUpcomingEventElements = events =>
             <Row className="row-eq-height">
               <Col xs={2} md={1} lg={1}>
                 <img
-                  src={`${process.env.PUBLIC_URL}/data/${event.icon}`}
+                  src={`${dataPath}${event.icon}`}
                   alt={event.name}
                   style={{ width: "100%", height: "auto" }}
                 />
@@ -178,7 +138,7 @@ const generateUpcomingEventElements = events =>
           <Row>
             <Col xs={12} sm={6} md={4} lg={3} style={{ marginBottom: "20px" }}>
               <img
-                src={`${process.env.PUBLIC_URL}/data/${event.image}`}
+                src={`${dataPath}${event.image}`}
                 alt={event.name}
                 style={{ width: "100%", height: "auto" }}
               />
@@ -211,7 +171,7 @@ const generateUpcomingEventElements = events =>
     );
   });
 
-const generatePastEventElements = events =>
+const generatePastEventElements = (events, dataPath) =>
   events.map((event, i) => (
     <Panel eventKey={i + 1} key={i + 1}>
       <Panel.Heading style={{ backgroundColor: `${headerColors[i % 3]}` }}>
@@ -219,7 +179,7 @@ const generatePastEventElements = events =>
           <Row className="row-eq-height">
             <Col xs={3} md={2} lg={1}>
               <img
-                src={`${process.env.PUBLIC_URL}/data/${event.icon}`}
+                src={`${dataPath}${event.icon}`}
                 alt={event.name}
                 style={{ width: "100%", height: "auto" }}
               />
@@ -240,7 +200,7 @@ const generatePastEventElements = events =>
         <Row className="row-eq-height">
           <Col sm={6} md={4} lg={3}>
             <img
-              src={`${process.env.PUBLIC_URL}/data/${event.image}`}
+              src={`${dataPath}${event.image}`}
               alt={event.name}
               style={{ width: "100%", height: "auto" }}
             />
@@ -252,6 +212,46 @@ const generatePastEventElements = events =>
       </Panel.Body>
     </Panel>
   ));
+
+const addTimeToEvents = rawEvents => {
+  let events = {};
+  const updatedEvents = [];
+  let eventsRemaining = events.length;
+
+  const callback = event => (err, data) => {
+    const zone = err ? "America/Los_Angeles" : data.timeZoneId;
+    const timezone = err ? "Pacific Standard Time" : data.timeZoneName;
+    updatedEvents.push(
+      Object.assign(event, {
+        timezone,
+        time: [
+          DateTime.fromISO(event.date[0], { zone }),
+          DateTime.fromISO(event.date[1], { zone })
+        ]
+      })
+    );
+    eventsRemaining--;
+    if (!eventsRemaining) {
+      events.pastEvents = updatedEvents
+        .filter(event => event.time[0] < currentTime)
+        .sort(compareEventTimes);
+      events.upcomingEvents = updatedEvents
+        .filter(event => event.time[0] >= currentTime)
+        .sort(compareEventTimes);
+    }
+  };
+
+  for (let i = 0; i < rawEvents.length; i++) {
+    const event = rawEvents[i];
+    timezoner.getTimeZone(
+      event.coordinates[0],
+      event.coordinates[1],
+      callback(event)
+    );
+  }
+
+  return events;
+};
 
 class Events extends React.Component {
   constructor(props) {
@@ -319,7 +319,7 @@ class Events extends React.Component {
   }
 
   render() {
-    const { animate, setOrReset } = this.props;
+    const { animate, dataPath, setOrReset } = this.props;
     return (
       <Transition
         in={animate}
@@ -362,7 +362,10 @@ class Events extends React.Component {
                       </Row>
                     </PageHeader>
                     {this.events.upcomingEvents &&
-                      generateUpcomingEventElements(this.events.upcomingEvents)}
+                      generateUpcomingEventElements(
+                        this.events.upcomingEvents,
+                        dataPath
+                      )}
                     <ModalButton
                       bsSize="large"
                       onClick={this.handleShow}
@@ -394,7 +397,10 @@ class Events extends React.Component {
                           defaultActiveKey={null}
                         >
                           {this.events.pastEvents &&
-                            generatePastEventElements(this.events.pastEvents)}
+                            generatePastEventElements(
+                              this.events.pastEvents,
+                              dataPath
+                            )}
                         </PanelGroup>
                       </Modal.Body>
                       <Modal.Footer>

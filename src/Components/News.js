@@ -66,6 +66,7 @@ class News extends React.Component {
 
   render() {
     const { animate, animateBorder } = this.state;
+    const { dataPath } = this.props;
     return (
       <div>
         <Transition
@@ -78,7 +79,7 @@ class News extends React.Component {
           <div
             className="news-button hover-scale-light"
             style={{
-              backgroundImage: `url("${process.env.PUBLIC_URL}/data/${
+              backgroundImage: `url("${dataPath}${
                 this.props.data.news.button
               }")`
             }}
@@ -118,9 +119,7 @@ class News extends React.Component {
             <div ref={this.newsRef} className="pdf">
               <Document
                 width="612px"
-                file={`${process.env.PUBLIC_URL}/data/${
-                  this.props.data.news.pdf
-                }`}
+                file={`${dataPath}${this.props.data.news.pdf}`}
               >
                 <Page pageNumber={1} />
               </Document>

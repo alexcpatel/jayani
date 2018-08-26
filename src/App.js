@@ -15,6 +15,8 @@ import "./App.scss";
 
 library.add(fab);
 
+const dataPath = `${process.env.PUBLIC_URL}/data/`;
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -83,7 +85,11 @@ class App extends Component {
           }}
         >
           <div ref={this.siteRef} className="site-elements">
-            <Profile data={data} setAnimate={this.setAnimate} />
+            <Profile
+              data={data}
+              dataPath={dataPath}
+              setAnimate={this.setAnimate}
+            />
             <Transition
               in={animate}
               duration={1000}
@@ -100,8 +106,8 @@ class App extends Component {
                   className="contact-news-container"
                   ref={this.contactNewsRef}
                 >
-                  <Contact data={data} />
-                  <News data={data} />
+                  <Contact data={data} dataPath={dataPath} />
+                  <News data={data} dataPath={dataPath} />
                 </div>
               </div>
             </Transition>

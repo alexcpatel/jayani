@@ -4,8 +4,6 @@ import anime from "animejs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import {
-  Row,
-  Col,
   Button,
   Form,
   FormGroup,
@@ -171,7 +169,7 @@ class Contact extends React.Component {
               inline
               style={{
                 textAlign: "right",
-                marginBottom: "20px",
+                marginBottom: "10px",
                 marginRight: "40px"
               }}
               onSubmit={this.handleUpdate}
@@ -241,8 +239,13 @@ class Contact extends React.Component {
                 </div>
               </div>
             </Form>
-            <p>
-              {" "}
+            <p
+              style={{
+                overflow: "visible",
+                whiteSpace: "nowrap",
+                textAlign: "center"
+              }}
+            >
               Join my mailing list to stay updated ~ <br /> Feel free to contact
               me via my socials <br /> For business inquiries:{" "}
               <em>jayanitunes@gmail.com</em>
