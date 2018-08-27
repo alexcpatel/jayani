@@ -248,7 +248,7 @@ class Contact extends React.Component {
             >
               Join my mailing list to stay updated ~ <br /> Feel free to contact
               me via my socials <br /> For business inquiries:{" "}
-              <em>jayanitunes@gmail.com</em>
+              <em>jayanimusic@gmail.com</em>
             </p>
           </div>
         </Transition>

@@ -18,7 +18,7 @@ app.get("*", (req, res) => {
 });
 
 app.post("/data", (req, res) => {
-  res.sendFile(path.join(__dirname, `../public/data.json`));
+  res.sendFile(path.join(__dirname, `../public/data/data.json`));
 });
 
 app.post("/subscribe", (req, res) => {
