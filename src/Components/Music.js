@@ -50,24 +50,27 @@ const musicFooterElements = musicFooterLinks =>
   ));
 
 const linkElements = musicLinks =>
-  links.map(link => (
-    <a href={musicLinks[link]} target="_blank" key={link}>
-      {link === "tidal" ? (
-        <img className="music-link-image" src={tidalImgPath} alt="Tidal" />
-      ) : link === "deezer" ? (
-        <img className="music-link-image" src={deezerImgPath} alt="Tidal" />
-      ) : (
-        <svg
-          className="music-link-image"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 40 40"
-        >
-          <FontAwesomeIcon icon={["fab", link]} />
-        </svg>
-      )}
-    </a>
-  ));
+  links.map(
+    link =>
+      link ? (
+        <a href={musicLinks[link]} target="_blank" key={link}>
+          {link === "tidal" ? (
+            <img className="music-link-image" src={tidalImgPath} alt="Tidal" />
+          ) : link === "deezer" ? (
+            <img className="music-link-image" src={deezerImgPath} alt="Tidal" />
+          ) : (
+            <svg
+              className="music-link-image"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 40 40"
+            >
+              <FontAwesomeIcon icon={["fab", link]} />
+            </svg>
+          )}
+        </a>
+      ) : null
+  );
 
 const musicElements = (musicList, dataPath) =>
   musicList.map((music, i) => (
@@ -203,22 +206,6 @@ class Music extends React.Component {
                         <Col xs={3} md={2} lg={1} />
                       </Row>
                     </PageHeader>
-                    <Jumbotron style={{ backgroundColor: "#b29560" }}>
-                      <div className="jayani-debut-container">
-                        <p
-                          className="jayani-debut"
-                          style={{ fontSize: "100px", marginBottom: "-35px" }}
-                        >
-                          Jayani Debut
-                        </p>
-                        <em
-                          className="coming-soon"
-                          style={{ fontSize: "30px" }}
-                        >
-                          Coming Soon
-                        </em>
-                      </div>
-                    </Jumbotron>
                     {this.music}
                     <div className="music-footer">{this.footer}</div>
                   </Col>
@@ -231,5 +218,22 @@ class Music extends React.Component {
     );
   }
 }
+
+/* <Jumbotron style={{ backgroundColor: "#b29560" }}>
+     <div className="jayani-debut-container">
+       <p
+         className="jayani-debut"
+         style={{ fontSize: "100px", marginBottom: "-35px" }}
+       >
+         Jayani Debut
+       </p>
+       <em
+         className="coming-soon"
+         style={{ fontSize: "30px" }}
+       >
+         Coming Soon
+       </em>
+     </div>
+   </Jumbotron> */
 
 export default Music;

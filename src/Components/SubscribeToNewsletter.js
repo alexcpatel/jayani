@@ -14,6 +14,7 @@ async function sendRequest(path, options = {}) {
   );
   const data = await response.json();
   if (data.error) {
+    console.log(data.error);
     throw new Error(data.error);
   }
   await setTimeout(() => {}, 1500);

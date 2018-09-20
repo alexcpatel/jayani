@@ -5,8 +5,8 @@ const path = require("path");
 const request = require("request");
 const dotenv = require("dotenv");
 
-const listId = "01d4e26bc1";
 const env = dotenv.config({ path: path.join(__dirname, "../.env") });
+const listId = "01d4e26bc1";
 const MAILCHIMP_API_KEY = env.parsed.MAILCHIMP_API_KEY;
 
 const app = express();
