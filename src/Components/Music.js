@@ -4,13 +4,14 @@ import anime from "animejs";
 import Button from "@material-ui/core/Button";
 import UpIcon from "@material-ui/icons/KeyboardArrowUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Grid, Row, Col, Panel, PageHeader, Jumbotron } from "react-bootstrap";
+import { Grid, Row, Col, Panel, PageHeader, Jumbotron, Image } from "react-bootstrap";
 import Iframe from "react-iframe";
 
 import "./Styles/Music.scss";
 
 import tidalImgPath from "./Images/Tidal.png";
 import deezerImgPath from "./Images/Deezer.png";
+import believeImagePath from "./Images/Believe.jpg";
 
 const links = [
   "spotify",
@@ -59,15 +60,15 @@ const linkElements = musicLinks =>
           ) : link === "deezer" ? (
             <img className="music-link-image" src={deezerImgPath} alt="Tidal" />
           ) : (
-            <svg
-              className="music-link-image"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 40 40"
-            >
-              <FontAwesomeIcon icon={["fab", link]} />
-            </svg>
-          )}
+                <svg
+                  className="music-link-image"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 40 40"
+                >
+                  <FontAwesomeIcon icon={["fab", link]} />
+                </svg>
+              )}
         </a>
       ) : null
   );
@@ -206,6 +207,33 @@ class Music extends React.Component {
                         <Col xs={3} md={2} lg={1} />
                       </Row>
                     </PageHeader>
+                    <Jumbotron style={{ backgroundColor: "#00000000" }}>
+                      <div className="jayani-debut-container">
+                        <Row>
+                          <Col xs={1} md={2} lg={3} />
+                          <Col xs={10} md={8} lg={6}>
+                            <Image
+                              src={believeImagePath}
+                              responsive
+                              circle
+                            />
+                          </Col>
+                          <Col xs={1} md={2} lg={3} />
+                        </Row>
+                        <p
+                          className="jayani-debut"
+                          style={{ fontSize: "100px", marginBottom: "-35px" }}
+                        >
+                          Believe
+                        </p>
+                        <em
+                          className="coming-soon"
+                          style={{ fontSize: "30px" }}
+                        >
+                          Coming Soon
+                        </em>
+                      </div>
+                    </Jumbotron>
                     {this.music}
                     <div className="music-footer">{this.footer}</div>
                   </Col>
@@ -219,21 +247,6 @@ class Music extends React.Component {
   }
 }
 
-/* <Jumbotron style={{ backgroundColor: "#b29560" }}>
-     <div className="jayani-debut-container">
-       <p
-         className="jayani-debut"
-         style={{ fontSize: "100px", marginBottom: "-35px" }}
-       >
-         Jayani Debut
-       </p>
-       <em
-         className="coming-soon"
-         style={{ fontSize: "30px" }}
-       >
-         Coming Soon
-       </em>
-     </div>
-   </Jumbotron> */
+/*  */
 
 export default Music;

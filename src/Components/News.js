@@ -81,7 +81,9 @@ class News extends React.Component {
             style={{
               backgroundImage: `url("${dataPath}${
                 this.props.data.news.button
-              }")`
+                }")`,
+              top: '6em',
+              zoom: 0.6
             }}
             onClick={this.setOrReset}
           >
