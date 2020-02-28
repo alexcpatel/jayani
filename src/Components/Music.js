@@ -241,7 +241,7 @@ class Music extends React.Component {
                           className="coming-soon"
                           style={{ fontSize: "30px" }}
                         >
-                          Presave Now!
+                          Listen Now!
                         </em>
                       </div>
                     </Jumbotron>
