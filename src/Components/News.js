@@ -2,6 +2,7 @@ import React from "react";
 import { Transition } from "react-transition-group";
 import anime from "animejs";
 import { Document, Page } from "react-pdf";
+import { Image } from "react-bootstrap";
 
 import "./Styles/News.scss";
 
@@ -76,32 +77,43 @@ class News extends React.Component {
           onEnter={this.animateNewsButtonBorder}
           onExit={this.animateNewsButtonBorder}
         >
-          <div
-            className="news-button hover-scale-light"
-            style={{
-              backgroundImage: `url("${dataPath}${
-                this.props.data.news.button
-                }")`,
-              top: '6em',
-              zoom: 0.6
-            }}
-            onClick={this.setOrReset}
-          >
-            <svg
-              ref={this.newsButtonBorderRef}
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="1 1 80 20"
+          <div>
+            <div
+              className="news-button hover-scale-light"
+              style={{
+                backgroundImage: `url("${dataPath}${
+                  this.props.data.news.button
+                  }")`,
+                top: '6em',
+                zoom: 0.6
+              }}
+              onClick={this.setOrReset}
             >
-              <path
-                className="news-button-border-path"
-                d="M 1.3435885,1.2557672 H 80.718584 V 19.549227"
-              />
-              <path
-                className="news-button-border-path"
-                d="M 80.718584,19.549227 H 1.3435885 V 1.2557672"
-              />
-            </svg>
+              <svg
+                ref={this.newsButtonBorderRef}
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="1 1 80 20"
+              >
+                <path
+                  className="news-button-border-path"
+                  d="M 1.3435885,1.2557672 H 80.718584 V 19.549227"
+                />
+                <path
+                  className="news-button-border-path"
+                  d="M 80.718584,19.549227 H 1.3435885 V 1.2557672"
+                />
+              </svg>
+            </div>
+            <div>
+              <a href={this.props.data.config.links.believe} target="_blank">
+                <Image
+                  className="believe-pic hover-scale"
+                  src={`${dataPath}${this.props.data.news.believe}`}
+                  alt="Believe Button"
+                />
+              </a>
+            </div>
           </div>
         </Transition>
         <Transition

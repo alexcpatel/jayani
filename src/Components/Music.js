@@ -164,6 +164,7 @@ class Music extends React.Component {
 
   render() {
     const { animate, setOrReset } = this.props;
+    const { data, dataPath } = this.props;
     return (
       <Transition
         in={animate}
@@ -207,7 +208,7 @@ class Music extends React.Component {
                         <Col xs={3} md={2} lg={1} />
                       </Row>
                     </PageHeader>
-                    <Jumbotron style={{ backgroundColor: "#00000000" }}>
+                    <Jumbotron style={{ backgroundColor: "#00000000", marginBottom: "-1.5em" }}>
                       <div className="jayani-debut-container">
                         <Row>
                           <Col xs={1} md={2} lg={3} />
@@ -220,17 +221,27 @@ class Music extends React.Component {
                           </Col>
                           <Col xs={1} md={2} lg={3} />
                         </Row>
-                        <p
-                          className="jayani-debut"
-                          style={{ fontSize: "100px", marginBottom: "-35px" }}
-                        >
-                          Believe
-                        </p>
+                        <div>
+                          <a href={data.config.links.believe} target="_blank">
+                            <Image
+                              className="music-believe hover-scale"
+                              src={`${dataPath}${data.news.believe}`}
+                              alt="Believe Button"
+                            />
+                          </a>
+                        </div>
+                        <div>
+                          <Image
+                            className="music-believe-arrow"
+                            src={`${dataPath}${data.news.arrow}`}
+                            alt="Believe Arrow"
+                          />
+                        </div>
                         <em
                           className="coming-soon"
                           style={{ fontSize: "30px" }}
                         >
-                          Coming Soon
+                          Presave Now!
                         </em>
                       </div>
                     </Jumbotron>
@@ -242,7 +253,7 @@ class Music extends React.Component {
             </div>
           </div>
         </div>
-      </Transition>
+      </Transition >
     );
   }
 }

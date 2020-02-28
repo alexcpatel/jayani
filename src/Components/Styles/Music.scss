@@ -111,11 +111,6 @@ $music-color: linear-gradient(-45deg, #56ffc3, #5692ff, #56ffc3, #5692ff);
     font-family: "Colonna MT";
 }
 
-.coming-soon {
-    font-family: "Roboto";
-    padding-left: 300px;
-}
-
 @media only screen and (min-width: 600px) and (max-width: 800px) {
     .jayani-debut-container {
         zoom: 80%;
@@ -148,4 +143,27 @@ $music-color: linear-gradient(-45deg, #56ffc3, #5692ff, #56ffc3, #5692ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 900;
+}
+
+.music-believe {
+  filter: brightness(0) invert(1);
+  width: 5em;
+  height: 5em;
+  margin-top: 2.5em;
+  margin-bottom: 0.5em;
+  cursor: pointer;
+}
+
+.music-believe-arrow{
+  filter: brightness(0) invert(1);
+  width: auto;
+  height: 2em;
+  margin-top: 0em;
+  margin-bottom: 1.5em;
+}
+
+.coming-soon {
+    font-family: "Roboto";
+    margin-bottom: -1.7em;
+    padding-bottom: -1.7em;
 }

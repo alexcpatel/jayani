@@ -71,7 +71,7 @@ const generateUpcomingEventElements = (events, dataPath) =>
     const MapComponent = withScriptjs(
       withGoogleMap(props => (
         <GoogleMap
-          defaultZoom={8}
+          defaultZoom={10}
           defaultCenter={{
             lat: event.coordinates[0],
             lng: event.coordinates[1]
@@ -120,11 +120,11 @@ const generateUpcomingEventElements = (events, dataPath) =>
             <ListGroupItem bsStyle="success">
               <Glyphicon glyph="calendar" />
               {event.time[0].toLocaleString(DateTime.DATE_SHORT) ===
-              event.time[1].toLocaleString(DateTime.DATE_SHORT)
+                event.time[1].toLocaleString(DateTime.DATE_SHORT)
                 ? ` ${event.time[0].toLocaleString(DateTime.DATE_HUGE)}`
                 : ` ${event.time[0].toLocaleString(
-                    DateTime.DATE_HUGE
-                  )} - ${event.time[1].toLocaleString(DateTime.DATE_HUGE)}`}
+                  DateTime.DATE_HUGE
+                )} - ${event.time[1].toLocaleString(DateTime.DATE_HUGE)}`}
             </ListGroupItem>
             <ListGroupItem bsStyle="info">
               <Glyphicon glyph="time" />
@@ -132,7 +132,7 @@ const generateUpcomingEventElements = (events, dataPath) =>
                 DateTime.TIME_SIMPLE
               )} - ${event.time[1].toLocaleString(DateTime.TIME_SIMPLE)} ${
                 event.time[1].offsetNameShort
-              }`}
+                }`}
             </ListGroupItem>
           </ListGroup>
           <Row>
@@ -159,7 +159,7 @@ const generateUpcomingEventElements = (events, dataPath) =>
               <MapComponent
                 googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${
                   process.env.REACT_APP_GOOGLE_MAPS_API_KEY
-                }&v=3.exp&libraries=geometry,drawing,places`}
+                  }&v=3.exp&libraries=geometry,drawing,places`}
                 loadingElement={<div style={{ height: "100%" }} />}
                 containerElement={<div style={{ height: "250px" }} />}
                 mapElement={<div style={{ height: "100%" }} />}
@@ -372,11 +372,11 @@ class Events extends React.Component {
                       style={{
                         backgroundColor: `${
                           upcomingHeaderColors[
-                            this.events.upcomingEvents
-                              ? this.events.upcomingEvents.length % 3
-                              : 0
+                          this.events.upcomingEvents
+                            ? this.events.upcomingEvents.length % 3
+                            : 0
                           ]
-                        }`
+                          }`
                       }}
                     >
                       View Past Events
