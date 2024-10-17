@@ -1,3 +1,20 @@
-## Jayani Music Website
+# Jayani Music Website
 
-This is the website for singer/songwriter Max Patel, also known as Jayani. It is a create-react-app running on a node.js backend. The project uses anime.js for animations, luxon for time formatting, google apis for mapping and timezone locality, and mailchimp's api for handling mailing lists. All components, server code, and css are written from scratch.
+![Demo](demo.gif)
+
+## About
+
+This is the former website for singer/songwriter Max Patel, also known as Jayani.
+
+## Features
+
+- Responsive design
+- Animated elements using anime.js
+- Event information with Google Maps integration
+- Newsletter signup (Mailchimp API)
+
+## Tech Stack
+
+- Frontend: React.js (Create React App)
+- Backend: Node.js with Express.js
+- Additional libraries: anime.js, Luxon, Google APIs
